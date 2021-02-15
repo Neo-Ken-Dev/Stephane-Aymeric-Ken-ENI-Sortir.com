@@ -10,7 +10,7 @@ class HomeController extends AbstractController
     /**
      * @Route("/accueil", name="home")
      */
-    public function home(): \Symfony\Component\HttpFoundation\Response
+    public function home(): Response
     {
 
         return $this->render("default/home.html.twig");
