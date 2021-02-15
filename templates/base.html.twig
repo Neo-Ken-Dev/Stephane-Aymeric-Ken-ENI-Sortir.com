@@ -2,25 +2,34 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href=>
+    <link rel="stylesheet" href="{{ asset("css/app.css") }}">
+    <link href="https://fonts.googleapis.com/css?family=Crete+Round&display=swap" rel="stylesheet">
     <title>{% block title %}Sortie.com {% endblock %}</title>
 </head>
 <body>
+
 <header>
-    <nav>
-        <ul>
-            <h1> Bonjour </h1>
-            <li><a href=>Se deconnecter</a></li>
-            <li><a href=>Se connecter</a></li>
-            <li><a href=>S'enregistrer</a></li>
-            <li><a href=>Accueil</a></li>
-        </ul>
-    </nav>
+    <div class="wrapper">
+        <h1>Sortir<span class="orange">.</span>com</h1>
+        <nav>
+            <ul>
+                <li href="">Se déconnecter </li>
+                <li href="">Mon profil </li>
+                <li href="">Accueil</li>
+                <li href="">Campus</li>
+                <li href="">Villes</li>
+            </ul>
+        </nav>
+    </div>
 </header>
 
 <main>
     {% block body %}{% endblock %}
 </main>
-<footer> </footer>
+
+<footer></footer>
+
+
+
 </body>
 </html>
