@@ -10,15 +10,12 @@ use Symfony\Component\Routing\Annotation\Route;
 class UserController extends AbstractController
 {
     /**
-     * @Route("/", name="register")
+     * @Route("/", name="connexion")
      */
-    public function register(): Response
+    public function connexion(): \Symfony\Component\HttpFoundation\Response
     {
 
-
-        return $this->render('user/register.html.twig', [
-
-
-        ]);
+        return $this->render("default/connexion.html.twig");
     }
+
 }
