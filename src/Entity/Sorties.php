@@ -1,6 +1,6 @@
 <?php
 
-namespace App\entity;
+namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -121,6 +121,217 @@ class Sorties
      * )
      */
     private $participantsNoParticipant;
+
+    /**
+     * @return int
+     */
+    public function getNoSortie(): int
+    {
+        return $this->noSortie;
+    }
+
+    /**
+     * @param int $noSortie
+     */
+    public function setNoSortie(int $noSortie): void
+    {
+        $this->noSortie = $noSortie;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNom(): string
+    {
+        return $this->nom;
+    }
+
+    /**
+     * @param string $nom
+     */
+    public function setNom(string $nom): void
+    {
+        $this->nom = $nom;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getDatedebut(): \DateTime
+    {
+        return $this->datedebut;
+    }
+
+    /**
+     * @param \DateTime $datedebut
+     */
+    public function setDatedebut(\DateTime $datedebut): void
+    {
+        $this->datedebut = $datedebut;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getDuree(): ?int
+    {
+        return $this->duree;
+    }
+
+    /**
+     * @param int|null $duree
+     */
+    public function setDuree(?int $duree): void
+    {
+        $this->duree = $duree;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getDatecloture(): \DateTime
+    {
+        return $this->datecloture;
+    }
+
+    /**
+     * @param \DateTime $datecloture
+     */
+    public function setDatecloture(\DateTime $datecloture): void
+    {
+        $this->datecloture = $datecloture;
+    }
+
+    /**
+     * @return int
+     */
+    public function getNbinscriptionsmax(): int
+    {
+        return $this->nbinscriptionsmax;
+    }
+
+    /**
+     * @param int $nbinscriptionsmax
+     */
+    public function setNbinscriptionsmax(int $nbinscriptionsmax): void
+    {
+        $this->nbinscriptionsmax = $nbinscriptionsmax;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getDescriptioninfos(): ?string
+    {
+        return $this->descriptioninfos;
+    }
+
+    /**
+     * @param string|null $descriptioninfos
+     */
+    public function setDescriptioninfos(?string $descriptioninfos): void
+    {
+        $this->descriptioninfos = $descriptioninfos;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getEtatsortie(): ?int
+    {
+        return $this->etatsortie;
+    }
+
+    /**
+     * @param int|null $etatsortie
+     */
+    public function setEtatsortie(?int $etatsortie): void
+    {
+        $this->etatsortie = $etatsortie;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getUrlphoto(): ?string
+    {
+        return $this->urlphoto;
+    }
+
+    /**
+     * @param string|null $urlphoto
+     */
+    public function setUrlphoto(?string $urlphoto): void
+    {
+        $this->urlphoto = $urlphoto;
+    }
+
+    /**
+     * @return \Etats
+     */
+    public function getEtatsNoEtat(): \Etats
+    {
+        return $this->etatsNoEtat;
+    }
+
+    /**
+     * @param \Etats $etatsNoEtat
+     */
+    public function setEtatsNoEtat(\Etats $etatsNoEtat): void
+    {
+        $this->etatsNoEtat = $etatsNoEtat;
+    }
+
+    /**
+     * @return \Lieux
+     */
+    public function getLieuxNoLieu(): \Lieux
+    {
+        return $this->lieuxNoLieu;
+    }
+
+    /**
+     * @param \Lieux $lieuxNoLieu
+     */
+    public function setLieuxNoLieu(\Lieux $lieuxNoLieu): void
+    {
+        $this->lieuxNoLieu = $lieuxNoLieu;
+    }
+
+    /**
+     * @return \Participants
+     */
+    public function getOrganisateur(): \Participants
+    {
+        return $this->organisateur;
+    }
+
+    /**
+     * @param \Participants $organisateur
+     */
+    public function setOrganisateur(\Participants $organisateur): void
+    {
+        $this->organisateur = $organisateur;
+    }
+
+    /**
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getParticipantsNoParticipant()
+    {
+        return $this->participantsNoParticipant;
+    }
+
+    /**
+     * @param \Doctrine\Common\Collections\Collection $participantsNoParticipant
+     */
+    public function setParticipantsNoParticipant($participantsNoParticipant): void
+    {
+        $this->participantsNoParticipant = $participantsNoParticipant;
+    }
+
+
+
 
     /**
      * Constructor

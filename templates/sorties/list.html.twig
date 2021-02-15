@@ -1,0 +1,19 @@
+{%  extends 'base.html.twig' %}
+
+{%  block body %}
+
+    <h2> la liste des sorties</h2>
+
+    {%  for sortie in sorties %}
+        <div class="sortie">
+            {{ sortie.noSortie }}
+            {{ sortie.nom }}
+        </div>
+    {% endfor %}
+
+{% endblock %}
+
+{%  block title %}
+    Toutes les sorties selon votre campus | {{ parent() }}
+
+{%  endblock %}
