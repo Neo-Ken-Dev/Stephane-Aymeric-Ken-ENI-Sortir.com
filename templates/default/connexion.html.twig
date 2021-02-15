@@ -3,9 +3,18 @@
 {% block title %}Connexion | Sortie.com{% endblock %}
 
 {% block body %}
-    <h1>connexion page</h1>
+    <form method="post" action="{{ path('home') }}">
+        <label for="identifiant">Identifiant :</label>
+        <input type="text" name="_username" id="identifiant">
 
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis, ex maxime. Debitis dolores, harum illo quis
-        ullam unde velit. Accusantium architecto blanditiis dicta facere itaque nemo quae quaerat quas vel.</p>
+        <label for="password">Mot de passe :</label>
+        <input type="password" name="_password" id="password">
+
+        <button type="submit">Connexion</button>
+
+        <label for="remember_me">Se souvenir de moi</label>
+        <input type="checkbox" id="remember_me" name="_remember_me" checked/>
+        <a href="{{ path('app_forgot_password_request') }}"> Mot de passe oublié </a>
+    </form>
 
 {% endblock %}

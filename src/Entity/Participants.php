@@ -268,7 +268,7 @@ class Participants implements UserInterface
 
     public function getRoles()
     {
-        // TODO: Implement getRoles() method.
+        return array('ROLE_USER');
     }
 
     public function getPassword()
@@ -283,7 +283,7 @@ class Participants implements UserInterface
 
     public function getUsername()
     {
-        return (string) $this->email;
+        return (string) $this->pseudo;
     }
 
     public function eraseCredentials()

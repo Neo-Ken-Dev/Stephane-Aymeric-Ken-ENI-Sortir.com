@@ -4,9 +4,9 @@ security:
         our_db_provider:
             entity:
                 class: App\Entity\Participants
-                property: username
+                property: pseudo
 
-        users_in_memory: { memory: null }
+
 
     firewalls:
         dev:
@@ -18,12 +18,17 @@ security:
             provider: our_db_provider
             anonymous: ~
             form_login:
-                login_path: login
-                check_path: login
+                login_path: connexion
+                check_path: connexion
             logout_on_user_change: true
             logout:
                 path: logout
                 target: connexion
+
+            remember_me:
+                secret: '%kernel.secret%'
+                lifetime: 3600 # 1 week in seconds
+                path: /
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication

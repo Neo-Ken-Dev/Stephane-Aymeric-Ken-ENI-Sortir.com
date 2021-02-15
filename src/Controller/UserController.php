@@ -12,10 +12,16 @@ class UserController extends AbstractController
     /**
      * @Route("/", name="connexion")
      */
-    public function connexion(): \Symfony\Component\HttpFoundation\Response
+    public function connexion(): Response
     {
 
         return $this->render("default/connexion.html.twig");
     }
+
+    /**
+     * @Route("/logout", name="logout")
+     */
+    public function logout(): Response
+    {}
 
 }
