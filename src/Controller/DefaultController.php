@@ -8,12 +8,12 @@ use Symfony\Component\Routing\Annotation\Route;
 class DefaultController extends AbstractController
 {
     /**
-     * @Route("/", name="home")
+     * @Route("/", name="connexion")
      */
-    public function home(): \Symfony\Component\HttpFoundation\Response
+    public function connexion(): \Symfony\Component\HttpFoundation\Response
     {
 
-        return $this->render("default/home.html.twig");
+        return $this->render("default/connexion.html.twig");
     }
 
 }

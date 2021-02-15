@@ -13,15 +13,17 @@
         <h1>Sortir<span class="orange">.</span>com</h1>
         <nav>
             <ul>
-                <li href="">Se déconnecter </li>
-                <li href="">Mon profil </li>
-                <li href="">Accueil</li>
-                <li href="">Campus</li>
-                <li href="">Villes</li>
+                <li><a href=""> Se déconnecter </a></li>
+                <li><a href=""> Mon profil </a></li>
+                <li><a href="{{ path('home') }}"> Accueil </a></li>
+                <li><a href=""> Campus </a></li>
+                <li><a href=""> Villes </a></li>
             </ul>
         </nav>
     </div>
 </header>
+
+
 
 <main>
     {% block body %}{% endblock %}
