@@ -3,18 +3,32 @@
 {% block title %}Connexion | Sortie.com{% endblock %}
 
 {% block body %}
-    <form method="post" action="{{ path('home') }}">
-        <label for="identifiant">Identifiant :</label>
-        <input type="text" name="_username" id="identifiant">
+    <div class="login-wrapper">
+        <form method="post" action="{{ path('home') }}" id="connexionForm" class="formConnexion">
+            <img src="{{ asset("img/avatar.png") }}" alt="">
+            <h2>Connexion</h2>
 
-        <label for="password">Mot de passe :</label>
-        <input type="password" name="_password" id="password">
+            <div class="input-group">
+                <label for="loginUser">Identifiant :</label>
+                <input type="text" name="_username" id="loginUser">
+            </div>
 
-        <button type="submit">Connexion</button>
+            <div class="input-group">
+                <label for="loginPassword">Mot de passe :</label>
+                <input type="password" name="_password" id="loginPassword">
+            </div>
 
-        <label for="remember_me">Se souvenir de moi</label>
-        <input type="checkbox" id="remember_me" name="_remember_me" checked/>
-        <a href="{{ path('app_forgot_password_request') }}"> Mot de passe oublié </a>
-    </form>
+            <button type="submit" class="submit-btn">Connexion</button>
+
+            <div class="input-group group-checkbox">
+                <label for="checkbox1">
+                    <input id="checkbox1" type="checkbox" role="checkbox" name="_remember_me"/><span class="custom">Se souvenir de moi</span>
+                </label>
+            </div>
+
+            <a href="{{ path('app_forgot_password_request') }}"> Mot de passe oublié </a>
+
+        </form>
+    </div>
 
 {% endblock %}
