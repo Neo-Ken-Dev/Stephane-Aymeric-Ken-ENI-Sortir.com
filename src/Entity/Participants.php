@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Participants
@@ -10,14 +11,22 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="participants", uniqueConstraints={@ORM\UniqueConstraint(name="participants_pseudo_uk", columns={"pseudo"})})
  * @ORM\Entity
  */
-class Participants
+class Participants implements UserInterface
 {
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->sortiesNoSortie = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
     /**
      * @var int
      *
-     * @ORM\Column(name="no_participant", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\Column(name="no_participant", type="integer", nullable=false)
      */
     private $noParticipant;
 
@@ -57,9 +66,10 @@ class Participants
     private $mail;
 
     /**
-     * @var string
+     * @var string The hashed password
      *
-     * @ORM\Column(name="mot_de_passe", type="string", length=20, nullable=false)
+     * @ORM\Column(name="mot_de_passe", type="string", length=255, nullable=false)
+     *
      */
     private $motDePasse;
 
@@ -91,12 +101,193 @@ class Participants
      */
     private $sortiesNoSortie;
 
+
+
     /**
-     * Constructor
+     * @return int
      */
-    public function __construct()
+    public function getNoParticipant(): int
     {
-        $this->sortiesNoSortie = new \Doctrine\Common\Collections\ArrayCollection();
+        return $this->noParticipant;
     }
 
+    /**
+     * @return string
+     */
+    public function getPseudo(): string
+    {
+        return $this->pseudo;
+    }
+
+    /**
+     * @param string $pseudo
+     */
+    public function setPseudo(string $pseudo): void
+    {
+        $this->pseudo = $pseudo;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNom(): string
+    {
+        return $this->nom;
+    }
+
+    /**
+     * @param string $nom
+     */
+    public function setNom(string $nom): void
+    {
+        $this->nom = $nom;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPrenom(): string
+    {
+        return $this->prenom;
+    }
+
+    /**
+     * @param string $prenom
+     */
+    public function setPrenom(string $prenom): void
+    {
+        $this->prenom = $prenom;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getTelephone(): ?string
+    {
+        return $this->telephone;
+    }
+
+    /**
+     * @param string|null $telephone
+     */
+    public function setTelephone(?string $telephone): void
+    {
+        $this->telephone = $telephone;
+    }
+
+    /**
+     * @return string
+     */
+    public function getMail(): string
+    {
+        return $this->mail;
+    }
+
+    /**
+     * @param string $mail
+     */
+    public function setMail(string $mail): void
+    {
+        $this->mail = $mail;
+    }
+
+
+    /**
+     * @param string $motDePasse
+     */
+    public function setMotDePasse(string $motDePasse): void
+    {
+        $this->motDePasse = $motDePasse;
+    }
+
+
+    /**
+     * @return bool
+     */
+    public function isAdministrateur(): bool
+    {
+        return $this->administrateur;
+    }
+
+    /**
+     * @param bool $administrateur
+     */
+    public function setAdministrateur(bool $administrateur): void
+    {
+        $this->administrateur = $administrateur;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isActif(): bool
+    {
+        return $this->actif;
+    }
+
+    /**
+     * @param bool $actif
+     */
+    public function setActif(bool $actif): void
+    {
+        $this->actif = $actif;
+    }
+
+    /**
+     * @return int
+     */
+    public function getCampusNoCampus(): int
+    {
+        return $this->campusNoCampus;
+    }
+
+    /**
+     * @param int $campusNoCampus
+     */
+    public function setCampusNoCampus(int $campusNoCampus): void
+    {
+        $this->campusNoCampus = $campusNoCampus;
+    }
+
+    /**
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSortiesNoSortie()
+    {
+        return $this->sortiesNoSortie;
+    }
+
+    /**
+     * @param \Doctrine\Common\Collections\Collection $sortiesNoSortie
+     */
+    public function setSortiesNoSortie($sortiesNoSortie): void
+    {
+        $this->sortiesNoSortie = $sortiesNoSortie;
+    }
+
+
+    public function getRoles()
+    {
+        // TODO: Implement getRoles() method.
+    }
+
+    public function getPassword()
+    {
+        return (string) $this->motDePasse;
+    }
+
+    public function getSalt()
+    {
+        // TODO: Implement getSalt() method.
+    }
+
+    public function getUsername()
+    {
+        return (string) $this->email;
+    }
+
+    public function eraseCredentials()
+    {
+        // TODO: Implement eraseCredentials() method.
+    }
 }

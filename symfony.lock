@@ -244,9 +244,12 @@
     "symfony/inflector": {
         "version": "v4.4.19"
     },
+<<<<<<< HEAD
     "symfony/intl": {
         "version": "v4.4.19"
     },
+=======
+>>>>>>> master
     "symfony/maker-bundle": {
         "version": "1.0",
         "recipe": {
@@ -314,6 +317,30 @@
             "./config/packages/routing.yaml",
             "./config/routes.yaml"
         ]
+    },
+    "symfony/security-bundle": {
+        "version": "4.4",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "4.4",
+            "ref": "7b4408dc203049666fe23fabed23cbadc6d8440f"
+        },
+        "files": [
+            "./config/packages/security.yaml"
+        ]
+    },
+    "symfony/security-core": {
+        "version": "v4.4.19"
+    },
+    "symfony/security-csrf": {
+        "version": "v4.4.19"
+    },
+    "symfony/security-guard": {
+        "version": "v4.4.19"
+    },
+    "symfony/security-http": {
+        "version": "v4.4.19"
     },
     "symfony/service-contracts": {
         "version": "v2.2.0"

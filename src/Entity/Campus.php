@@ -15,9 +15,9 @@ class Campus
     /**
      * @var int
      *
-     * @ORM\Column(name="no_campus", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\Column(name="no_campus", type="integer", nullable=false)
      */
     private $noCampus;
 
