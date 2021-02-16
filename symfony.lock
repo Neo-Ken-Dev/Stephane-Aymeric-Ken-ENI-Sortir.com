@@ -274,6 +274,7 @@
     "symfony/inflector": {
         "version": "v4.4.19"
     },
+
     "symfony/intl": {
         "version": "v4.4.19"
     },
@@ -289,6 +290,7 @@
             "./config/packages/mailer.yaml"
         ]
     },
+
     "symfony/maker-bundle": {
         "version": "1.0",
         "recipe": {

@@ -33,21 +33,21 @@ class Participants implements UserInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="pseudo", type="string", length=30, nullable=false)
+     * @ORM\Column(name="pseudo", type="string", length=30, nullable=true)
      */
     private $pseudo;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="nom", type="string", length=30, nullable=false)
+     * @ORM\Column(name="nom", type="string", length=30, nullable=true)
      */
     private $nom;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="prenom", type="string", length=30, nullable=false)
+     * @ORM\Column(name="prenom", type="string", length=30, nullable=true)
      */
     private $prenom;
 
@@ -61,14 +61,14 @@ class Participants implements UserInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="mail", type="string", length=20, nullable=false)
+     * @ORM\Column(name="mail", type="string", length=20, nullable=true)
      */
     private $mail;
 
     /**
      * @var string The hashed password
      *
-     * @ORM\Column(name="mot_de_passe", type="string", length=255, nullable=false)
+     * @ORM\Column(name="mot_de_passe", type="string", length=255, nullable=true)
      *
      */
     private $motDePasse;
@@ -76,21 +76,21 @@ class Participants implements UserInterface
     /**
      * @var bool
      *
-     * @ORM\Column(name="administrateur", type="boolean", nullable=false)
+     * @ORM\Column(name="administrateur", type="boolean", nullable=true)
      */
     private $administrateur;
 
     /**
      * @var bool
      *
-     * @ORM\Column(name="actif", type="boolean", nullable=false)
+     * @ORM\Column(name="actif", type="boolean", nullable=true)
      */
     private $actif;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="campus_no_campus", type="integer", nullable=false)
+     * @ORM\Column(name="campus_no_campus", type="integer", nullable=true)
      */
     private $campusNoCampus;
 
@@ -118,6 +118,7 @@ class Participants implements UserInterface
     {
         return $this->pseudo;
     }
+
 
     /**
      * @param string $pseudo
@@ -291,4 +292,5 @@ class Participants implements UserInterface
     {
         // TODO: Implement eraseCredentials() method.
     }
+
 }
