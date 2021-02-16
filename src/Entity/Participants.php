@@ -61,7 +61,7 @@ class Participants implements UserInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="mail", type="string", length=20, nullable=false)
+     * @ORM\Column(name="mail", type="string", length=50, nullable=false)
      */
     private $mail;
 
