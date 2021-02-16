@@ -105,6 +105,15 @@ header nav ul li{
     color: #ff7a00;
 }
 
+.formConnexion h1 {
+    font-size: large;
+    background-color: #B0413E;
+    text-align: center;
+    letter-spacing: 1px;
+    margin-bottom: 2rem;
+    color: white;
+}
+
 .formConnexion .input-group {
     position: relative;
 }

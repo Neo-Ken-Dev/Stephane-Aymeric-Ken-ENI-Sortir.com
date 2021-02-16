@@ -4,19 +4,25 @@
 
 {% block body %}
     <div class="login-wrapper">
+
         <form method="post" id="connexionForm" class="formConnexion">
             <img src="{{ asset("img/avatar.png") }}" alt="">
             <h2>Connexion</h2>
+            {% if error %}
+                <h1 class="alert alert-danger">{{ error.messageKey(error.messageData, 'security') }}</h1>
+            {% endif %}
 
             <div class="input-group">
                 <label for="loginUser">Identifiant :</label>
-                <input type="text" name="_username" id="loginUser">
+                <input type="text" name="_username" id="loginUser" value="{{ last_username }}" required autofocus>
             </div>
 
             <div class="input-group">
                 <label for="loginPassword">Mot de passe :</label>
-                <input type="password" name="_password" id="loginPassword">
+                <input type="password" name="_password" id="loginPassword" required>
             </div>
+
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
             <button type="submit" class="submit-btn">Connexion</button>
 
