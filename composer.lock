@@ -4,11 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-<<<<<<< HEAD
-    "content-hash": "d4f5b654204371b04ab108c45250e84c",
-=======
-    "content-hash": "33922ef191c5f49239658203eff6108b",
->>>>>>> master
+    "content-hash": "bf62dce33d9b3854dbd854209a6ea3b9",
     "packages": [
         {
             "name": "composer/package-versions-deprecated",
@@ -3942,7 +3938,6 @@
             "time": "2021-01-24T23:44:26+00:00"
         },
         {
-<<<<<<< HEAD
             "name": "symfony/intl",
             "version": "v4.4.19",
             "source": {
@@ -4030,8 +4025,6 @@
             "time": "2021-01-27T09:09:26+00:00"
         },
         {
-=======
->>>>>>> master
             "name": "symfony/maker-bundle",
             "version": "v1.29.1",
             "source": {
