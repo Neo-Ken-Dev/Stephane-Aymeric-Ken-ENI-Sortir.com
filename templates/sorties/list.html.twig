@@ -4,12 +4,20 @@
 
     <h2> la liste des sorties</h2>
 
-    {%  for sortie in sorties %}
-        <div class="sortie">
-            {{ sortie.noSortie }}
-            {{ sortie.nom }}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                {%  include 'sorties/_filtre.html.twig' with {form: form } only %}
+            </div>
+
+             <div class="col-md-9">
+                 <div class="grid">
+                {% for sortie in sorties %}
+                    {%  include 'sorties/_card.html.twig' with {sortie: sortie } only %}
+                {% endfor %}
+                </div>
         </div>
-    {% endfor %}
+    </div>
 
 {% endblock %}
 

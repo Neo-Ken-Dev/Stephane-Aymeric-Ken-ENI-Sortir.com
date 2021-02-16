@@ -2,9 +2,11 @@
 
 namespace App\Controller;
 
+use App\Data\SearchData;
 use App\Entity\Sorties;
+use App\Form\SearchForm;
+use App\Repository\SortiesRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class SortiesController extends AbstractController
@@ -12,14 +14,15 @@ class SortiesController extends AbstractController
     /**
      * @Route("/sorties", name="sorties_list")
      */
-    public function list()
+    public function list(SortiesRepository $sorties)
     {
-        $serieRepo=$this->getDoctrine()->getRepository(Sorties::class);
-        $sorties= $serieRepo->findAll();
-
+        $data = new SearchData();
+        $form=$this->createForm(SearchForm::class,$data);
+        $sortiesRepo= $sorties ->findSearch();
 
        return $this->render('sorties/list.html.twig',[
-           "sorties" => $sorties
+           'sorties' => $sortiesRepo,
+           'form' => $form->createView()
        ]);
     }
 }
