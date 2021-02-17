@@ -1,7 +1,7 @@
 /* General*/
 
 * {
-    margin: 0;
+    margin: 0px;
     padding: 0;
 }
 
@@ -51,12 +51,7 @@ header nav ul li{
     margin-right: 20px;
     float: right;
 }
-/*!
- * Bootstrap v4.0.0-beta.2 (https://getbootstrap.com)
- * Copyright 2011-2017 The Bootstrap Authors
- * Copyright 2011-2017 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- */
+
 :root {
     --blue: #007bff;
     --indigo: #6610f2;
@@ -204,7 +199,7 @@ abbr[title],
 abbr[data-original-title] {
     text-decoration: underline;
     -webkit-text-decoration: underline dotted;
-    text-decoration: underline dotted;
+            text-decoration: underline dotted;
     cursor: help;
     border-bottom: 0;
 }
@@ -2121,13 +2116,13 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
     border-radius: .2rem;
 }
 
-.was-validated .form-control:valid, .form-control.is-valid, .was-validated
+.was-validated .form-control:valid, .form-control.is-valid, .was-validated,
 .custom-select:valid,
 .custom-select.is-valid {
     border-color: #28a745;
 }
 
-.was-validated .form-control:valid:focus, .form-control.is-valid:focus, .was-validated
+.was-validated .form-control:valid:focus, .form-control.is-valid:focus, .was-validated,
 .custom-select:valid:focus,
 .custom-select.is-valid:focus {
     box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
@@ -2135,9 +2130,9 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
 
 .was-validated .form-control:valid ~ .valid-feedback,
 .was-validated .form-control:valid ~ .valid-tooltip, .form-control.is-valid ~ .valid-feedback,
-.form-control.is-valid ~ .valid-tooltip, .was-validated
+.form-control.is-valid ~ .valid-tooltip, .was-validated,
 .custom-select:valid ~ .valid-feedback,
-.was-validated
+.was-validated,
 .custom-select:valid ~ .valid-tooltip,
 .custom-select.is-valid ~ .valid-feedback,
 .custom-select.is-valid ~ .valid-tooltip {
@@ -2190,13 +2185,13 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
     border-radius: .2rem;
 }
 
-.was-validated .form-control:invalid, .form-control.is-invalid, .was-validated
+.was-validated .form-control:invalid, .form-control.is-invalid, .was-validated,
 .custom-select:invalid,
 .custom-select.is-invalid {
     border-color: #dc3545;
 }
 
-.was-validated .form-control:invalid:focus, .form-control.is-invalid:focus, .was-validated
+.was-validated .form-control:invalid:focus, .form-control.is-invalid:focus, .was-validated,
 .custom-select:invalid:focus,
 .custom-select.is-invalid:focus {
     box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
@@ -2204,9 +2199,9 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
 
 .was-validated .form-control:invalid ~ .invalid-feedback,
 .was-validated .form-control:invalid ~ .invalid-tooltip, .form-control.is-invalid ~ .invalid-feedback,
-.form-control.is-invalid ~ .invalid-tooltip, .was-validated
+.form-control.is-invalid ~ .invalid-tooltip, .was-validated,
 .custom-select:invalid ~ .invalid-feedback,
-.was-validated
+.was-validated,
 .custom-select:invalid ~ .invalid-tooltip,
 .custom-select.is-invalid ~ .invalid-feedback,
 .custom-select.is-invalid ~ .invalid-tooltip {
@@ -8458,8 +8453,180 @@ a.text-dark:focus, a.text-dark:hover {
     top: 20px;
    }
 
-.campus{
+.campus {
     display: flex;
     justify-content: center;
+}
 
+
+
+
+.login-wrapper {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.formConnexion {
+    position: relative;
+    max-width: 380px;
+    padding: 80px 40px 40px;
+    background: rgba(0,0,0,0.7);
+    border-radius: 10px;
+    color: #fff;
+    box-shadow: 0 15px 25px rgba(0,0,0,0.5);
+}
+
+.formConnexion a{
+    color: white;
+}
+
+.formConnexion::before {
+    content:'';
+    opacity: revert;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40%;
+    height: 100%;
+    background: rgba(255,255,255, 0.08);
+    transform: skewX(29deg);
+    transform-origin: top;
+}
+
+.formConnexion img {
+    position: absolute;
+    top: -50px;
+    left: calc(50% - 50px);
+    width: 100px;
+    background: rgba(255,255,255, 0.8);
+    border-radius: 50%;
+}
+
+.formConnexion h2 {
+    text-align: center;
+    letter-spacing: 1px;
+    margin-bottom: 2rem;
+    color: #ff7a00;
+}
+
+.formConnexion h1 {
+    font-size: large;
+    background-color: #B0413E;
+    text-align: center;
+    letter-spacing: 1px;
+    margin-bottom: 2rem;
+    color: white;
+}
+
+.formConnexion .input-group {
+    position: relative;
+}
+.formConnexion .input-group input {
+    background-color: transparent;
+    color: inherit;
+    width: 100%;
+    padding: 7px 0;
+    font-size: 1rem;
+    letter-spacing: 0.4px;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+
+}
+
+input:-webkit-autofill {
+    transition: all 0s 50000s;
+}
+
+.formConnexion .input-group label {
+    color: #ff7a00;
+    font-size: 1rem;
+}
+
+.submit-btn {
+    display: block;
+    margin-right: auto;
+    border: none;
+    background: #ff7a00;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.formConnexion .group-checkbox{
+    margin-bottom: 10px;
+}
+
+.formConnexion input[type=checkbox] {
+    display: none;
+}
+
+input[type=checkbox] + span::before {
+    content: '';
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    margin-right: 5px;
+    border: 1px solid #ff7a00;
+    background: #fff;
+    border-radius: 50%;
+}
+.formConnexion input[type=checkbox]:checked + span::before {
+    background: #ff7a00;
+    border: 1px solid white;
+}
+
+/********** formulaire gestion de profil *************/
+
+.formulaireGestionProfil {
+
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+
+    color: #ff7a00;
+    font-size: 1rem;
+
+    text-align: center;
+}
+
+.btn-gestion-profil{
+    display:block;
+    margin:auto;
+}
+
+#numeroCampus{
+    margin-bottom: 10px;
+    text-align: center;
+    font-size:25px;
+    color: #ff7a00;
+
+}
+
+.flash {
+
+    text-align: center;
+    margin: 20px;
+    padding: 12px;
+    display: block;
+    font-size:24px;
+    font-weight: bold;
+    color: #004805;
+    border-radius: 10px;
+}
+
+.flash-success {
+    background-color: greenyellow;
+}
+
+.flash-error {
+    background-color: firebrick;
+>>>>>>> b3bab27ce8725f4aeda1c3a1e92b121b8911d0e8
 }

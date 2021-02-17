@@ -14,10 +14,13 @@ use Doctrine\ORM\Mapping as ORM;
 class Campus
 {
     /**
-     * @ORM\Id
-     * @ORM\Column(name="no_campus", type="integer", nullable=false)
+
+     * @var int
      *
-     * @ORM\GeneratedValue
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\Column(name="no_campus", type="integer", nullable=false)
+
      */
     private $noCampus;
 

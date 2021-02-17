@@ -11,20 +11,26 @@
 <header>
     <div class="wrapper">
         <h1>Sortir<span class="orange">.</span>com</h1>
+        {%  if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
         <nav>
             <ul>
-                <li><a href=""> Se déconnecter </a></li>
-                <li><a href=""> Mon profil </a></li>
+                <li><a href="{{ path('logout') }}"> Se déconnecter </a></li>
+                <li><a href="{{ path('gestion_profil', {'noParticipant': app.user.noParticipant }) }}"> Mon profil </a></li>
                 <li><a href="{{ path('home') }}"> Accueil </a></li>
                 <li><a href=""> Campus </a></li>
                 <li><a href=""> Villes </a></li>
             </ul>
         </nav>
+        {% endif %}
     </div>
 </header>
-
-
-
+{% for label, messages in app.flashes %}
+    {% for message in messages %}
+        <div class="flash flash-{{ label }}">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endfor %}
 <main>
     {% block body %}{% endblock %}
 </main>

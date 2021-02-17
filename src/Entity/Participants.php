@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Participants
@@ -11,35 +12,43 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="participants", uniqueConstraints={@ORM\UniqueConstraint(name="participants_pseudo_uk", columns={"pseudo"})})
  * @ORM\Entity
  */
-class Participants
+class Participants implements UserInterface
 {
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->sortiesNoSortie = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
     /**
      * @var int
      *
-     * @ORM\Column(name="no_participant", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\Column(name="no_participant", type="integer", nullable=false)
      */
     private $noParticipant;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="pseudo", type="string", length=30, nullable=false)
+     * @ORM\Column(name="pseudo", type="string", length=30, nullable=true)
      */
     private $pseudo;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="nom", type="string", length=30, nullable=false)
+     * @ORM\Column(name="nom", type="string", length=30, nullable=true)
      */
     private $nom;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="prenom", type="string", length=30, nullable=false)
+     * @ORM\Column(name="prenom", type="string", length=30, nullable=true)
      */
     private $prenom;
 
@@ -53,35 +62,36 @@ class Participants
     /**
      * @var string
      *
-     * @ORM\Column(name="mail", type="string", length=20, nullable=false)
+     * @ORM\Column(name="mail", type="string", length=50, nullable=true)
      */
     private $mail;
 
     /**
-     * @var string
+     * @var string The hashed password
      *
-     * @ORM\Column(name="mot_de_passe", type="string", length=20, nullable=false)
+     * @ORM\Column(name="mot_de_passe", type="string", length=255, nullable=true)
+     *
      */
     private $motDePasse;
 
     /**
      * @var bool
      *
-     * @ORM\Column(name="administrateur", type="boolean", nullable=false)
+     * @ORM\Column(name="administrateur", type="boolean", nullable=true)
      */
     private $administrateur;
 
     /**
      * @var bool
      *
-     * @ORM\Column(name="actif", type="boolean", nullable=false)
+     * @ORM\Column(name="actif", type="boolean", nullable=true)
      */
     private $actif;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="campus_no_campus", type="integer", nullable=false)
+     * @ORM\Column(name="campus_no_campus", type="integer", nullable=true)
      */
     private $campusNoCampus;
 
@@ -92,28 +102,17 @@ class Participants
      */
     private $sortiesNoSortie;
 
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->sortiesNoSortie = new ArrayCollection();
-    }
+
 
     /**
      * @return int
      */
     public function getNoParticipant(): int
     {
-        return $this->noParticipant;
-    }
 
-    /**
-     * @param int $noParticipant
-     */
-    public function setNoParticipant(int $noParticipant): void
-    {
-        $this->noParticipant = $noParticipant;
+        $this->sortiesNoSortie = new ArrayCollection();
+
+        return $this->noParticipant;
     }
 
     /**
@@ -123,6 +122,7 @@ class Participants
     {
         return $this->pseudo;
     }
+
 
     /**
      * @param string $pseudo
@@ -196,13 +196,6 @@ class Participants
         $this->mail = $mail;
     }
 
-    /**
-     * @return string
-     */
-    public function getMotDePasse(): string
-    {
-        return $this->motDePasse;
-    }
 
     /**
      * @param string $motDePasse
@@ -211,6 +204,7 @@ class Participants
     {
         $this->motDePasse = $motDePasse;
     }
+
 
     /**
      * @return bool
@@ -275,6 +269,87 @@ class Participants
     {
         $this->sortiesNoSortie = $sortiesNoSortie;
     }
+
+
+    public function getRoles()
+    {
+
+        return array('ROLE_USER');
+    }
+
+    public function getPassword()
+    {
+        return (string) $this->motDePasse;
+    }
+
+    public function getSalt()
+    {
+        // TODO: Implement getSalt() method.
+    }
+
+    public function getUsername()
+    {
+        return (string) $this->pseudo;
+    }
+
+    public function eraseCredentials()
+    {
+        // TODO: Implement eraseCredentials() method.
+
+    }
+
+
+
+    /**
+     * @param int $noParticipant
+     */
+    public function setNoParticipant(int $noParticipant): void
+    {
+        $this->noParticipant = $noParticipant;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /**
+     * @return string
+     */
+    public function getMotDePasse(): string
+    {
+        return $this->motDePasse;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 }

@@ -15,9 +15,9 @@ class Etats
     /**
      * @var int
      *
-     * @ORM\Column(name="no_etat", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\Column(name="no_etat", type="integer", nullable=false)
      */
     private $noEtat;
 
