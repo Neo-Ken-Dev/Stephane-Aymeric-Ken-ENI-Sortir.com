@@ -11,17 +11,17 @@ class SearchData
     /**
      * @var string
      */
-    private $motclef ='';
+    public $motclef ='';
 
     /**
      * @var array
      */
-    private $campus =[];
+    public $campus =[];
 
     /**
      * @var mixed
      */
-    private $datedebut;
+    public $datedebut;
 
     /**
      * @return string

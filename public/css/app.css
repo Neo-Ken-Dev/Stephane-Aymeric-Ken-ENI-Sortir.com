@@ -8456,8 +8456,7 @@ a.text-dark:focus, a.text-dark:hover {
     display: block;
     position: sticky;
     top: 20px;
-    background-color: #6c757d;
-}
+   }
 
 .campus{
     display: flex;

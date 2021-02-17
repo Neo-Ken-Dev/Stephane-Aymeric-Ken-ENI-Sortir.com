@@ -2,6 +2,9 @@
 
 namespace App\Entity;
 
+use DateTime;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -13,13 +16,12 @@ use Doctrine\ORM\Mapping as ORM;
 class Sorties
 {
     /**
-     * @var int
-     *
      * @ORM\Column(name="no_sortie", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $noSortie;
+
 
     /**
      * @var string
@@ -29,7 +31,7 @@ class Sorties
     private $nom;
 
     /**
-     * @var \DateTime
+     * @var DateTime
      *
      * @ORM\Column(name="datedebut", type="datetime", nullable=false)
      */
@@ -43,7 +45,7 @@ class Sorties
     private $duree;
 
     /**
-     * @var \DateTime
+     * @var DateTime
      *
      * @ORM\Column(name="datecloture", type="datetime", nullable=false)
      */
@@ -108,7 +110,7 @@ class Sorties
     private $organisateur;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
+     * @var Collection
      *
      * @ORM\ManyToMany(targetEntity="Participants", inversedBy="sortiesNoSortie")
      * @ORM\JoinTable(name="inscriptions",
@@ -121,6 +123,16 @@ class Sorties
      * )
      */
     private $participantsNoParticipant;
+
+    /**
+     * @ORM\Column (name="campus", type="string")
+     *
+     */
+    private $campus;
+
+
+
+
 
     /**
      * @return int
@@ -155,17 +167,17 @@ class Sorties
     }
 
     /**
-     * @return \DateTime
+     * @return DateTime
      */
-    public function getDatedebut(): \DateTime
+    public function getDatedebut(): DateTime
     {
         return $this->datedebut;
     }
 
     /**
-     * @param \DateTime $datedebut
+     * @param DateTime $datedebut
      */
-    public function setDatedebut(\DateTime $datedebut): void
+    public function setDatedebut(DateTime $datedebut): void
     {
         $this->datedebut = $datedebut;
     }
@@ -187,17 +199,17 @@ class Sorties
     }
 
     /**
-     * @return \DateTime
+     * @return DateTime
      */
-    public function getDatecloture(): \DateTime
+    public function getDatecloture(): DateTime
     {
         return $this->datecloture;
     }
 
     /**
-     * @param \DateTime $datecloture
+     * @param DateTime $datecloture
      */
-    public function setDatecloture(\DateTime $datecloture): void
+    public function setDatecloture(DateTime $datecloture): void
     {
         $this->datecloture = $datecloture;
     }
@@ -315,7 +327,7 @@ class Sorties
     }
 
     /**
-     * @return \Doctrine\Common\Collections\Collection
+     * @return Collection
      */
     public function getParticipantsNoParticipant()
     {
@@ -323,12 +335,37 @@ class Sorties
     }
 
     /**
-     * @param \Doctrine\Common\Collections\Collection $participantsNoParticipant
+     * @param Collection $participantsNoParticipant
      */
     public function setParticipantsNoParticipant($participantsNoParticipant): void
     {
         $this->participantsNoParticipant = $participantsNoParticipant;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getCampus()
+    {
+        return $this->campus;
+    }
+
+    /**
+     * @param mixed $campus
+     */
+    public function setCampus($campus): void
+    {
+        $this->campus = $campus;
+    }
+
+    public function __constructsorties()
+    {
+        $this->campus = new ArrayCollection();
+    }
+
+
+
+
 
 
 
@@ -338,7 +375,9 @@ class Sorties
      */
     public function __construct()
     {
-        $this->participantsNoParticipant = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->participantsNoParticipant = new ArrayCollection();
     }
+
+
 
 }

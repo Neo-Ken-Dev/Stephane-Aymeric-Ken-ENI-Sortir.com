@@ -18,10 +18,10 @@ class SearchForm extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
+      $builder
             ->add('motclef', TextareaType::class, [
                 'label' => false,
-                'required'=> false,
+                'required' => false,
                 'attr'=> [
                     'placeholder' => 'Rechercher une sortie'
                 ]
@@ -34,7 +34,7 @@ class SearchForm extends AbstractType
                 'multiple' => true,
             ])
             ->add('datedebut', DateType::class,[
-                'label'=> false,
+                'label' =>false,
                 'required' => false,
             ])
         ;

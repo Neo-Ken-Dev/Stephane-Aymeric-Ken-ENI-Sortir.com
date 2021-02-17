@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -96,7 +97,7 @@ class Participants
      */
     public function __construct()
     {
-        $this->sortiesNoSortie = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->sortiesNoSortie = new ArrayCollection();
     }
 
     /**

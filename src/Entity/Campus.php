@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -13,11 +14,10 @@ use Doctrine\ORM\Mapping as ORM;
 class Campus
 {
     /**
-     * @var int
-     *
-     * @ORM\Column(name="no_campus", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\Column(name="no_campus", type="integer", nullable=false)
+     *
+     * @ORM\GeneratedValue
      */
     private $noCampus;
 
@@ -28,6 +28,10 @@ class Campus
      */
     private $nomCampus;
 
+
+
+
+
     /**
      * @return int
      */
@@ -36,13 +40,7 @@ class Campus
         return $this->noCampus;
     }
 
-    /**
-     * @param int $noCampus
-     */
-    public function setNoCampus(int $noCampus): void
-    {
-        $this->noCampus = $noCampus;
-    }
+
 
     /**
      * @return string
@@ -64,5 +62,28 @@ class Campus
     {
         return $this->nomCampus;
     }
+
+
+    public function __construct()
+    {
+        $this->noCampus= new ArrayCollection();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSortie()
+    {
+        return $this->sortie;
+    }
+
+    /**
+     * @param mixed $sortie
+     */
+    public function setSortie($sortie): void
+    {
+        $this->sortie = $sortie;
+    }
+
 
 }
