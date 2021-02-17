@@ -14,13 +14,10 @@ use Doctrine\ORM\Mapping as ORM;
 class Campus
 {
     /**
-
-     * @var int
-     *
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
      * @ORM\Column(name="no_campus", type="integer", nullable=false)
-
+     *
+     * @ORM\GeneratedValue
      */
     private $noCampus;
 
@@ -72,21 +69,7 @@ class Campus
         $this->noCampus= new ArrayCollection();
     }
 
-    /**
-     * @return mixed
-     */
-    public function getSortie()
-    {
-        return $this->sortie;
-    }
 
-    /**
-     * @param mixed $sortie
-     */
-    public function setSortie($sortie): void
-    {
-        $this->sortie = $sortie;
-    }
 
 
 }

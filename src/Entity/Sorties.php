@@ -25,7 +25,6 @@ class Sorties
 
     /**
      * @var string
-     *
      * @ORM\Column(name="nom", type="string", length=30, nullable=false)
      */
     private $nom;
@@ -125,7 +124,12 @@ class Sorties
     private $participantsNoParticipant;
 
     /**
-     * @ORM\Column (name="campus", type="string")
+     * @var int
+     *
+     *
+     * @ORM\JoinColumns({
+     *     @ORM\JoinColumn(name="nom_campus",referencedColumnName="no_campus")
+     * })
      *
      */
     private $campus;
@@ -343,7 +347,7 @@ class Sorties
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getCampus()
     {
@@ -351,21 +355,12 @@ class Sorties
     }
 
     /**
-     * @param mixed $campus
+     * @param int $campus
      */
     public function setCampus($campus): void
     {
         $this->campus = $campus;
     }
-
-    public function __constructsorties()
-    {
-        $this->campus = new ArrayCollection();
-    }
-
-
-
-
 
 
 
