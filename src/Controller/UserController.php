@@ -33,18 +33,30 @@ class UserController extends AbstractController
     {}
 
     /**
-     * @Route("/profil", name= "gestion_profil")
+     * @Route("/profil/{noParticipant}", name= "gestion_profil"),
+     * requirements={"noParticipant": "\d+"},
+     * method={"GET"})
      */
-    public function mettreAJourProfil (Request $request, EntityManagerInterface $em): Response
+    public function mettreAJourProfil (Participants $participant, Request $request, EntityManagerInterface $em): Response
     {
-        $formulaireGestionProfil = $this->createForm(GestionProfilType::class);
+        //création du formulaire
+        $formulaireGestionProfil = $this->createForm(GestionProfilType::class, $participant);
 
+        //récupération de la saisie utilisateur
+        $formulaireGestionProfil->handleRequest($request);
 
-        if ($formulaireGestionProfil->isSubmitted()) {
-        //modification du profil en bdd
+        //si le formulaire est soumis
+        if ($formulaireGestionProfil->isSubmitted() && $formulaireGestionProfil->isValid()) {
+            
+        $em->flush();
+
+        $this->addFlash('success','Profil modifié avec succès !');
+
+       // return $this->redirectToRoute ('gestion_profil');
+
     }
 
-        return $this->render("user/monProfil.html.twig", [
+        return $this->render("user/monProfil.html.twig", ['participant' => $participant,
             "formulaireGestionProfil" => $formulaireGestionProfil->createView()
         ]);
     }

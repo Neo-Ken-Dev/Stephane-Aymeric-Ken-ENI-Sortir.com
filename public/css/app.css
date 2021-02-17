@@ -176,4 +176,49 @@ input[type=checkbox] + span::before {
     border: 1px solid white;
 }
 
+/********** formulaire gestion de profil *************/
 
+.formulaireGestionProfil {
+
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+
+    color: #ff7a00;
+    font-size: 1rem;
+
+    text-align: center;
+}
+
+.btn-gestion-profil{
+    display:block;
+    margin:auto;
+}
+
+#numeroCampus{
+    margin-bottom: 10px;
+    text-align: center;
+    font-size:25px;
+    color: #ff7a00;
+
+}
+
+.flash {
+
+    text-align: center;
+    margin: 20px;
+    padding: 12px;
+    display: block;
+    font-size:24px;
+    font-weight: bold;
+    color: #004805;
+    border-radius: 10px;
+}
+
+.flash-success {
+    background-color: greenyellow;
+}
+
+.flash-error {
+    background-color: firebrick;
+}

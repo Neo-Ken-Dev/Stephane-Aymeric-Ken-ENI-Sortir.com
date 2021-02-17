@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Participants;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -15,13 +16,16 @@ class GestionProfilType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('pseudo', TextType::class)
-            ->add('nom')
-            ->add('prenom')
-            ->add('telephone')
-            ->add('mail')
-            ->add('motDePasse')
-            ->add('campusNoCampus')
+            ->add('pseudo', TextType::class, array(
+                'label' => 'Pseudo ', 'required' => false,))
+            ->add('nom',TextType::class , array(
+                'label' => 'Nom ', 'required' => false,))
+            ->add('prenom',TextType::class , array(
+        'label' => 'Prénom ', 'required' => false,))
+            ->add('telephone',TextType::class , array(
+                'label' => 'Téléphone ', 'required' => false,))
+            ->add('mail',EmailType::class , array(
+                'label' => 'Mail ', 'required' => false,))
         ;
     }
 
