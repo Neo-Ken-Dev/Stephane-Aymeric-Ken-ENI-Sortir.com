@@ -30,35 +30,38 @@ class SortiesRepository extends ServiceEntityRepository
        $query =$this
            ->createQueryBuilder('s');
 
-       if(empty($search-> motclef)){
+
+
+
+       /*if($motclef = true){
            $query = $query
                ->andWhere('s.nom LIKE :nom')
-               ->setParameter('nom',"{}");
+               ->setParameter('nom',"{$search->motclef}");
        }
 
 
 
-       if(!empty($search-> motclef)){
-           $query = $query
-               ->andWhere('s.nom LIKE :nom')
-               ->setParameter('nom',"%{$search->motclef}%");
-       }
-
-       if(!empty($search-> campus)){
+       /*if($campus = true){
            $query = $query
                ->andWhere('s.campus IN (:campus)')
                ->setParameter('campus',"%{$search->campus}%");
-       }
+       }*/
 
-       /*  A débloquer quand l'histoire de require sera réglée
-        *
-        *
-        * if(!empty($search-> datedebut)){
+
+      /*  if($datedebut= true){
            $query =$query
                ->andWhere('s.datedebut IN (:datedebut)' )
                ->setParameter('datedebut', "%{$search->datedebut}%");
-       }
-        */
+       }*/
+
        return $query->getQuery()->getResult();
+   }
+
+   public function findSorties(){
+       $query =$this
+           ->createQueryBuilder('sorties');
+           //->join(sorties.campus);
+
+       return  $query->getQuery()->getResult();
    }
 }

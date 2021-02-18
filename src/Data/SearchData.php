@@ -9,7 +9,7 @@ use DateTime;
 class SearchData
 {
     /**
-     * @var string
+     * @var string|null
      */
     public $motclef ='';
 
@@ -18,15 +18,13 @@ class SearchData
      */
     public $campus =[];
 
-    /**
-     * @var mixed
-     */
+
     public $datedebut;
 
     /**
      * @return string
      */
-    public function getMotclef(): string
+    public function getMotclef()
     {
         return $this->motclef;
     }

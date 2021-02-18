@@ -21,7 +21,7 @@ class SortiesFixtures extends Fixture
         $user->setDescriptioninfos("Sit vitae voluptas sint non voluptates");
         $user->setNbinscriptionsmax("20");
         $user->setUrlphoto("http://picsum.photos/id/100");
-        $user->setCampus(1);
+        $user->setCampus("Rennes");
 
         $manager->persist($user);
 
@@ -32,7 +32,7 @@ class SortiesFixtures extends Fixture
         $user2->setDescriptioninfos("Sit vitae voluptas sint non voluptates2");
         $user2->setNbinscriptionsmax("20");
         $user2->setUrlphoto("http://picsum.photos/id/110");
-        $user2->setCampus(2);
+        $user2->setCampus("Rennes");
 
         $manager->persist($user2);
 
@@ -43,7 +43,7 @@ class SortiesFixtures extends Fixture
         $user3->setDescriptioninfos("Sit vitae voluptas sint non voluptates");
         $user3->setNbinscriptionsmax("20");
         $user3->setUrlphoto("http://picsum.photos/id/120");
-        $user3->setCampus(1);
+        $user3->setCampus("Rennes");
 
         $manager->persist($user3);
 
@@ -54,7 +54,7 @@ class SortiesFixtures extends Fixture
         $user4->setDescriptioninfos("Sit vitae voluptas sint non voluptates4");
         $user4->setNbinscriptionsmax("20");
         $user4->setUrlphoto("http://picsum.photos/id/105");
-        $user4->setCampus(2);
+        $user4->setCampus("Rennes");
 
         $manager->persist($user4);
 
@@ -65,7 +65,7 @@ class SortiesFixtures extends Fixture
         $user5->setDescriptioninfos("Sit vitae voluptas sint non voluptates5");
         $user5->setNbinscriptionsmax("20");
         $user5->setUrlphoto("http://picsum.photos/id/130");
-        $user5->setCampus(1);
+        $user5->setCampus("Nantes");
 
         $manager->persist($user5);
 
@@ -76,7 +76,7 @@ class SortiesFixtures extends Fixture
         $user6->setDescriptioninfos("Sit vitae voluptas sint non voluptates6");
         $user6->setNbinscriptionsmax("20");
         $user6->setUrlphoto("http://picsum.photos/id/115");
-        $user6->setCampus(2);
+        $user6->setCampus("Nantes");
 
         $manager->persist($user6);
 
@@ -87,7 +87,7 @@ class SortiesFixtures extends Fixture
         $user7->setDescriptioninfos("Sit vitae voluptas sint non voluptates7");
         $user7->setNbinscriptionsmax("20");
         $user7->setUrlphoto("http://picsum.photos/id/120");
-        $user7->setCampus(1);
+        $user7->setCampus("Nantes");
 
         $manager->persist($user7);
 
@@ -98,7 +98,7 @@ class SortiesFixtures extends Fixture
         $user8->setDescriptioninfos("Sit vitae voluptas sint non voluptates7");
         $user8->setNbinscriptionsmax("20");
         $user8->setUrlphoto("http://picsum.photos/id/125");
-        $user8->setCampus(1);
+        $user8->setCampus("Nantes");
 
         $manager->persist($user8);
 

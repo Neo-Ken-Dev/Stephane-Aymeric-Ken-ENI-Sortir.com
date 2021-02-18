@@ -35,7 +35,8 @@ class SearchForm extends AbstractType
             ])
             ->add('datedebut', DateType::class,[
                 'label' =>false,
-                'required' => false,
+                'required' =>false,
+
             ])
         ;
     }
@@ -47,6 +48,7 @@ class SearchForm extends AbstractType
             'data_class' => SearchData::class,
             'method' => 'GET',
             'csrf_protection' => false,
+            'required'=>false,
         ])
         ;
     }
