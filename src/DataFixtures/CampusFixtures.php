@@ -13,16 +13,16 @@ class CampusFixtures extends Fixture
     public function load(ObjectManager $manager){
 
         $campus = new Campus();
-        $campus->setNomCampus("Rennes");
+        $campus->setNom("Rennes");
         $manager->persist($campus);
 
         $campus2= new Campus();
-        $campus2->setNomCampus("Nantes");
+        $campus2->setNom("Nantes");
         $manager->persist($campus2);
 
 
         $campus3= new Campus();
-        $campus3->setNomCampus("Niort");
+        $campus3->setNom("Niort");
         $manager->persist($campus3);
 
         $manager->flush();

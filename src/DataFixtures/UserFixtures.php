@@ -30,7 +30,6 @@ class UserFixtures extends Fixture
         $user->setPassword($password);
         $user->setActif("0");
         $user->setAdministrateur("0");
-        $user->setCampus("2");
 
         $manager->persist($user);
 
@@ -44,7 +43,6 @@ class UserFixtures extends Fixture
         $user2->setPassword($password);
         $user2->setActif("1");
         $user2->setAdministrateur("1");
-        $user2->setCampus("2");
 
         $manager->persist($user2);
 
@@ -58,7 +56,6 @@ class UserFixtures extends Fixture
         $user3->setPassword($password);
         $user3->setActif("0");
         $user3->setAdministrateur("0");
-        $user3->setCampus("2");
 
         $manager->persist($user3);
 

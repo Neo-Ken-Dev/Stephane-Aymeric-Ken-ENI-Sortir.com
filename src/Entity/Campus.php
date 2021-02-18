@@ -25,13 +25,13 @@ class Campus
 
     /**
      * @ORM\OneToMany (targetEntity="App\Entity\Sortie", mappedBy="campus")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $sorties;
 
     /**
      * @ORM\OneToMany (targetEntity="App\Entity\User", mappedBy="campus")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $users;
 

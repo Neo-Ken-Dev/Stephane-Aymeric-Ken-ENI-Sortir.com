@@ -3,7 +3,7 @@ security:
     providers:
         our_db_provider:
             entity:
-                class: App\Entity\Participants
+                class: App\Entity\User
                 property: pseudo
 
 
@@ -47,5 +47,5 @@ security:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
     encoders:
-        App\Entity\Participants:
+        App\Entity\User:
             algorithm: auto
