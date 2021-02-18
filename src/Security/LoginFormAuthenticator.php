@@ -3,6 +3,7 @@
 namespace App\Security;
 
 use App\Entity\Participants;
+use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -49,13 +50,13 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
     public function getCredentials(Request $request)
     {
         $credentials = [
-            'pseudo' => $request->request->get('_username'),
+            'username' => $request->request->get('_username'),
             'password' => $request->request->get('_password'),
             'csrf_token' => $request->request->get('_csrf_token'),
         ];
         $request->getSession()->set(
             Security::LAST_USERNAME,
-            $credentials['pseudo']
+            $credentials['username']
         );
 
         return $credentials;
@@ -68,7 +69,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
             throw new InvalidCsrfTokenException();
         }
 
-        $user = $this->entityManager->getRepository(Participants::class)->findOneBy(['pseudo' => $credentials['pseudo']]);
+        $user = $this->entityManager->getRepository(User::class)->findOneBy(['username' => $credentials['username']]);
 
 //        $user = $this->entityManager->getRepository(Participants::class)
 //            ->createQueryBuilder('u')

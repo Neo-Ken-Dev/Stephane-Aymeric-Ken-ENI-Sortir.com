@@ -7,13 +7,13 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3">
-                {%  include 'sorties/_filtre.html.twig' with {form: form } only %}
+                {%  include 'sortie/_filtre.html.twig' with {form: form } only %}
             </div>
 
              <div class="col-md-9">
                  <div class="grid">
                 {% for sortie in sorties %}
-                    {%  include 'sorties/_card.html.twig' with {sortie: sortie } only %}
+                    {%  include 'sortie/_card.html.twig' with {sortie: sortie } only %}
                 {% endfor %}
                 </div>
         </div>

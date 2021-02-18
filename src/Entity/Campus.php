@@ -29,6 +29,8 @@ class Campus
      */
     private $sorties;
 
+
+
     /**
      * @ORM\OneToMany (targetEntity="App\Entity\User", mappedBy="campus")
      * @ORM\JoinColumn(nullable=true)
@@ -39,6 +41,17 @@ class Campus
     {
         $this->sorties = new ArrayCollection();
         $this->users = new ArrayCollection();
+    }
+
+    /**
+     * Generates the magic method
+     *
+     */
+    public function __toString(){
+        // to show the name of the Category in the select
+        return $this->nom;
+        // to show the id of the Category in the select
+        // return $this->id;
     }
 
 
