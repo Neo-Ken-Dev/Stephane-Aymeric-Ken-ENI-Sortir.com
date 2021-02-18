@@ -21,6 +21,7 @@ class SearchForm extends AbstractType
       $builder
             ->add('motclef', TextareaType::class, [
                 'label' => false,
+                'empty_data' => '',
                 'required' => false,
                 'attr'=> [
                     'placeholder' => 'Rechercher une sortie'
@@ -35,7 +36,9 @@ class SearchForm extends AbstractType
             ])
             ->add('datedebut', DateType::class,[
                 'label' =>false,
+                'empty_data' => '',
                 'required' => false,
+                'by_reference' => true,
             ])
         ;
     }
