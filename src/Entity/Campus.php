@@ -29,9 +29,16 @@ class Campus
      */
     private $sorties;
 
+    /**
+     * @ORM\OneToMany (targetEntity="App\Entity\User", mappedBy="campus")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $users;
+
     public function __construct()
     {
         $this->sorties = new ArrayCollection();
+        $this->users = new ArrayCollection();
     }
 
 

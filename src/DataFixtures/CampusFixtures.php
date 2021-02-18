@@ -14,13 +14,16 @@ class CampusFixtures extends Fixture
 
         $campus = new Campus();
         $campus->setNomCampus("Rennes");
-
         $manager->persist($campus);
 
         $campus2= new Campus();
         $campus2->setNomCampus("Nantes");
-
         $manager->persist($campus2);
+
+
+        $campus3= new Campus();
+        $campus3->setNomCampus("Niort");
+        $manager->persist($campus3);
 
         $manager->flush();
     }

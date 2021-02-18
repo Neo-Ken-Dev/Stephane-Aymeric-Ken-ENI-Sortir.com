@@ -30,7 +30,7 @@ class Sortie
     private $dateHeureDebut;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $duree;
 
@@ -55,7 +55,7 @@ class Sortie
     private $urlPhoto;
 
     /**
-     * @ORM\Column(type="string", length=50)
+     * @ORM\Column(type="string", length=50, nullable=true)
      */
     private $organisateur;
 
@@ -85,9 +85,8 @@ class Sortie
     private $user;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\User", inversedBy="sorts")
+     * @ORM\ManyToMany(targetEntity="App\Entity\User", inversedBy="participants")
      * @ORM\JoinColumn(nullable=false)
-     * @Groups({"liste_sorties"})
      */
     private $users;
 
