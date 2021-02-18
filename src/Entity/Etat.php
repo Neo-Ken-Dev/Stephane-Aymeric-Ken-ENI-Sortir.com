@@ -2,14 +2,14 @@
 
 namespace App\Entity;
 
-use App\Repository\CampusRepository;
+use App\Repository\EtatRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=CampusRepository::class)
+ * @ORM\Entity(repositoryClass=EtatRepository::class)
  */
-class Campus
+class Etat
 {
     /**
      * @ORM\Id
@@ -19,12 +19,12 @@ class Campus
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=10)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $nom;
+    private $libelle;
 
     /**
-     * @ORM\OneToMany (targetEntity="App\Entity\Sortie", mappedBy="campus")
+     * @ORM\OneToMany(targetEntity="App\Entity\Sortie", mappedBy="etatsortie")
      * @ORM\JoinColumn(nullable=false)
      */
     private $sorties;
@@ -34,21 +34,19 @@ class Campus
         $this->sorties = new ArrayCollection();
     }
 
-
-
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getNom(): ?string
+    public function getLibelle(): ?string
     {
-        return $this->nom;
+        return $this->libelle;
     }
 
-    public function setNom(string $nom): self
+    public function setLibelle(?string $libelle): self
     {
-        $this->nom = $nom;
+        $this->libelle = $libelle;
 
         return $this;
     }
