@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Sortie;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -37,8 +38,13 @@ class CreationSortieType extends AbstractType
                 'label' => 'Description et infos :'
             ])
 
-            ->add('campus', TextType::class, [
-                'label' => 'Campus :'
+            ->add('campus', EntityType::class, [
+                'label' => 'Campus :',
+                'class' => 'App\Entity\Campus',
+                'choice_label' => 'nom',
+                'expanded' => false,
+                'multiple' => false
+
             ])
             /*->add('ville', TextType::class, [
                 'label' => 'Ville :'

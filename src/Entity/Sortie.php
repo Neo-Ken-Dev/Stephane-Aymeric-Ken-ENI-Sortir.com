@@ -61,7 +61,7 @@ class Sortie
 
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Etat", inversedBy="sorties")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Etat", inversedBy="sorties", cascade="persist")
      * @ORM\JoinColumn(nullable=true)
      */
     private $etatsortie;
