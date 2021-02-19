@@ -5,7 +5,9 @@ namespace App\Data;
 
 
 use App\Entity\Campus;
+
 use DateTime;
+use Symfony\Component\Validator\Constraints\Date;
 
 class SearchData
 {
@@ -20,9 +22,11 @@ class SearchData
     public $campus =[];
 
     /**
-     * @var mixed
+     * @var mixed|null
      */
     public $datedebut;
+
+
 
     /**
      * @return string
@@ -56,10 +60,8 @@ class SearchData
         $this->campus = $campus;
     }
 
-
-
     /**
-     * @return mixed
+     * @return mixed|null
      */
     public function getDatedebut()
     {
@@ -67,12 +69,16 @@ class SearchData
     }
 
     /**
-     * @param mixed $datedebut
+     * @param mixed|null $datedebut
      */
-    public function setDatedebut(DateTime $datedebut): void
+    public function setDatedebut($datedebut): void
     {
         $this->datedebut = $datedebut;
     }
+
+
+
+
 
 
 

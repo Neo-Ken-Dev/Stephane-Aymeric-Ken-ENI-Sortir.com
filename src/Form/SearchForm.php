@@ -10,6 +10,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -34,11 +35,12 @@ class SearchForm extends AbstractType
                 'expanded' => true,
                 'multiple' => true,
             ])
-            ->add('datedebut', DateType::class,[
+            ->add('datedebut', TextType::class,[
                 'label' =>false,
-                'empty_data' => '',
                 'required' => false,
-                'by_reference' => true,
+                'empty_data' => '',
+                'attr'=> [
+                    'placeholder' => '2021-02-19']
             ])
         ;
     }
