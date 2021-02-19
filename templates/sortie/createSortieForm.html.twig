@@ -3,62 +3,67 @@
 {% block title %}Creation sortie | Sortie.com{% endblock %}
 
 {% block body %}
+    <div class="substitu-body">
+        <div class="sortieForm-wrapper">
 
-    <div class="sortieCreation">
+            <div class="formSortieCreation">
 
-        <h1>Créer une sortie</h1>
+                <h1>Créer une sortie</h1>
 
-        {{ form_start(sortieForm) }}
+                {{ form_start(sortieForm) }}
+                <div class="sortie-detail">
 
-        <div class="input-group">
-            {{ form_label(sortieForm.nom) }}
-            {{ form_widget(sortieForm.nom) }}
+                    <div class="form-group">
+                        {{ form_label(sortieForm.nom) }}
+                        {{ form_widget(sortieForm.nom) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_label(sortieForm.duree) }}
+                        {{ form_widget(sortieForm.duree) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_label(sortieForm.dateHeureDebut) }}
+                        {{ form_widget(sortieForm.dateHeureDebut) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_label(sortieForm.nbInscriptionMax) }}
+                        {{ form_widget(sortieForm.nbInscriptionMax) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_label(sortieForm.dateLimiteInscription) }}
+                        {{ form_widget(sortieForm.dateLimiteInscription) }}
+                    </div>
+                    
+                    <div class="form-group">
+                        {{ form_label(sortieForm.descriptionInfos) }}
+                        {{ form_widget(sortieForm.descriptionInfos) }}
+                    </div>
+                </div>
+
+                <div class="localisation-detail">
+
+                    <div class="form-group">
+                        {{ form_label(sortieForm.campus) }}
+                        {{ form_widget(sortieForm.campus) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_label(sortieForm.lieu) }}
+                        {{ form_widget(sortieForm.lieu) }}
+                    </div>
+                </div>
+
+                <button type="submit" class="button">Enregistrer</button>
+
+                {{ form_end(sortieForm) }}
+
+            </div>
+
         </div>
-
-        <div class="input-group">
-            {{ form_label(sortieForm.dateHeureDebut) }}
-            {{ form_widget(sortieForm.dateHeureDebut) }}
-        </div>
-
-        <div class="input-group">
-            {{ form_label(sortieForm.dateLimiteInscription) }}
-            {{ form_widget(sortieForm.dateLimiteInscription) }}
-        </div>
-
-        <div class="input-group">
-            {{ form_label(sortieForm.nbInscriptionMax) }}
-            {{ form_widget(sortieForm.nbInscriptionMax) }}
-        </div>
-
-        <div class="input-group">
-            {{ form_label(sortieForm.duree) }}
-            {{ form_widget(sortieForm.duree) }}
-        </div>
-
-        <div class="input-group">
-            {{ form_label(sortieForm.descriptionInfos) }}
-            {{ form_widget(sortieForm.descriptionInfos) }}
-        </div>
-
-        <div class="input-group">
-            {{ form_label(sortieForm.campus) }}
-            {{ form_widget(sortieForm.campus) }}
-        </div>
-
-        <div class="input-group">
-            {{ form_label(sortieForm.lieu) }}
-            {{ form_widget(sortieForm.lieu) }}
-        </div>
-
-        <div class="input-group">
-            {{ form_label(sortieForm.campus) }}
-            {{ form_widget(sortieForm.campus) }}
-        </div>
-
-        <button type="submit" class="submit-btn">Enregistrer</button>
-
-        {{ form_end(sortieForm) }}
-
     </div>
 
 {% endblock %}

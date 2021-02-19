@@ -1,8 +1,9 @@
 /* General*/
 
 * {
-    margin: 0px;
+    margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 body{
@@ -247,6 +248,139 @@ input[type=checkbox] + span::before {
 }
 
 /********** Créer une sortie *************/
-.sortieCreation .col-form-label {
+
+.substitu-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    background: linear-gradient(135deg, #bfa004, #ff7a00);
+}
+.sortieForm-wrapper {
+    max-width: 1200px;
+    padding: 25px 30px;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+}
+
+.formSortieCreation {
+    position: relative;
+    padding: 30px 40px 40px;
+    background: rgb(0 0 0 / 73%);
+    border-radius: 10px;
+    color: #fff;
+    box-shadow: 0 15px 25px rgba(0,0,0,0.5);
+}
+
+.formSortieCreation h1 {
+    font-weight: 500;
+    position: relative;
+
+    text-align: center;
+    letter-spacing: 1px;
+    margin-bottom: 2rem;
+}
+
+.formSortieCreation h1::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    margin-bottom: -3px;
+    text-align: center;
+    margin-left: calc(100% / 2 - 150px);
+    height: 3px;
+    width: 300px;
+    border-radius: 5px;
+    background: linear-gradient(135deg, #ff7a00, #bfa004);
+}
+.formSortieCreation .sortie-detail {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.formSortieCreation .sortie-detail .col-form-label {
+    font-size: large;
+}
+
+.formSortieCreation .sortie-detail .form-group{
+    margin-bottom: 15px;
+    width: calc(100% / 2 - 20px);
+}
+
+.formSortieCreation .sortie-detail .form-group label{
+    font-size: large;
+}
+
+.formSortieCreation .sortie-detail .form-group input{
+    height: 45px;
+    width: 100%;
+    outline: none;
+    font-size: 16px;
+    border-radius: 5px;
+    padding-left: 15px;
+}
+
+.formSortieCreation .sortie-detail .form-group select{
+    margin-right: 5px;
+    height: 45px;
+    border-radius: 5px;
+    padding-left: 15px;
+    transition: all 2s ease;
+}
+
+.formSortieCreation .sortie-detail .form-group input:focus,
+.formSortieCreation .sortie-detail .form-group input:valid{
+    border-color: #9b59b6;
+}
+
+.formSortieCreation .localisation-detail .col-form-label {
     display: none;
 }
+
+.formSortieCreation .button {
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: linear-gradient(135deg, #bfa004, #ff7a00);
+}
+
+.formSortieCreation .button:hover {
+    transform: scale(1.10);
+    background: linear-gradient(-135deg, #bfa004, #ff7a00);
+}
+
+.formSortieCreation .localisation-detail {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+/********** Créer une sortie / responsive*************/
+
+@media(max-width: 584px){
+    .sortieForm-wrapper{
+        max-width: 100%;
+    }
+    .formSortieCreation .sortie-detail .form-group{
+        margin-bottom: 15px;
+        width: 100%;
+    }
+
+    .formSortieCreation .sortie-detail{
+        max-height: 300px;
+        overflow-y: scroll;
+    }
+    .sortie-detail::-webkit-scrollbar{
+        width: 5px;
+    }
+}
+

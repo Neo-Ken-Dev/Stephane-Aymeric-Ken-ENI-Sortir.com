@@ -14,9 +14,11 @@ class LieuType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+
             ->add('nom', TextType::class ,[
                 'label' => 'Lieu :'
             ])
+            ->add('ville', VilleType::class)
             ->add('rue', TextType::class,[
             'label' => 'Rue :'
             ])
@@ -26,7 +28,7 @@ class LieuType extends AbstractType
             ->add('longitute', NumberType::class,[
                 'label' => 'Longitude :'
             ])
-            ->add('ville', VilleType::class)
+
         ;
     }
 

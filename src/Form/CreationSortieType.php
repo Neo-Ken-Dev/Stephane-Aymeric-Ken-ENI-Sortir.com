@@ -47,19 +47,6 @@ class CreationSortieType extends AbstractType
             ])
 
             ->add('lieu', LieuType::class)
-
-            /*->add('rue', TextType::class, [
-                'label' => 'Rue :'
-            ])
-            ->add('codePostal', TextType::class, [
-                'label' => 'Code postal :'
-            ])
-            ->add('latitude', TextType::class, [
-                'label' => 'Latitude :'
-            ])
-            ->add('longitude', TextType::class, [
-                'label' => 'Longitude :'
-            ])*/
         ;
     }
 
