@@ -9,12 +9,12 @@
 body{
     font-family: "Arial", sans-serif;
     font-size: 15px;
+    background-color: black;
 }
 
 .wrapper {
     width: 1000px;
     margin: 0 auto;
-    padding: 0 10px;
 }
 
 .orange{
@@ -24,25 +24,22 @@ body{
 /*header*/
 
 header{
-
-    height: 120px;
+    height: 90px;
 }
-
 
 header a{
     text-decoration: none;
-    color: #222222;
-
+    color: white;
 }
 
 header h1{
     float: left;
-    margin-top: 32px;
+    margin-top: 20px;
 }
 
 header nav{
     float: right;
-    margin-top:50px;
+    margin-top: 33px;
 }
 
 header nav ul li{
@@ -330,13 +327,8 @@ input[type=checkbox] + span::before {
     transition: all 2s ease;
 }
 
-.formSortieCreation .sortie-detail .form-group input:focus,
-.formSortieCreation .sortie-detail .form-group input:valid{
-    border-color: #9b59b6;
-}
-
-.formSortieCreation .localisation-detail .col-form-label {
-    display: none;
+.formSortieCreation .sortie-detail .form-group input:focus{
+    border-color: #ff7a00;
 }
 
 .formSortieCreation .button {
@@ -358,15 +350,9 @@ input[type=checkbox] + span::before {
     background: linear-gradient(-135deg, #bfa004, #ff7a00);
 }
 
-.formSortieCreation .localisation-detail {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
 /********** Créer une sortie / responsive*************/
 
-@media(max-width: 584px){
+@media(max-width: 715px){
     .sortieForm-wrapper{
         max-width: 100%;
     }
@@ -375,12 +361,5 @@ input[type=checkbox] + span::before {
         width: 100%;
     }
 
-    .formSortieCreation .sortie-detail{
-        max-height: 300px;
-        overflow-y: scroll;
-    }
-    .sortie-detail::-webkit-scrollbar{
-        width: 5px;
-    }
 }
 

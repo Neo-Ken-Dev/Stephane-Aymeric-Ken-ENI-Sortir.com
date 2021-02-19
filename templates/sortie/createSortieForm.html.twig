@@ -11,6 +11,7 @@
                 <h1>Créer une sortie</h1>
 
                 {{ form_start(sortieForm) }}
+
                 <div class="sortie-detail">
 
                     <div class="form-group">
@@ -37,14 +38,14 @@
                         {{ form_label(sortieForm.dateLimiteInscription) }}
                         {{ form_widget(sortieForm.dateLimiteInscription) }}
                     </div>
-                    
+
                     <div class="form-group">
                         {{ form_label(sortieForm.descriptionInfos) }}
                         {{ form_widget(sortieForm.descriptionInfos) }}
                     </div>
                 </div>
 
-                <div class="localisation-detail">
+                <div class=" sortie-detail">
 
                     <div class="form-group">
                         {{ form_label(sortieForm.campus) }}
@@ -52,9 +53,37 @@
                     </div>
 
                     <div class="form-group">
-                        {{ form_label(sortieForm.lieu) }}
-                        {{ form_widget(sortieForm.lieu) }}
+                        <label for="{{ sortieForm.children.lieu.nom.vars.id }}">Lieu :</label>
+                        <input type="text" id="{{ sortieForm.children.lieu.nom.vars.id }}" name="{{ sortieForm.children.lieu.nom.vars.full_name }}">
+                        {% do sortieForm.children.lieu.setRendered %}
                     </div>
+
+                    <div class="form-group">
+                        <label for="{{ sortieForm.children.lieu.children.ville.children.nom.vars.id }}">Ville :</label>
+                        <input type="text" id="{{ sortieForm.children.lieu.children.ville.children.nom.vars.id }}" name="{{ sortieForm.children.lieu.children.ville.children.nom.vars.full_name }}">
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="{{ sortieForm.children.lieu.children.ville.children.codePostal.vars.id }}">Code postal :</label>
+                        <input type="text" id="{{ sortieForm.children.lieu.children.ville.children.codePostal.vars.id }}" name="{{ sortieForm.children.lieu.children.ville.children.codePostal.vars.full_name }}">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="{{ sortieForm.children.lieu.rue.vars.id }}">Rue :</label>
+                        <input type="text" id="{{ sortieForm.children.lieu.rue.vars.id }}" name="{{ sortieForm.children.lieu.rue.vars.full_name }}">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="{{ sortieForm.children.lieu.latitude.vars.id }}">Latitude :</label>
+                        <input type="text" id="{{ sortieForm.children.lieu.latitude.vars.id }}" name="{{ sortieForm.children.lieu.latitude.vars.full_name }}">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="{{ sortieForm.children.lieu.longitute.vars.id }}">Longitude :</label>
+                        <input type="text" id="{{ sortieForm.children.lieu.longitute.vars.id }}" name="{{ sortieForm.children.lieu.longitute.vars.full_name }}">
+                    </div>
+
                 </div>
 
                 <button type="submit" class="button">Enregistrer</button>

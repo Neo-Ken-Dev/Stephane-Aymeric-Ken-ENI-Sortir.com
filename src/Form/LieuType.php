@@ -19,6 +19,7 @@ class LieuType extends AbstractType
                 'label' => 'Lieu :'
             ])
             ->add('ville', VilleType::class)
+
             ->add('rue', TextType::class,[
             'label' => 'Rue :'
             ])
