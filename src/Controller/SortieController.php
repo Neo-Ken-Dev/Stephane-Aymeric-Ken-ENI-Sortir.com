@@ -23,8 +23,12 @@ class SortieController extends AbstractController
         $data = new SearchData();
         $form=$this->createForm(SearchForm::class,$data);
         $form->handleRequest($request);
+        if($form ->isSubmitted() && $form ->isValid())
+        {
 
-        $sortiesRepo= $sorties->findSearch($data);
+            $sortiesRepo= $sorties->findSearch($data);
+        }
+        else $sortiesRepo= $sorties->findAll();
 
         return $this->render('sortie/list.html.twig',[
             'sorties' => $sortiesRepo,
