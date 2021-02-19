@@ -6,7 +6,9 @@
             <div class="card-title text-primary" id="card-list">
                 {{ sortie.nom }}
             </div>
-        <p class="text text-muted">{{ sortie.descriptionInfos }}</p>
+        <p class="text text-muted">
+            sortie le : {{ sortie.dateHeureDebut|date('d/m/Y') }} <br>
+            {{ sortie.descriptionInfos }}</p>
         <div >
 
             {{ sortie.campus }}

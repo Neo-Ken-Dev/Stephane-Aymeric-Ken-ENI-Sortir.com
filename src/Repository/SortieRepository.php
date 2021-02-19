@@ -46,11 +46,23 @@ class SortieRepository extends ServiceEntityRepository
                 ->setParameter('campus',$search->campus);
         }
 
-        if(!empty($search-> datedebut)){
+        if(!empty($search-> datejour)){
             $query =$query
 
                 ->andWhere('s.dateHeureDebut LIKE :date_heure_debut' )
-                ->setParameter('date_heure_debut',"%{$search->datedebut}%");
+                ->setParameter('date_heure_debut',"%{$search->datejour}%");
+        }
+        if(!empty($search-> datemois)){
+            $query =$query
+
+                ->andWhere('s.dateHeureDebut LIKE :date_heure_debut' )
+                ->setParameter('date_heure_debut',"%{$search->datemois}%");
+        }
+        if(!empty($search-> dateannee)){
+            $query =$query
+
+                ->andWhere('s.dateHeureDebut LIKE :date_heure_debut' )
+                ->setParameter('date_heure_debut',"%{$search->dateannee}%");
         }
 
         return $query->getQuery()->getResult();
