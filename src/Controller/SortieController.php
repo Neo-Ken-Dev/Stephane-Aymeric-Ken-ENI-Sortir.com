@@ -8,6 +8,7 @@ use App\Entity\Sortie;
 use App\Form\CreationSortieType;
 use App\Form\SearchForm;
 use App\Repository\SortieRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -33,11 +34,17 @@ class SortieController extends AbstractController
     }
 
     /**
-     * @Route("/sortie", name="sortie_creation")
+     * @Route("/sortie/creation", name="sortie_creation")
+     * @param Request $request
+     * @param EntityManagerInterface $em
+     * @return Response
      */
-    public function createSortie(): Response
+    public function createSortie(Request $request, EntityManagerInterface $em): Response
     {
+
         $sortie = new Sortie();
+
+
         $sortieForm = $this->createForm(CreationSortieType::class, $sortie);
         return $this->render('sortie/createSortieForm.html.twig', [
             'controller_name' => 'SortieController',

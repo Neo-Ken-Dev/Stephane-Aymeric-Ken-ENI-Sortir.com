@@ -2,9 +2,10 @@
 
 namespace App\Form;
 
-use App\Entity\Sorties;
-use Symfony\Component\Form\AbstractType;
+use App\Entity\Sortie;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -18,34 +19,52 @@ class CreationSortieType extends AbstractType
     {
         $builder
             ->add('nom', TextType::class, [
-                'label' => 'Nom de la sortie'
+                'label' => 'Nom de la sortie :'
             ])
-            ->add('datedebut', null, [
-                'label' => 'Date et heure de la sortie'
+            ->add('dateHeureDebut', DateTimeType::class, [
+                'label' => 'Date et heure de la sortie :'
             ])
-            ->add('datecloture', null, [
-                'label' => 'Date limite d\'inscription'
+            ->add('dateLimiteInscription', DateType::class, [
+                'label' => 'Date limite d\'inscription :'
             ])
-            ->add('nbinscriptionsmax', IntegerType::class, [
-                'label' => 'Nombre de places'
+            ->add('nbInscriptionMax', IntegerType::class, [
+                'label' => 'Nombre de places :'
             ])
-            ->add('duree')
-
-
-            ->add('descriptioninfos', TextareaType::class, [
-                'label' => 'Description et infos'
+            ->add('duree', IntegerType::class, [
+                'label' => 'Durée :'
+            ])
+            ->add('descriptionInfos', TextareaType::class, [
+                'label' => 'Description et infos :'
             ])
 
-
-            ->add('lieuxNoLieu')
-
+            ->add('campus', TextType::class, [
+                'label' => 'Campus :'
+            ])
+            /*->add('ville', TextType::class, [
+                'label' => 'Ville :'
+            ])
+            ->add('lieu', TextType::class, [
+                'label' => 'Lieu :'
+            ])
+            ->add('rue', TextType::class, [
+                'label' => 'Rue :'
+            ])
+            ->add('codePostal', TextType::class, [
+                'label' => 'Code postal :'
+            ])
+            ->add('latitude', TextType::class, [
+                'label' => 'Latitude :'
+            ])
+            ->add('longitude', TextType::class, [
+                'label' => 'Longitude :'
+            ])*/
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Sorties::class,
+            'data_class' => Sortie::class,
         ]);
     }
 }
