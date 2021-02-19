@@ -83,8 +83,9 @@ header nav ul li{
     width: 40%;
     height: 100%;
     background: rgba(255,255,255, 0.08);
-    transform: skewX(29deg);
+    transform: skewX(23deg);
     transform-origin: top;
+    border-radius: 10px;
 }
 
 .formConnexion img {
