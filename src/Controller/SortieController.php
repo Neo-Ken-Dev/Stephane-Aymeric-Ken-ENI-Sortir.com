@@ -10,6 +10,7 @@ use App\Form\SearchForm;
 use App\Repository\SortieRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -51,7 +52,7 @@ class SortieController extends AbstractController
             $em->persist($sortie);
             $em->flush();
 
-            return new Response('sortie ajouté');
+            return new RedirectResponse($this->generateUrl('sorties_list'));
         }
 
         return $this->render('sortie/createSortieForm.html.twig', [
