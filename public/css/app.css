@@ -245,3 +245,8 @@ input[type=checkbox] + span::before {
 .flash-error {
     background-color: firebrick;
 }
+
+/********** Créer une sortie *************/
+.sortieCreation .col-form-label {
+    display: none;
+}

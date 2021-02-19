@@ -37,7 +37,6 @@ class CreationSortieType extends AbstractType
             ->add('descriptionInfos', TextareaType::class, [
                 'label' => 'Description et infos :'
             ])
-
             ->add('campus', EntityType::class, [
                 'label' => 'Campus :',
                 'class' => 'App\Entity\Campus',
@@ -46,13 +45,10 @@ class CreationSortieType extends AbstractType
                 'multiple' => false
 
             ])
-            /*->add('ville', TextType::class, [
-                'label' => 'Ville :'
-            ])
-            ->add('lieu', TextType::class, [
-                'label' => 'Lieu :'
-            ])
-            ->add('rue', TextType::class, [
+
+            ->add('lieu', LieuType::class)
+
+            /*->add('rue', TextType::class, [
                 'label' => 'Rue :'
             ])
             ->add('codePostal', TextType::class, [

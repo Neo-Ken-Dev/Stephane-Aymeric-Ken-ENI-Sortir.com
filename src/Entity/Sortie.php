@@ -67,25 +67,25 @@ class Sortie
     private $etatsortie;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Lieu", inversedBy="sorties")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Lieu", inversedBy="sorties", cascade="persist")
      * @ORM\JoinColumn(nullable=true)
      */
     private $lieu;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Campus", inversedBy="sorties")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Campus", inversedBy="sorties", cascade="persist")
      * @ORM\JoinColumn(nullable=true)
      */
     private $campus;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="sorties")
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="sorties", cascade="persist")
      * @ORM\JoinColumn(nullable=true)
      */
     private $user;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\User", inversedBy="participants")
+     * @ORM\ManyToMany(targetEntity="App\Entity\User", inversedBy="participants", cascade="persist")
      * @ORM\JoinColumn(nullable=true)
      */
     private $users;

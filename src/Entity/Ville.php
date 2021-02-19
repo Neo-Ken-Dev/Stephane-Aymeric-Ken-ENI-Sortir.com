@@ -42,15 +42,15 @@ class Ville
     /**
      * @return Collection
      */
-    public function getLieux(): Collection
+    public function getLieux(): ?Collection
     {
         return $this->lieux;
     }
 
     /**
-     * @param Collection $lieux
+     * @param Collection|null $lieux
      */
-    public function setLieux(Collection $lieux): void
+    public function setLieux(?Collection $lieux): void
     {
         $this->lieux = $lieux;
     }
