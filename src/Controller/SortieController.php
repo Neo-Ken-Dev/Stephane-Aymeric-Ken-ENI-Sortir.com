@@ -48,7 +48,6 @@ class SortieController extends AbstractController
     public function createOrUpdateSortie(Sortie $sortie = null, Request $request, EntityManagerInterface $em, EtatRepository $etatRepo): Response
     {
        $this->denyAccessUnlessGranted("IS_AUTHENTICATED_REMEMBERED");
-       
 
         if (!$sortie){
             $sortie = new Sortie();
@@ -76,21 +75,30 @@ class SortieController extends AbstractController
                 $em->flush();
                 return new RedirectResponse($this->generateUrl('sorties_list'));
             }
-
             $em->persist($sortie);
             $em->flush();
-
             return new RedirectResponse($this->generateUrl('sorties_list'));
         }
 
         return $this->render('sortie/createSortieForm.html.twig', [
-//            'controller_name' => 'SortieController',
+            'controller_name' => 'SortieController',
             'sortieForm' => $sortieForm->createView(),
             'editMode' => $sortie->getId() !== null,
             'sortie' => $sortie
         ]);
     }
 
+    /**
+     * @Route("/sortie/{id}/afficher", name="sortie_detail")
+     */
+    public function afficher(SortieRepository $sorties, Request $request)
+    {
+
+        
+        return $this->render('sortie/afficherSortie.html.twig',[
+
+        ]);
+    }
 
 
 }
