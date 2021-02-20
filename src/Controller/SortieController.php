@@ -4,14 +4,13 @@ namespace App\Controller;
 
 
 use App\Data\SearchData;
-use App\Entity\Etat;
-use App\Entity\Lieu;
 use App\Entity\Sortie;
 use App\Form\CreationSortieType;
 use App\Form\SearchForm;
 use App\Repository\EtatRepository;
 use App\Repository\SortieRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use http\Message;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -48,6 +47,9 @@ class SortieController extends AbstractController
      */
     public function createOrUpdateSortie(Sortie $sortie = null, Request $request, EntityManagerInterface $em, EtatRepository $etatRepo): Response
     {
+       $this->denyAccessUnlessGranted("IS_AUTHENTICATED_REMEMBERED");
+       
+
         if (!$sortie){
             $sortie = new Sortie();
             $sortie->setOrganisateur($this->getUser()->getUsername());
