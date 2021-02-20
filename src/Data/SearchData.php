@@ -4,6 +4,7 @@
 namespace App\Data;
 
 
+use App\Entity\Campus;
 use DateTime;
 
 class SearchData
@@ -14,7 +15,7 @@ class SearchData
     public $motclef ='';
 
     /**
-     * @var array
+     * @var Campus[]
      */
     public $campus =[];
 
@@ -40,7 +41,7 @@ class SearchData
     }
 
     /**
-     * @return array
+     * @return Campus[]
      */
     public function getCampus(): array
     {
@@ -48,12 +49,14 @@ class SearchData
     }
 
     /**
-     * @param array $campus
+     * @param Campus[] $campus
      */
     public function setCampus(array $campus): void
     {
         $this->campus = $campus;
     }
+
+
 
     /**
      * @return mixed

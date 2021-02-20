@@ -27,25 +27,22 @@ class SortieRepository extends ServiceEntityRepository
      */
     public function findSearch(SearchData $search): array
     {
-        $query =$this
-            ->createQueryBuilder('s');
+        $query = $this
+            ->createQueryBuilder('s')
+            ->select('c', 's')
+            ->join('s.campus', 'c');
 
-        if(empty($search-> motclef)){
+
+        if (!empty($search->motclef)) {
             $query = $query
                 ->andWhere('s.nom LIKE :nom')
-                ->setParameter('nom',"{}");
+                ->setParameter('nom', "%{$search->motclef}%");
         }
 
-        if(!empty($search-> motclef)){
+        if (!empty($search->campus)) {
             $query = $query
-                ->andWhere('s.nom LIKE :nom')
-                ->setParameter('nom',"%{$search->motclef}%");
-        }
-
-        if(!empty($search-> campus)){
-            $query = $query
-                ->andWhere('s.campus IN (:campus)')
-                ->setParameter('campus',"%{$search->campus}%");
+                ->andWhere('c.id IN (:campus)')
+                ->setParameter('campus', $search->campus);
         }
 
         /*  A débloquer quand l'histoire de require sera réglée
@@ -86,5 +83,4 @@ class SortieRepository extends ServiceEntityRepository
             ->getOneOrNullResult()
         ;
     }*/
-
 }

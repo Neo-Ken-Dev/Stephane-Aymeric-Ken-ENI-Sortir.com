@@ -72,4 +72,5 @@ class Campus
 
         return $this;
     }
+
 }
