@@ -45,6 +45,9 @@ class CreationSortieType extends AbstractType
                 'multiple' => false
             ])
             ->add('lieu', LieuType::class)
+//            ->add('add', 'submit')
+//            ->add('registered', 'submit')
+
         ;
     }
 

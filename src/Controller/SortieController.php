@@ -8,6 +8,7 @@ use App\Entity\Etat;
 use App\Entity\Sortie;
 use App\Form\CreationSortieType;
 use App\Form\SearchForm;
+use App\Repository\EtatRepository;
 use App\Repository\SortieRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -39,29 +40,39 @@ class SortieController extends AbstractController
      * @Route("/sortie/creation", name="sortie_creation")
      * @param Request $request
      * @param EntityManagerInterface $em
+     * @param EtatRepository $etatRepo
      * @return Response
      */
-    public function createSortie(Request $request, EntityManagerInterface $em): Response
+    public function createSortie(Request $request, EntityManagerInterface $em, EtatRepository $etatRepo): Response
     {
 
         $sortie = new Sortie();
+        //$sortie->setOrganisateur($this->getUser());
 
         $sortieForm = $this->createForm(CreationSortieType::class, $sortie);
         $sortieForm->handleRequest($request);
+        //$addbtn = $sortieForm->get('btnAdd')->is
 
         if ($sortieForm->isSubmitted() && $sortieForm->isValid()){
-            $etat = new Etat();
-            if(isset($_POST['btnAdd'])){
-                $etat->setId("2");
+
+            if($sortieForm->get('btnAdd')->isClicked()){
+                $etat = $etatRepo->findOneBy(['libelle' => 'Ouvert']);
+                $sortie->setEtatSortie($etat);
+                dump($etat);
+                dump($sortie);
             }elseif (isset($_POST['btnPublish'])){
-                $etat->setId("1");
+                $etat = $etatRepo->findOneBy(['libelle' => 'En cours']);
+                $sortie->setEtatSortie($etat);
             }
-            $sortie->setEtatSortie($etat);
+//            $etat = $etatRepo->findOneBy(['libelle' => 'Ouvert']);
+//            $sortie->setEtatSortie($etat);
+//            dump($etat);
+//            dump($sortie);
 
-            $em->persist($sortie);
-            $em->flush();
+//            $em->persist($sortie);
+//            $em->flush();
 
-            return new RedirectResponse($this->generateUrl('sorties_list'));
+            //return new RedirectResponse($this->generateUrl('sorties_list'));
         }
 
         return $this->render('sortie/createSortieForm.html.twig', [
