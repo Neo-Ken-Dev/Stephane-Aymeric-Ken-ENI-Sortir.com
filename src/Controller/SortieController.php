@@ -47,30 +47,28 @@ class SortieController extends AbstractController
     {
 
         $sortie = new Sortie();
-        //$sortie->setOrganisateur($this->getUser());
+        $sortie->setOrganisateur($this->getUser()->getUsername());
 
         $sortieForm = $this->createForm(CreationSortieType::class, $sortie);
         $sortieForm->handleRequest($request);
-        //$addbtn = $sortieForm->get('btnAdd')->is
 
         if ($sortieForm->isSubmitted() && $sortieForm->isValid()){
 
-            if($sortieForm->get('btnAdd')->isClicked()){
-                $etat = $etatRepo->findOneBy(['libelle' => 'Ouvert']);
-                $sortie->setEtatSortie($etat);
-                dump($etat);
-                dump($sortie);
-            }elseif (isset($_POST['btnPublish'])){
+            if($sortieForm->get('add')->isClicked()){
                 $etat = $etatRepo->findOneBy(['libelle' => 'En cours']);
                 $sortie->setEtatSortie($etat);
+                dump($sortie);
+                dump($etat);
             }
-//            $etat = $etatRepo->findOneBy(['libelle' => 'Ouvert']);
-//            $sortie->setEtatSortie($etat);
-//            dump($etat);
-//            dump($sortie);
+            if ($sortieForm->get('publish')->isClicked()){
+                $etat = $etatRepo->findOneBy(['libelle' => 'Ouvert']);
+                $sortie->setEtatSortie($etat);
+                dump($sortie);
+                dump($etat);
+            }
 
-//            $em->persist($sortie);
-//            $em->flush();
+            $em->persist($sortie);
+            $em->flush();
 
             //return new RedirectResponse($this->generateUrl('sorties_list'));
         }
