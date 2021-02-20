@@ -5,6 +5,7 @@ namespace App\Controller;
 
 use App\Data\SearchData;
 use App\Entity\Etat;
+use App\Entity\Lieu;
 use App\Entity\Sortie;
 use App\Form\CreationSortieType;
 use App\Form\SearchForm;
@@ -49,12 +50,17 @@ class SortieController extends AbstractController
     {
         if (!$sortie){
             $sortie = new Sortie();
+            $sortie->setOrganisateur($this->getUser()->getUsername());
         }
-
-        $sortie->setOrganisateur($this->getUser()->getUsername());
 
         $sortieForm = $this->createForm(CreationSortieType::class, $sortie);
         $sortieForm->handleRequest($request);
+
+        if ($sortie){
+
+        }
+
+        dump($sortie);
 
         if ($sortieForm->isSubmitted() && $sortieForm->isValid()){
 
@@ -66,27 +72,26 @@ class SortieController extends AbstractController
                 $etat = $etatRepo->findOneBy(['libelle' => 'Ouvert']);
                 $sortie->setEtatSortie($etat);
             }
-
             if ($sortieForm->get('annuler')->isClicked()){
                 return new RedirectResponse($this->generateUrl('sorties_list'));
             }
-
             if ($sortieForm->get('delete')->isClicked()){
                 $em->remove($sortie);
                 $em->flush();
                 //return new RedirectResponse($this->generateUrl('sorties_list'));
             }
 
-            $em->persist($sortie);
-            $em->flush();
+//            $em->persist($sortie);
+//            $em->flush();
 
             //return new RedirectResponse($this->generateUrl('sorties_list'));
         }
 
         return $this->render('sortie/createSortieForm.html.twig', [
-            'controller_name' => 'SortieController',
+//            'controller_name' => 'SortieController',
             'sortieForm' => $sortieForm->createView(),
-            'editMode' => $sortie->getId() !== null
+            'editMode' => $sortie->getId() !== null,
+            'sortie' => $sortie
         ]);
     }
 

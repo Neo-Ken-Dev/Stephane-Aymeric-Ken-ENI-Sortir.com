@@ -76,7 +76,6 @@ class SortieRepository extends ServiceEntityRepository
         ;
     }
     */
-
     /*
     public function findOneBySomeField($value): ?Sortie
     {
@@ -86,6 +85,6 @@ class SortieRepository extends ServiceEntityRepository
             ->getQuery()
             ->getOneOrNullResult()
         ;
-    }
-    */
+    }*/
+
 }

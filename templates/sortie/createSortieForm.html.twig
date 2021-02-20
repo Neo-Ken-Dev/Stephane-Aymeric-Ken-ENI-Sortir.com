@@ -58,34 +58,58 @@
 
                     <div class="form-group">
                         <label for="{{ sortieForm.children.lieu.nom.vars.id }}">Lieu :</label>
-                        <input type="text" id="{{ sortieForm.children.lieu.nom.vars.id }}" name="{{ sortieForm.children.lieu.nom.vars.full_name }}">
+                        <input type="text" id="{{ sortieForm.children.lieu.nom.vars.id }}" name="{{ sortieForm.children.lieu.nom.vars.full_name }}"
+                                {% if editMode %}
+                                    value="{{ sortie.lieu.nom }}"
+                                {% endif %}
+                        >
                         {% do sortieForm.children.lieu.setRendered %}
                     </div>
 
                     <div class="form-group">
                         <label for="{{ sortieForm.children.lieu.children.ville.children.nom.vars.id }}">Ville :</label>
-                        <input type="text" id="{{ sortieForm.children.lieu.children.ville.children.nom.vars.id }}" name="{{ sortieForm.children.lieu.children.ville.children.nom.vars.full_name }}">
+                        <input type="text" id="{{ sortieForm.children.lieu.children.ville.children.nom.vars.id }}" name="{{ sortieForm.children.lieu.children.ville.children.nom.vars.full_name }}"
+                        {% if editMode %}
+                            value="{{ sortie.lieu.ville.nom }}"
+                        {% endif %}
+                        >
 
                     </div>
 
                     <div class="form-group">
                         <label for="{{ sortieForm.children.lieu.children.ville.children.codePostal.vars.id }}">Code postal :</label>
-                        <input type="text" id="{{ sortieForm.children.lieu.children.ville.children.codePostal.vars.id }}" name="{{ sortieForm.children.lieu.children.ville.children.codePostal.vars.full_name }}">
+                        <input type="text" id="{{ sortieForm.children.lieu.children.ville.children.codePostal.vars.id }}" name="{{ sortieForm.children.lieu.children.ville.children.codePostal.vars.full_name }}"
+                                {% if editMode %}
+                                    value="{{ sortie.lieu.ville.codePostal }}"
+                                {% endif %}
+                        >
                     </div>
 
                     <div class="form-group">
                         <label for="{{ sortieForm.children.lieu.rue.vars.id }}">Rue :</label>
-                        <input type="text" id="{{ sortieForm.children.lieu.rue.vars.id }}" name="{{ sortieForm.children.lieu.rue.vars.full_name }}">
+                        <input type="text" id="{{ sortieForm.children.lieu.rue.vars.id }}" name="{{ sortieForm.children.lieu.rue.vars.full_name }}"
+                                {% if editMode %}
+                                    value="{{ sortie.lieu.rue }}"
+                                {% endif %}
+                        >
                     </div>
 
                     <div class="form-group">
                         <label for="{{ sortieForm.children.lieu.latitude.vars.id }}">Latitude :</label>
-                        <input type="text" id="{{ sortieForm.children.lieu.latitude.vars.id }}" name="{{ sortieForm.children.lieu.latitude.vars.full_name }}">
+                        <input type="text" id="{{ sortieForm.children.lieu.latitude.vars.id }}" name="{{ sortieForm.children.lieu.latitude.vars.full_name }}"
+                                {% if editMode %}
+                                    value="{{ sortie.lieu.latitude }}"
+                                {% endif %}
+                        >
                     </div>
 
                     <div class="form-group">
                         <label for="{{ sortieForm.children.lieu.longitute.vars.id }}">Longitude :</label>
-                        <input type="text" id="{{ sortieForm.children.lieu.longitute.vars.id }}" name="{{ sortieForm.children.lieu.longitute.vars.full_name }}">
+                        <input type="text" id="{{ sortieForm.children.lieu.longitute.vars.id }}" name="{{ sortieForm.children.lieu.longitute.vars.full_name }}"
+                                {% if editMode %}
+                                    value="{{ sortie.lieu.longitute }}"
+                                {% endif %}
+                        >
                     </div>
 
                     <div class="form-group">
