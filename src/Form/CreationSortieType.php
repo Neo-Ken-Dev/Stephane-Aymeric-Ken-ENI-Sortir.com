@@ -43,9 +43,7 @@ class CreationSortieType extends AbstractType
                 'choice_label' => 'nom',
                 'expanded' => false,
                 'multiple' => false
-
             ])
-
             ->add('lieu', LieuType::class)
         ;
     }

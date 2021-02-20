@@ -4,6 +4,7 @@ namespace App\Controller;
 
 
 use App\Data\SearchData;
+use App\Entity\Etat;
 use App\Entity\Sortie;
 use App\Form\CreationSortieType;
 use App\Form\SearchForm;
@@ -49,6 +50,14 @@ class SortieController extends AbstractController
         $sortieForm->handleRequest($request);
 
         if ($sortieForm->isSubmitted() && $sortieForm->isValid()){
+            $etat = new Etat();
+            if(isset($_POST['btnAdd'])){
+                $etat->setId("2");
+            }elseif (isset($_POST['btnPublish'])){
+                $etat->setId("1");
+            }
+            $sortie->setEtatSortie($etat);
+
             $em->persist($sortie);
             $em->flush();
 
