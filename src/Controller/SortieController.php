@@ -56,12 +56,6 @@ class SortieController extends AbstractController
         $sortieForm = $this->createForm(CreationSortieType::class, $sortie);
         $sortieForm->handleRequest($request);
 
-        if ($sortie){
-
-        }
-
-        dump($sortie);
-
         if ($sortieForm->isSubmitted() && $sortieForm->isValid()){
 
             if($sortieForm->get('add')->isClicked()){
@@ -78,13 +72,13 @@ class SortieController extends AbstractController
             if ($sortieForm->get('delete')->isClicked()){
                 $em->remove($sortie);
                 $em->flush();
-                //return new RedirectResponse($this->generateUrl('sorties_list'));
+                return new RedirectResponse($this->generateUrl('sorties_list'));
             }
 
-//            $em->persist($sortie);
-//            $em->flush();
+            $em->persist($sortie);
+            $em->flush();
 
-            //return new RedirectResponse($this->generateUrl('sorties_list'));
+            return new RedirectResponse($this->generateUrl('sorties_list'));
         }
 
         return $this->render('sortie/createSortieForm.html.twig', [
