@@ -70,7 +70,7 @@ class SortieController extends AbstractController
             $em->persist($sortie);
             $em->flush();
 
-            //return new RedirectResponse($this->generateUrl('sorties_list'));
+            return new RedirectResponse($this->generateUrl('sorties_list'));
         }
 
         return $this->render('sortie/createSortieForm.html.twig', [

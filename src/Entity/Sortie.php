@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\SortieRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -21,6 +22,7 @@ class Sortie
 
     /**
      * @ORM\Column(type="string", length=50)
+     * @Assert\Length(min=10, max="50", minMessage="Le titre est trop court", maxMessage="Le titre est trop long")
      */
     private $nom;
 
@@ -46,11 +48,13 @@ class Sortie
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Length(min=10, max="255", minMessage="La description est trop courte", maxMessage="La description est trop longue")
      */
     private $descriptionInfos;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Url(message="Ceci n'est pas une URL")
      */
     private $urlPhoto;
 
