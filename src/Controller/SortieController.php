@@ -50,7 +50,6 @@ class SortieController extends AbstractController
         if (!$sortie){
             $sortie = new Sortie();
         }
-        dump($sortie);
 
         $sortie->setOrganisateur($this->getUser()->getUsername());
 
@@ -69,6 +68,11 @@ class SortieController extends AbstractController
             }
 
             if ($sortieForm->get('annuler')->isClicked()){
+                return new RedirectResponse($this->generateUrl('sorties_list'));
+            }
+
+            if ($sortieForm->get('delete')->isClicked()){
+                $em->remove($sortie);
                 return new RedirectResponse($this->generateUrl('sorties_list'));
             }
 

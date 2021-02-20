@@ -66,6 +66,11 @@ class CreationSortieType extends AbstractType
                 'attr' => ['class' => 'button']
             ])
 
+            ->add('delete', SubmitType::class, [
+                'label' => 'Supprimer la sortie',
+                'attr' => ['class' => 'button']
+            ])
+
         ;
     }
 

@@ -54,7 +54,7 @@ class Sortie
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Assert\Url(message="Ceci n'est pas une URL")
+     *
      */
     private $urlPhoto;
 
