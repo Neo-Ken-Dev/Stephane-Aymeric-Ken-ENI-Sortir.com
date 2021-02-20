@@ -90,9 +90,12 @@
                         {{ form_widget(sortieForm.urlPhoto) }}
                     </div>
 
-
-
                 </div>
+                {% if editMode %}
+                    <div class="form-group">
+                        <button type="submit" class="button btn btn-delete">Supprimer la sortie</button>
+                    </div>
+                {% endif %}
 
                 {{ form_end(sortieForm) }}
 

@@ -38,15 +38,20 @@ class SortieController extends AbstractController
 
     /**
      * @Route("/sortie/creation", name="sortie_creation")
+     * @Route("/sortie/{id}/modifier", name="sortie_modifier")
+     * @param Sortie|null $sortie
      * @param Request $request
      * @param EntityManagerInterface $em
      * @param EtatRepository $etatRepo
      * @return Response
      */
-    public function createSortie(Request $request, EntityManagerInterface $em, EtatRepository $etatRepo): Response
+    public function createOrUpdateSortie(Sortie $sortie = null, Request $request, EntityManagerInterface $em, EtatRepository $etatRepo): Response
     {
+        if (!$sortie){
+            $sortie = new Sortie();
+        }
+        dump($sortie);
 
-        $sortie = new Sortie();
         $sortie->setOrganisateur($this->getUser()->getUsername());
 
         $sortieForm = $this->createForm(CreationSortieType::class, $sortie);
@@ -75,7 +80,8 @@ class SortieController extends AbstractController
 
         return $this->render('sortie/createSortieForm.html.twig', [
             'controller_name' => 'SortieController',
-            'sortieForm' => $sortieForm->createView()
+            'sortieForm' => $sortieForm->createView(),
+            'editMode' => $sortie->getId() !== null
         ]);
     }
 
