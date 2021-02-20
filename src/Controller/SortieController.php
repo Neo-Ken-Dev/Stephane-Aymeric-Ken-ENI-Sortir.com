@@ -73,13 +73,14 @@ class SortieController extends AbstractController
 
             if ($sortieForm->get('delete')->isClicked()){
                 $em->remove($sortie);
-                return new RedirectResponse($this->generateUrl('sorties_list'));
+                $em->flush();
+                //return new RedirectResponse($this->generateUrl('sorties_list'));
             }
 
             $em->persist($sortie);
             $em->flush();
 
-            return new RedirectResponse($this->generateUrl('sorties_list'));
+            //return new RedirectResponse($this->generateUrl('sorties_list'));
         }
 
         return $this->render('sortie/createSortieForm.html.twig', [
