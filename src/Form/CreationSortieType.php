@@ -47,6 +47,10 @@ class CreationSortieType extends AbstractType
             ])
             ->add('lieu', LieuType::class)
 
+            ->add('urlPhoto', TextType::class, [
+                'label' => 'Url de la photo :'
+            ])
+
             ->add('add', SubmitType::class, [
                 'label' => 'Enregistrer',
                 'attr' => ['class' => 'button btnAdd']

@@ -57,14 +57,14 @@ class SortieController extends AbstractController
             if($sortieForm->get('add')->isClicked()){
                 $etat = $etatRepo->findOneBy(['libelle' => 'En cours']);
                 $sortie->setEtatSortie($etat);
-                dump($sortie);
-                dump($etat);
             }
             if ($sortieForm->get('publish')->isClicked()){
                 $etat = $etatRepo->findOneBy(['libelle' => 'Ouvert']);
                 $sortie->setEtatSortie($etat);
-                dump($sortie);
-                dump($etat);
+            }
+
+            if ($sortieForm->get('annuler')->isClicked()){
+                return new RedirectResponse($this->generateUrl('sorties_list'));
             }
 
             $em->persist($sortie);
