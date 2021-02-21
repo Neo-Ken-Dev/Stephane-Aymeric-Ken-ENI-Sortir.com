@@ -2,11 +2,11 @@
 
 namespace App\Form;
 
-use App\Entity\Participants;
+use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
-use Symfony\Component\Form\Extension\Core\Type\PasswordType;
-use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -16,23 +16,56 @@ class GestionProfilType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('pseudo', TextType::class, array(
-                'label' => 'Pseudo ', 'required' => false,))
-            ->add('nom',TextType::class , array(
-                'label' => 'Nom ', 'required' => false,))
-            ->add('prenom',TextType::class , array(
-        'label' => 'Prénom ', 'required' => false,))
-            ->add('telephone',TextType::class , array(
-                'label' => 'Téléphone ', 'required' => false,))
-            ->add('mail',EmailType::class , array(
-                'label' => 'Mail ', 'required' => false,))
-        ;
+
+            ->add('username',textType::class, ['attr'=> [
+            'placeholder'=>'Votre pseudo/identifiant',
+            'required'=>true
+            ],
+          'label'=> 'Pseudo : '
+    ])
+        ->add('nom',textType::class, [
+            'attr'=> [
+                'placeholder'=>'Votre nom',
+                'required'=>true
+            ],
+            'label'=> 'Nom : '
+        ])
+        ->add('prenom',textType::class, [
+            'attr'=> [
+                'placeholder'=>'Votre prénom',
+                'required'=>true
+            ],
+            'label'=> 'Prénom : '
+        ])
+        ->add('telephone',TelType::class, [
+            'attr'=> [
+                'placeholder'=>'Votre numéro de téléphone',
+                'required'=>true
+            ],
+            'label'=> 'Téléphone : '
+        ])
+        ->add('email', EmailType::class, [
+            'attr'=> [
+                'placeholder'=>'Votre email',
+                'required'=>true
+            ],
+            'label'=> 'Email : '
+        ])
+
+        ->add('photo', FileType::class, [
+            'label' => 'Télécharger votre photo de profil',
+            'required' => false,
+            'attr'=> [
+                'placeholder'=>"votre fichier"],
+            'data_class' => null])
+
+    ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Participants::class,
+            'data_class' => User::class,
         ]);
     }
 

@@ -206,25 +206,37 @@ input[type=checkbox] + span::before {
 
 /********** formulaire gestion de profil *************/
 
-.formulaireGestionProfil {
+.formulaireGestionProfil{
+
+    position: relative;
+    margin-top: 5%;
+    margin-left: 10%;
+    margin-right: 10%;
+    padding-bottom: 85px;
+    background-color: #2f2f40;
+    letter-spacing: 1px;
+    color: #ff7a00;
+    z-index: 10;
+
+
+}
+
+.container_formulaireGestionProfil{
+    border: solid 3px white;
+    padding:0%;
+    border-radius: 25px;
+    background-color: #2f2f40;
+}
+
+.photo_de_profil {
+
     display: block;
-    font-weight: bold;
-    margin-bottom: 10px;
-    color: #ff7a00;
-    font-size: 1rem;
-    text-align: center;
-}
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin-top: 5%;
+    margin-left: 40%;
 
-.btn-gestion-profil{
-    display:block;
-    margin:auto;
-}
-
-#numeroCampus{
-    margin-bottom: 10px;
-    text-align: center;
-    font-size:25px;
-    color: #ff7a00;
 }
 
 .flash {
@@ -244,4 +256,21 @@ input[type=checkbox] + span::before {
 
 .flash-error {
     background-color: firebrick;
+}
+
+.btn-gestion-profil {
+
+    border: none;
+    background: #ff7a00;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.div-btn-profil-form{
+    float: right;
+    z-index: 20;
+    top: 50%;
 }

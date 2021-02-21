@@ -16,7 +16,7 @@
         <nav>
             <ul>
                 <li><a href="{{ path('logout') }}"> Se déconnecter </a></li>
-                <li><a href="{{ path('gestion_profil', {'noParticipant': app.user.id }) }}"> Mon profil </a></li>
+                <li><a href="{{ path('gestion_profil', {'id': app.user.id }) }}"> Mon profil </a></li>
                 <li><a href="{{ path('sorties_list') }}"> Accueil </a></li>
                 <li><a href=""> Campus </a></li>
                 <li><a href=""> Villes </a></li>

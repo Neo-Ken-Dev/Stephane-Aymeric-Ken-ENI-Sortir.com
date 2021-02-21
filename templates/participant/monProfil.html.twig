@@ -9,11 +9,18 @@
     </style>
 
     {{ form_start(formulaireGestionProfil) }}
-    <div class="formulaireGestionProfil labelprofil">{{ form_widget(formulaireGestionProfil) }}</div>
-    <p id="numeroCampus">Campus: {{ participant.campus }}</p>
-    <button class="btn-gestion-profil" type="submit">Enregistrer</button>
-
+    {% if user.photo %}
+        <img src="{{ asset('uploads/photo_profil/'~user.photo)}}" class="photo_de_profil" alt="photo profil">
+    {% else %}
+        <img src="{{ asset('img/avatar.png')}}" class="photo_de_profil" alt="photo profil">
+    {% endif %}
+    <div class="container container_formulaireGestionProfil">
+    <div class="formulaireGestionProfil">{{ form_widget(formulaireGestionProfil) }}</div>
+        <div class="div-btn-profil-form">
+        <button class="btn-gestion-profil" type="submit">Enregistrer</button>
+        <input type="button" value="Annuler" class="btn-gestion-profil">
+        </div>
     {{ form_end(formulaireGestionProfil) }}
-    <br>
-    <a href="{{ path('home') }}" target="_blank"> <input type="button" value="Annuler" class="btn-gestion-profil"></a>
+
+    </div>
 {% endblock %}
