@@ -19,7 +19,7 @@ class CampusController extends AbstractController
      * @param Request $request
      * @param EntityManagerInterface $em
      * @return Response
-     * @Route("/campus/add", name="campus_add")
+     * @Route("/admin/add", name="campus_add")
      */
     public function add(Request $request, EntityManagerInterface $em)
     {
@@ -32,7 +32,7 @@ class CampusController extends AbstractController
             $em->persist($campus);
             $em->flush();
 
-            return new Response('campus ajouté');
+            return new Response('admin ajouté');
         }
 
         return $this->render('campus/campusAdd.html.twig', [

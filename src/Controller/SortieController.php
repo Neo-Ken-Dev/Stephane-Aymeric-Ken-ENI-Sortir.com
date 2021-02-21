@@ -10,7 +10,6 @@ use App\Form\SearchForm;
 use App\Repository\EtatRepository;
 use App\Repository\SortieRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use http\Message;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -43,6 +42,7 @@ class SortieController extends AbstractController
     /**
      * @Route("/sortie/creation", name="sortie_creation")
      * @Route("/sortie/{id}/modifier", name="sortie_modifier")
+     *
      * @param Sortie|null $sortie
      * @param Request $request
      * @param EntityManagerInterface $em

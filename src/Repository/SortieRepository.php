@@ -30,7 +30,7 @@ class SortieRepository extends ServiceEntityRepository
         $query = $this
             ->createQueryBuilder('s')
             ->select('c', 's')
-            ->join('s.campus', 'c');
+            ->join('s.admin', 'c');
 
 
         if (!empty($search->motclef)) {
@@ -41,8 +41,8 @@ class SortieRepository extends ServiceEntityRepository
 
         if (!empty($search->campus)) {
             $query = $query
-                ->andWhere('c.id IN (:campus)')
-                ->setParameter('campus', $search->campus);
+                ->andWhere('c.id IN (:admin)')
+                ->setParameter('admin', $search->campus);
         }
 
         /*  A débloquer quand l'histoire de require sera réglée
