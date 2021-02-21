@@ -2,7 +2,6 @@
 
 namespace App\Security;
 
-use App\Entity\Participants;
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -10,7 +9,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\Exception\CustomUserMessageAuthenticationException;
 use Symfony\Component\Security\Core\Exception\InvalidCsrfTokenException;
 use Symfony\Component\Security\Core\Security;
@@ -70,14 +68,6 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
         }
 
         $user = $this->entityManager->getRepository(User::class)->findOneBy(['username' => $credentials['username']]);
-
-//        $user = $this->entityManager->getRepository(Participants::class)
-//            ->createQueryBuilder('u')
-//            ->where('u.mail = :mail OR u.pseudo = :pseudo')
-//            ->setParameter('mail', $credentials['pseudo'])
-//            ->setParameter('pseudo', $credentials['pseudo'])
-//            ->getQuery()
-//            ->getOneOrNullResult();
 
 
         if (!$user) {

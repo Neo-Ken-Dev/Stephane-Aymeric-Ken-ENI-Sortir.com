@@ -27,23 +27,22 @@ class SortieRepository extends ServiceEntityRepository
      */
     public function findSearch(SearchData $search): array
     {
-        $query =$this
+        $query = $this
             ->createQueryBuilder('s')
-            ->select ('c','s')
-            ->join('s.campus','c');
+            ->select('c', 's')
+            ->join('s.campus', 'c');
 
 
-
-        if(!empty($search-> motclef)){
+        if (!empty($search->motclef)) {
             $query = $query
                 ->andWhere('s.nom LIKE :nom')
-                ->setParameter('nom',"%{$search->motclef}%");
+                ->setParameter('nom', "%{$search->motclef}%");
         }
 
-        if(!empty($search-> campus)){
+        if (!empty($search->campus)) {
             $query = $query
                 ->andWhere('c.id IN (:campus)')
-                ->setParameter('campus',$search->campus);
+                ->setParameter('campus', $search->campus);
         }
 
         /*  A débloquer quand l'histoire de require sera réglée
@@ -58,4 +57,30 @@ class SortieRepository extends ServiceEntityRepository
         return $query->getQuery()->getResult();
     }
 
+    // /**
+    //  * @return Sortie[] Returns an array of Sortie objects
+    //  */
+    /*
+    public function findByExampleField($value)
+    {
+        return $this->createQueryBuilder('s')
+            ->andWhere('s.exampleField = :val')
+            ->setParameter('val', $value)
+            ->orderBy('s.id', 'ASC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+    */
+    /*
+    public function findOneBySomeField($value): ?Sortie
+    {
+        return $this->createQueryBuilder('s')
+            ->andWhere('s.exampleField = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }*/
 }

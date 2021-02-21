@@ -4,23 +4,14 @@
 
 {% block body %}
 
-    <div class="substitu-body">
-        <div class="sortieForm-wrapper">
+        <div class="afficherSortie-wrapper">
 
-            <div class="formSortieCreation">
-                {% if editMode %}
-                    <h1>Modifier une sortie</h1>
-                {% else %}
-                    <h1>Créer une sortie</h1>
-                {% endif %}
-
-                {{ form_start(sortieForm) }}
-
-                <div class="sortie-detail">
+            <div class="afficherSortie">
+                <h1>Afficher une sortie</h1>
+              <div class="sortie-detail">
 
                     <div class="form-group">
-                        {{ form_label(sortieForm.nom) }}
-                        {{ form_widget(sortieForm.nom) }}
+                        <
                     </div>
 
                     <div class="form-group">
@@ -70,9 +61,9 @@
                     <div class="form-group">
                         <label for="{{ sortieForm.children.lieu.children.ville.children.nom.vars.id }}">Ville :</label>
                         <input type="text" id="{{ sortieForm.children.lieu.children.ville.children.nom.vars.id }}" name="{{ sortieForm.children.lieu.children.ville.children.nom.vars.full_name }}"
-                        {% if editMode %}
-                            value="{{ sortie.lieu.ville.nom }}"
-                        {% endif %}
+                                {% if editMode %}
+                                    value="{{ sortie.lieu.ville.nom }}"
+                                {% endif %}
                         >
 
                     </div>
@@ -130,8 +121,8 @@
             </div>
 
         </div>
-    </div>
 
 
 {% endblock %}
+
 

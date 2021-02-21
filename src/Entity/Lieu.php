@@ -20,7 +20,7 @@ class Lieu
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @ORM\Column(type="string", length=100, nullable=true)
      */
     private $nom;
 
@@ -40,7 +40,7 @@ class Lieu
     private $longitute;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Ville", inversedBy="lieux")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Ville", inversedBy="lieux", cascade="persist")
      * @ORM\JoinColumn(nullable=false)
      */
     private $ville;
@@ -80,9 +80,9 @@ class Lieu
     }
 
     /**
-     * @param Collection $sorties
+     * @param Collection|null $sorties
      */
-    public function setSorties(Collection $sorties): void
+    public function setSorties(?Collection $sorties): void
     {
         $this->sorties = $sorties;
     }

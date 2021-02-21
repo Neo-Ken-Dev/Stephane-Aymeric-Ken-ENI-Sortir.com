@@ -3,7 +3,7 @@
 {% block title %}Connexion | Sortie.com{% endblock %}
 
 {% block body %}
-    <div class="login-wrapper">
+    <div class="login-wrapper" style="background-image:url('{{ asset('img/bg.jpg') }}'); background-size: cover">
 
         <form method="post" id="connexionForm" class="formConnexion">
             <img src="{{ asset("img/avatar.png") }}" alt="">
@@ -36,5 +36,6 @@
 
         </form>
     </div>
+
 
 {% endblock %}
