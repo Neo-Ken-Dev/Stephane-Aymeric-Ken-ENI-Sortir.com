@@ -8,18 +8,16 @@
 
 </div>
 <h4>   Date de début de la sortie</h4>
-<div class =" row">
-    <div class ="col-md-6">
-        {{ form_row(form.datejour) }}
-    </div>
-    <div class ="col-md-6">
-        {{ form_row(form.datemois) }}
-    </div>
-    <div class ="col-md-6">
-        {{ form_row(form.dateannee) }}
-    </div>
-</div>
-<button type="submit" class="btn btn-primary w-100">Rechercher</button>
+{{form_row(form.datedebut) }}
+
+<h4>
+    Date de limite d'inscription
+</h4>
+{{ form_row(form.datefin) }}
+
+
+
+<button type="submit" class="btn btn-info w-100">Rechercher</button>
 
 
 

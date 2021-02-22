@@ -1,15 +1,16 @@
-<div class="card">
-    {# Insérer image de la sortie, dans sortie.getl'imagemachin #}
-    <img src=" {{ sortie.urlPhoto }}" alt="image de la sortie" class="card-img-top">
-    <div class="card-body">
-        <h5 class="card-title">{{ sortie.id }}</h5>
-            <div class="card-title text-primary" id="card-list">
-                {{ sortie.nom }}
-            </div>
-        <p class="text text-muted">
-            sortie le : {{ sortie.dateHeureDebut|date('d/m/Y') }} <br>
-            {{ sortie.descriptionInfos }}</p>
-        <div >
+<div class="card border-light mb-3">
+
+    <div class="card ">
+
+        <div class="card-title text-primary" id="card-list">
+            {{ sortie.nom }}
+        </div>
+        <img src=" {{ sortie.urlPhoto }}" alt="image de la sortie" class="card-img-top" width="100%" height="200">
+        <p class="card card-text">
+            Inscription à partir du : {{ sortie.dateHeureDebut|date('d/m/Y') }} <br>
+            Inscription jusqu'au : {{ sortie.dateLimiteInscription|date('d/m/Y') }}</p>
+        <div>  {{ sortie.descriptionInfos }}</div>
+        <div class ="card-footer text-muted">
 
             {{ sortie.campus }}
 

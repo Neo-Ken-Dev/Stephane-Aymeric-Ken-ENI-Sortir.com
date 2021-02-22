@@ -35,25 +35,20 @@ class SearchForm extends AbstractType
                 'expanded' => true,
                 'multiple' => true,
             ])
-            ->add('datejour', TextType::class,[
+            ->add('datedebut', DateType::class,[
                 'label' =>false,
+                'widget' => 'single_text',
                 'required' => false,
                 'empty_data' => '',
-                'attr'=> [
-                    'placeholder' => '14']
+
             ])
-          ->add('datemois', TextType::class,[
+          ->add('datefin', DateType::class,[
               'label' =>false,
+              'widget' => 'single_text',
               'required' => false,
               'empty_data' => '',
-              'attr'=> [
-                  'placeholder' => '02' ]])
-          ->add('dateannee', TextType::class,[
-              'label' =>false,
-              'required' => false,
-              'empty_data' => '',
-              'attr'=> [
-                  'placeholder' =>'Année']])
+
+          ])
         ;
     }
 

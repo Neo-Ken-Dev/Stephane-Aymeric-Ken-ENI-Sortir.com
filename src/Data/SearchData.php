@@ -26,20 +26,12 @@ class SearchData
      */
     public $datedebut;
 
-    /**
-     * @var mixed|null
-     */
-    public $datejour;
+
 
     /**
      * @var mixed|null
      */
-    public $datemois;
-
-    /**
-     * @var mixed|null
-     */
-    public $dateannee;
+    public $datefin;
 
     /**
      * @return string
@@ -92,50 +84,22 @@ class SearchData
     /**
      * @return mixed|null
      */
-    public function getDatejour()
+    public function getDatefin()
     {
-        return $this->datejour;
+        return $this->datefin;
     }
 
     /**
-     * @param mixed|null $datejour
+     * @param mixed|null $datefin
      */
-    public function setDatejour($datejour): void
+    public function setDatefin($datefin): void
     {
-        $this->datejour = $datejour;
+        $this->datefin = $datefin;
     }
 
-    /**
-     * @return mixed|null
-     */
-    public function getDatemois()
-    {
-        return $this->datemois;
-    }
 
-    /**
-     * @param mixed|null $datemois
-     */
-    public function setDatemois($datemois): void
-    {
-        $this->datemois = $datemois;
-    }
 
-    /**
-     * @return mixed|null
-     */
-    public function getDateannee()
-    {
-        return $this->dateannee;
-    }
 
-    /**
-     * @param mixed|null $dateannee
-     */
-    public function setDateannee($dateannee): void
-    {
-        $this->dateannee = $dateannee;
-    }
 
 
 
