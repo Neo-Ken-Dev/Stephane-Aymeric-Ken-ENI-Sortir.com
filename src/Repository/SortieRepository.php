@@ -45,42 +45,22 @@ class SortieRepository extends ServiceEntityRepository
                 ->setParameter('campus', $search->campus);
         }
 
-        /*  A débloquer quand l'histoire de require sera réglée
-         *
-         *
-         * if(!empty($search-> datedebut)){
+        if(!empty($search-> datedebut)){
             $query =$query
-                ->andWhere('s.datedebut IN (:datedebut)' )
-                ->setParameter('datedebut', "%{$search->datedebut}%");
+
+                ->andWhere('s.dateHeureDebut LIKE :date_heure_debut' )
+                ->setParameter('date_heure_debut',$search->datedebut);
         }
-         */
+
+        if(!empty($search->datefin))
+        {
+            $query= $query
+
+                ->andWhere('s.dateLimiteInscription LIKE :date_limite_inscription')
+                ->setParameter('date_limite_inscription',$search->datefin);
+        }
+        
         return $query->getQuery()->getResult();
     }
 
-    // /**
-    //  * @return Sortie[] Returns an array of Sortie objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('s')
-            ->andWhere('s.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('s.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
-    /*
-    public function findOneBySomeField($value): ?Sortie
-    {
-        return $this->createQueryBuilder('s')
-            ->andWhere('s.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }*/
 }

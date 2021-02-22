@@ -37,10 +37,11 @@ class ParticipantController extends AbstractController
 
     /**
      * @Route("/profil/{id}", name= "gestion_profil"),
-     * requirements={"id": "\d+"},
+     *
      * method={"GET"})
      * @param Request $request
      * @param EntityManagerInterface $em
+     *
      * @return Response
      */
     public function mettreAJourProfil (Request $request, EntityManagerInterface $em): Response

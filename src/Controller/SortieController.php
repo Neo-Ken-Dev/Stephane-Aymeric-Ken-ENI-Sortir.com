@@ -10,7 +10,7 @@ use App\Form\SearchForm;
 use App\Repository\EtatRepository;
 use App\Repository\SortieRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use http\Message;
+
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -27,12 +27,12 @@ class SortieController extends AbstractController
         $data = new SearchData();
         $form=$this->createForm(SearchForm::class,$data);
         $form->handleRequest($request);
-        if($form ->isSubmitted() && $form ->isValid())
-        {
+            if($form ->isSubmitted() && $form ->isValid())
+             {
 
-            $sortiesRepo= $sorties->findSearch($data);
-        }
-        else $sortiesRepo= $sorties->findAll();
+             $sortiesRepo= $sorties->findSearch($data);
+            }
+         else $sortiesRepo= $sorties->findAll();
 
         return $this->render('sortie/list.html.twig',[
             'sorties' => $sortiesRepo,
