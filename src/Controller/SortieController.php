@@ -23,6 +23,8 @@ class SortieController extends AbstractController
      */
     public function list(SortieRepository $sorties, Request $request)
     {
+        $this->denyAccessUnlessGranted("IS_AUTHENTICATED_REMEMBERED");
+
         $data = new SearchData();
         $form=$this->createForm(SearchForm::class,$data);
         $form->handleRequest($request);
