@@ -20,6 +20,10 @@ class AdminController extends AbstractController
 {
     /**
      * @Route("/campus", name="admin.campus.gestion")
+     * @param Request $request
+     * @param CampusRepository $campusRepo
+     * @param EntityManagerInterface $em
+     * @return Response
      */
     public function gestionCampus(Request $request, CampusRepository $campusRepo, EntityManagerInterface $em): Response
     {
