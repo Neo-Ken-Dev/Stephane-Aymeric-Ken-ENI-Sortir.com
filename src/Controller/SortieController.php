@@ -104,5 +104,42 @@ class SortieController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/detail/{id}", name="detail_sortie")
+     * requirements= {"id":"/d+"},
+     * methods={"GET"})
+     */
+
+    public function detail($id, Request $request){
+
+        $sortiesRepo = $this->getDoctrine()->getRepository(Sortie::class);
+        $sortie = $sortiesRepo->find($id);
+
+        return $this->render('sortie/detailsSortie.html.twig',['sortie' => $sortie
+
+        ]);
+    }
+
+    /**
+     * @Route("/inscription/{id}", name="inscription_sortie")
+     * requirements= {"id":"/d+"},
+     * methods={"GET"})
+     */
+
+    public function inscription($id, Request $request){
+
+        // Identification de User et Sortie en cours:
+        $idUser = $this->getUser();
+        $sortiesRepo = $this->getDoctrine()->getRepository(Sortie::class);
+        $sortie = $sortiesRepo->find($id);
+
+
+
+
+
+        return $this->render('sortie/detailsSortie.html.twig',['sortie' => $sortie
+
+        ]);
+    }
 
 }
