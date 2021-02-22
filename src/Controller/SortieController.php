@@ -10,7 +10,6 @@ use App\Form\SearchForm;
 use App\Repository\EtatRepository;
 use App\Repository\SortieRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use http\Message;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
