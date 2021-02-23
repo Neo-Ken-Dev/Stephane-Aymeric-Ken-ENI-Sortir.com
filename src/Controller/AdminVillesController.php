@@ -9,6 +9,7 @@ use App\Form\VilleType;
 use App\Repository\VilleRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -33,7 +34,7 @@ class AdminVillesController extends AbstractController
             ->add('searchVilles', TextType::class)
             ->getForm();
         $formSearchVille->handleRequest($request);
-        $searchData = $request->request->get('formSearchVille')['searchVilles'];
+        $searchData = $request->request->get('form')['searchVilles'];
 
         if($formSearchVille ->isSubmitted() && $formSearchVille ->isValid())
         {
@@ -51,7 +52,7 @@ class AdminVillesController extends AbstractController
         }
 
         return $this->render('admin/gestionVilles.html.twig', [
-            'controller_name' => 'AdminCampusController',
+            'controller_name' => 'AdminVillesController',
             'villesResultSearch' => $villesResultSearch,
             'formSearchVille' => $formSearchVille->createView(),
             'formAddVille' => $formAddVille->createView()
@@ -89,7 +90,7 @@ class AdminVillesController extends AbstractController
             }
             return $this->redirectToRoute('admin.villes.gestion');
         }
-        
+
 
         return $this->render('admin/editVille.html.twig', [
             'ville' => $ville,

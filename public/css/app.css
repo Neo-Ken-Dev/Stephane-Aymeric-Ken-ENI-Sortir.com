@@ -499,3 +499,7 @@ tr:hover {
 .form_edit_campus form .form-group{
     display: grid;
 }
+
+.scrollBar label{
+    display: none;
+}
