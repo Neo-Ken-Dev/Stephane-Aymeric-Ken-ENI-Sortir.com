@@ -303,7 +303,6 @@ input[type=checkbox] + span::before {
 .formSortieCreation h1 {
     font-weight: 500;
     position: relative;
-
     text-align: center;
     letter-spacing: 1px;
     margin-bottom: 2rem;
@@ -395,17 +394,74 @@ input[type=checkbox] + span::before {
 }
 
 /********** admin campus page*************/
+.gestionCampus {
+    justify-content: center;
+}
 
-table {
+.gestionCampus h1 {
+    font-weight: 500;
+    position: relative;
+    text-align: center;
+    letter-spacing: 1px;
+    margin-bottom: 2rem;
+}
+
+.gestionCampus h1::before {
+    content: "";
     position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    border-collapse: collapse;
+    left: 0;
+    bottom: 0;
+    margin-bottom: -3px;
+    margin-left: calc(100% / 2 - 150px);
+    height: 3px;
+    width: 300px;
+    border-radius: 5px;
+    background: linear-gradient(135deg, #ff7a00, #bfa004);
+}
+.form_search_campus {
+    display: flex;
+    justify-content: center;
+}
+
+.form_search_campus form{
+    display: inline-grid;
+}
+.form_search_campus label{
+    display: none;
+}
+
+.form_search_campus button {
+    border: none;
+    background: #ff7a00;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.diviseur{
+    margin: 10px 0px;
+    height: 3px;
+    width: 100%;
+    border-radius: 5px;
+    background: linear-gradient(135deg, #ff7a00, #bfa004);
+}
+.tableContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.scrollBar {
+    width: 850px;
+    position: relative;
+    overflow-y: auto;
+    height: 400px;
+    max-height: 400px;
+}
+
+.ResultCampus {
     width: 800px;
-    height: 200px;
-    border: 1px solid #bdc3c7;
-    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2), -1px -1px 8px rgba(0, 0, 0, 0.2);
 }
 
 tr {
@@ -413,34 +469,33 @@ tr {
     cursor: pointer;
 }
 
-th,
-td {
+th, td{
     padding: 12px;
     text-align: left;
     border-bottom: 1px solid #ddd;
 }
 
-#tableHeader {
-    background-color: #16a085;
+#tableHeader tr th{
+    background-color: #d26600;
     color: #fff;
+    position: sticky;
+    top: 0;
 }
 
-.ResultCampus h1 {
-    font-weight: 600;
-    text-align: center;
-    background-color: #16a085;
-    color: #fff;
-    padding: 10px 0px;
+#tableHeader tr:hover {
+    background-color: #d26600;
+    cursor: default;
+    transform: none;
 }
 
 tr:hover {
-    background-color: #f5f5f5;
+    background-color: #d69b62;
+    color: black;
     transform: scale(1.02);
-    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2), -1px -1px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.8);
 }
+/********** admin modifier campus page*************/
 
-@media only screen and (max-width: 768px) {
-    table {
-        width: 90%;
-    }
+.form_edit_campus form .form-group{
+    display: grid;
 }
