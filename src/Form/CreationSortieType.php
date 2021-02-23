@@ -68,9 +68,7 @@ class CreationSortieType extends AbstractType
             ->add('delete', SubmitType::class, [
                 'label' => 'Supprimer la sortie',
                 'attr' => ['class' => 'button']
-            ])
-
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

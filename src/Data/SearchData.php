@@ -6,9 +6,6 @@ namespace App\Data;
 
 use App\Entity\Campus;
 
-use DateTime;
-use Symfony\Component\Validator\Constraints\Date;
-
 class SearchData
 {
     /**

@@ -27,21 +27,23 @@ class AdminCampusController extends AbstractController
      */
     public function gestionCampus(Request $request, CampusRepository $campusRepo, EntityManagerInterface $em): Response
     {
-        $form = $this->createFormBuilder()
+        $formSearchCampus = $this->createFormBuilder()
             ->add('searchCampus', TextType::class)
             ->getForm();
 
-        $form->handleRequest($request);
-        $data = $request->request->get('form')['searchCampus'];
+        $formSearchCampus->handleRequest($request);
+        $searchData = $request->request->get('form')['searchCampus'];
 
-        if($form ->isSubmitted() && $form ->isValid())
-        {
-            $campusResultSearch = $campusRepo->findByNom($data);
-        }else $campusResultSearch= $campusRepo->findAll();
+        if($formSearchCampus ->isSubmitted() && $formSearchCampus ->isValid()) {
+            $campusResultSearch = $campusRepo->findByNom($searchData);
+        }else {
+            $campusResultSearch= $campusRepo->findAll();
+        }
 
         $NewCampus = new Campus();
         $formCampus = $this->createForm(CampusType::class, $NewCampus);
         $formCampus->handleRequest($request);
+
         if($formCampus ->isSubmitted() && $formCampus ->isValid())
         {
             $em->persist($NewCampus);
@@ -52,7 +54,7 @@ class AdminCampusController extends AbstractController
         return $this->render('admin/gestionCampus.html.twig', [
             'controller_name' => 'AdminCampusController',
             'campusSearch' => $campusResultSearch,
-            'form' => $form->createView(),
+            'form' => $formSearchCampus->createView(),
             'formCampus' => $formCampus->createView()
         ]);
     }
@@ -75,6 +77,7 @@ class AdminCampusController extends AbstractController
                 'label' => 'Supprimer',
                 'attr' => ['class' => 'btn btn-primary']
             ]);
+
         $formCampus->handleRequest($request);
 
         if($formCampus ->isSubmitted() && $formCampus ->isValid())

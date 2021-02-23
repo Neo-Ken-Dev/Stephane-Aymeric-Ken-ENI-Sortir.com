@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\User;
 use App\Form\GestionProfilType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -37,11 +36,9 @@ class ParticipantController extends AbstractController
 
     /**
      * @Route("/profil/{id}", name= "gestion_profil"),
-     *
      * method={"GET"})
      * @param Request $request
      * @param EntityManagerInterface $em
-     *
      * @return Response
      */
     public function mettreAJourProfil (Request $request, EntityManagerInterface $em): Response

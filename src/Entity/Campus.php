@@ -52,8 +52,6 @@ class Campus
         // return $this->id;
     }
 
-
-
     public function getId(): ?int
     {
         return $this->id;

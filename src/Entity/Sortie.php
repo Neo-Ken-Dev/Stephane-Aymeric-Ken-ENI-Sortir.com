@@ -232,7 +232,6 @@ class Sortie
         return $this;
     }
 
-
     public function getNbInscriptionMax(): ?int
     {
         return $this->nbInscriptionMax;
@@ -256,7 +255,6 @@ class Sortie
 
         return $this;
     }
-
 
     public function getUrlPhoto(): ?string
     {

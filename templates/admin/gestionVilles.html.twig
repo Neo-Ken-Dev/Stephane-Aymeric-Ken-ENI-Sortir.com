@@ -1,12 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Gestion Campus | Sortie.com{% endblock %}
+{% block title %}Gestion Villes | Sortie.com{% endblock %}
 
 {% block body %}
-
     <div class="gestionCampus">
         <h1>Gérer les villes</h1>
-
         <div class="form_search_campus">
             {{ form_start(formSearchVille) }}
             {{ form_row(formSearchVille.searchVilles) }}
@@ -18,9 +16,7 @@
     <div class="diviseur"></div>
 
     <div class="tableContainer">
-
         <div class="scrollBar">
-
             <table class="ResultCampus">
                 <thead id="tableHeader">
                 <tr>
@@ -59,8 +55,5 @@
             </table>
         </div>
     </div>
-
-
-
 {% endblock %}
 

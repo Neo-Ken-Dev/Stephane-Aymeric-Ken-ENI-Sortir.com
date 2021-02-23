@@ -4,7 +4,6 @@ namespace App\Repository;
 
 use App\Entity\Campus;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\ORM\Query;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -20,13 +19,11 @@ class CampusRepository extends ServiceEntityRepository
         parent::__construct($registry, Campus::class);
     }
 
-
     /**
      * @param $value
      */
     public function findByNom(String $value)
     {
-
         return $this->createQueryBuilder('c')
             ->andWhere('c.nom LIKE :val')
             ->setParameter('val', "%{$value}%")
@@ -34,15 +31,4 @@ class CampusRepository extends ServiceEntityRepository
             ->getResult();
     }
 
-    /*
-    public function findOneBySomeField($value): ?Campus
-    {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-
 use App\Data\SearchData;
 use App\Entity\Sortie;
 use App\Form\CreationSortieType;
@@ -28,12 +27,11 @@ class SortieController extends AbstractController
         $data = new SearchData();
         $form=$this->createForm(SearchForm::class,$data);
         $form->handleRequest($request);
-            if($form ->isSubmitted() && $form ->isValid())
-             {
-
-             $sortiesRepo= $sorties->findSearch($data);
-            }
-         else $sortiesRepo= $sorties->findAll();
+        if($form ->isSubmitted() && $form ->isValid())
+        {
+            $sortiesRepo= $sorties->findSearch($data);
+        }
+        else $sortiesRepo= $sorties->findAll();
 
         return $this->render('sortie/list.html.twig',[
             'sorties' => $sortiesRepo,
@@ -98,11 +96,7 @@ class SortieController extends AbstractController
      */
     public function afficher(SortieRepository $sorties, Request $request)
     {
-
-        
-        return $this->render('sortie/afficherSortie.html.twig',[
-
-        ]);
+        return $this->render('sortie/afficherSortie.html.twig');
     }
 
 

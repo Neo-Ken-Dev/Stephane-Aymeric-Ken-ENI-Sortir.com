@@ -16,13 +16,12 @@ class GestionProfilType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-
             ->add('username',textType::class, ['attr'=> [
             'placeholder'=>'Votre pseudo/identifiant',
             'required'=>true
             ],
           'label'=> 'Pseudo : '
-    ])
+        ])
         ->add('nom',textType::class, [
             'attr'=> [
                 'placeholder'=>'Votre nom',
@@ -57,9 +56,7 @@ class GestionProfilType extends AbstractType
             'required' => false,
             'attr'=> [
                 'placeholder'=>"votre fichier"],
-            'data_class' => null])
-
-    ;
+            'data_class' => null]);
     }
 
     public function configureOptions(OptionsResolver $resolver)
@@ -69,28 +66,4 @@ class GestionProfilType extends AbstractType
         ]);
     }
 
-    /*
-     * public function buildForm(FormBuilderInterface $builder, array $options)
-    {
-        $builder
-            ->add('pseudo')
-            ->add('prenom')
-            ->add('nom')
-            ->add('telephone')
-            ->add('mail')
-            ->add('motDePasse', RepeatedType::class,[
-                'type' => PasswordType::class,
-                'invalid_message' => 'les mots de passe saisis ne correspondent pas',
-                'required' => true,
-                'first_option' => array ('label' => 'Mot de passe'),
-                'second_option' => array ('label' => 'Confirmation'),
-            ])
-            ->add('campusNoCampus', null,[
-                "label" => "Campus",
-                "choice_label" => "name"
-            ])
-            //->add('photo', filetype())
-        ;
-    }
-     */
 }

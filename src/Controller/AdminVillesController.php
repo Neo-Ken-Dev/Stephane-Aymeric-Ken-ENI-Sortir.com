@@ -3,7 +3,6 @@
 
 namespace App\Controller;
 
-
 use App\Entity\Ville;
 use App\Form\VilleType;
 use App\Repository\VilleRepository;
@@ -90,7 +89,6 @@ class AdminVillesController extends AbstractController
             }
             return $this->redirectToRoute('admin.villes.gestion');
         }
-
 
         return $this->render('admin/editVille.html.twig', [
             'ville' => $ville,
