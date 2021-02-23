@@ -41,7 +41,6 @@ class CreationSortieType extends AbstractType
             ->add('campus', EntityType::class, [
                 'label' => 'Campus :',
                 'class' => 'App\Entity\Campus',
-                'choice_label' => 'nom',
                 'expanded' => false,
                 'multiple' => false
             ])

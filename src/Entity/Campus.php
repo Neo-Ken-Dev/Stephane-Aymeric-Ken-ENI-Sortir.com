@@ -29,8 +29,6 @@ class Campus
      */
     private $sorties;
 
-
-
     /**
      * @ORM\OneToMany (targetEntity="App\Entity\User", mappedBy="campus")
      * @ORM\JoinColumn(nullable=true)

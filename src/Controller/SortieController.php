@@ -10,7 +10,6 @@ use App\Form\SearchForm;
 use App\Repository\EtatRepository;
 use App\Repository\SortieRepository;
 use Doctrine\ORM\EntityManagerInterface;
-
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -24,6 +23,8 @@ class SortieController extends AbstractController
      */
     public function list(SortieRepository $sorties, Request $request)
     {
+        $this->denyAccessUnlessGranted("IS_AUTHENTICATED_REMEMBERED");
+
         $data = new SearchData();
         $form=$this->createForm(SearchForm::class,$data);
         $form->handleRequest($request);

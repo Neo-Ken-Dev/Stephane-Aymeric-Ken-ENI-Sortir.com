@@ -303,7 +303,6 @@ input[type=checkbox] + span::before {
 .formSortieCreation h1 {
     font-weight: 500;
     position: relative;
-
     text-align: center;
     letter-spacing: 1px;
     margin-bottom: 2rem;
@@ -394,4 +393,113 @@ input[type=checkbox] + span::before {
 
 }
 
+/********** admin campus page*************/
+.gestionCampus {
+    justify-content: center;
+}
 
+.gestionCampus h1 {
+    font-weight: 500;
+    position: relative;
+    text-align: center;
+    letter-spacing: 1px;
+    margin-bottom: 2rem;
+}
+
+.gestionCampus h1::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    margin-bottom: -3px;
+    margin-left: calc(100% / 2 - 150px);
+    height: 3px;
+    width: 300px;
+    border-radius: 5px;
+    background: linear-gradient(135deg, #ff7a00, #bfa004);
+}
+.form_search_campus {
+    display: flex;
+    justify-content: center;
+}
+
+.form_search_campus form{
+    display: inline-grid;
+}
+.form_search_campus label{
+    display: none;
+}
+
+.form_search_campus button {
+    border: none;
+    background: #ff7a00;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.diviseur{
+    margin: 10px 0px;
+    height: 3px;
+    width: 100%;
+    border-radius: 5px;
+    background: linear-gradient(135deg, #ff7a00, #bfa004);
+}
+.tableContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.scrollBar {
+    width: 850px;
+    position: relative;
+    overflow-y: auto;
+    height: 400px;
+    max-height: 400px;
+}
+
+.ResultCampus {
+    width: 800px;
+}
+
+tr {
+    transition: all .2s ease-in;
+    cursor: pointer;
+}
+
+th, td{
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+#tableHeader tr th{
+    background-color: #d26600;
+    color: #fff;
+    position: sticky;
+    top: 0;
+}
+
+#tableHeader tr:hover {
+    background-color: #d26600;
+    cursor: default;
+    transform: none;
+}
+
+tr:hover {
+    background-color: #d69b62;
+    color: black;
+    transform: scale(1.02);
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.8);
+}
+/********** admin modifier campus page*************/
+
+.form_edit_campus form .form-group{
+    display: grid;
+}
+
+.scrollBar label{
+    display: none;
+}

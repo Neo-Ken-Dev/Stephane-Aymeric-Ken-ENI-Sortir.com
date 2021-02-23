@@ -5,7 +5,6 @@ namespace App\Form;
 
 
 use App\Data\SearchData;
-use App\Entity\Campus;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -29,11 +28,10 @@ class SearchForm extends AbstractType
                 ]
             ])
             ->add('campus',EntityType::class, [
+                'class' => 'App\Entity\Campus',
                 'label' => false,
-                'required' => false,
-                'class' => Campus::class,
                 'expanded' => true,
-                'multiple' => true,
+                'multiple' => true
             ])
             ->add('datedebut', DateType::class,[
                 'label' =>false,
