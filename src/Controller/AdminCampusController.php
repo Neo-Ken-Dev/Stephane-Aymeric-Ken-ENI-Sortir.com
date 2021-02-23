@@ -16,7 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * @Route("/admin")
  */
-class AdminController extends AbstractController
+class AdminCampusController extends AbstractController
 {
     /**
      * @Route("/campus", name="admin.campus.gestion")
@@ -50,7 +50,7 @@ class AdminController extends AbstractController
         }
 
         return $this->render('admin/gestionCampus.html.twig', [
-            'controller_name' => 'AdminController',
+            'controller_name' => 'AdminCampusController',
             'campusSearch' => $campusResultSearch,
             'form' => $form->createView(),
             'formCampus' => $formCampus->createView()
