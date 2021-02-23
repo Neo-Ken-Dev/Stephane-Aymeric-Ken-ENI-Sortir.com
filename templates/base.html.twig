@@ -12,9 +12,7 @@
 
 <header>
 
-
         {%  if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-
 
         <nav class="navbar navbar-expand-lg navbar-expand-xl navbar-expand-md navbar-expand-sm navbar-light bg-light">
             <a class="navbar-brand" href="{{ path('sorties_list') }}"> Sortir.com</a>
@@ -36,14 +34,17 @@
                     <a href="{{ path('sorties_list') }}"> Accueil
                     </a>
                 </li >
+
+                {% if is_granted('ROLE_ADMIN') %}
                 <li class="nav-item">
-                    <a href=""> Campus
+                    <a href="{{ path('admin.campus.gestion') }}"> Campus
                     </a>
                 </li >
                 <li class="nav-item">
-                    <a href=""> Villes
+                    <a href="{{ path('admin.villes.gestion') }}"> Villes
                     </a>
                 </li>
+                {% endif %}
 
             </ul>
             </div>
