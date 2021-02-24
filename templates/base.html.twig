@@ -5,6 +5,7 @@
     <link href="https://fonts.googleapis.com/css?family=Crete+Round&display=swap" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/superhero/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset("css/app.css") }}">
+    <script src="https://kit.fontawesome.com/5894f321b2.js"></script>
 
 </head>
 <body>
@@ -58,7 +59,36 @@
 <main>
     {% block body %}{% endblock %}
 </main>
-<footer></footer>
+<footer>
+    <div class="footer-main-div">
+        <div class="footer-social-icons">
+            <ul>
+                <li><a href="#" target="blank"><i class="fab fa-facebook-f"></i></a> </li>
+                <li><a href="#" target="blank"><i class="fab fa-twitter"></i></a> </li>
+                <li><a href="#" target="blank"><i class="fab fa-google-plus-g"></i></a> </li>
+            </ul>
+        </div>
+
+        <div class="footer-menu-one">
+            <ul>
+                <li><a href="#">Accueil</a> </li>
+                <li><a href="#">A propos</a> </li>
+            </ul>
+        </div>
+
+        <div class="footer-menu-two">
+            <ul>
+                <li><a href="#">Blog</a> </li>
+                <li><a href="#">News</a> </li>
+                <li><a href="#">Gallery</a> </li>
+            </ul>
+        </div>
+
+    </div>
+    <div class="footerCredit">
+        <p>Design by: <a href="#">ENI Sortir.com</a></p>
+    </div>
+</footer>
 
 </body>
 </html>
