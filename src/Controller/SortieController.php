@@ -6,6 +6,7 @@ namespace App\Controller;
 use App\Data\SearchData;
 use App\Entity\Sortie;
 use App\Form\CreationSortieType;
+
 use App\Form\SearchForm;
 use App\Repository\EtatRepository;
 use App\Repository\SortieRepository;
@@ -32,7 +33,7 @@ class SortieController extends AbstractController
 
              $sortiesRepo= $sorties->findSearch($data);
             }
-         else $sortiesRepo= $sorties->findAll();
+         else $sortiesRepo= $sorties->findGoodSorties();
 
         return $this->render('sortie/list.html.twig',[
             'sorties' => $sortiesRepo,
@@ -94,15 +95,14 @@ class SortieController extends AbstractController
 
     /**
      * @Route("/sortie/{id}/afficher", name="sortie_detail")
+     * requirement ={"id": "\d+"}
      */
-    public function afficher(SortieRepository $sorties, Request $request)
+    public function afficher(SortieRepository $sorties, Request $request, $id, EntityManagerInterface $em )
     {
 
-        
-        return $this->render('sortie/afficherSortie.html.twig',[
 
-        ]);
     }
+
 
 
 }
