@@ -41,7 +41,6 @@ class CreationSortieType extends AbstractType
             ->add('campus', EntityType::class, [
                 'label' => 'Campus :',
                 'class' => 'App\Entity\Campus',
-                'choice_label' => 'nom',
                 'expanded' => false,
                 'multiple' => false
             ])
@@ -69,9 +68,7 @@ class CreationSortieType extends AbstractType
             ->add('delete', SubmitType::class, [
                 'label' => 'Supprimer la sortie',
                 'attr' => ['class' => 'button']
-            ])
-
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

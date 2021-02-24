@@ -5,7 +5,6 @@ namespace App\Form;
 
 
 use App\Data\SearchData;
-use App\Entity\Campus;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -28,21 +27,25 @@ class SearchForm extends AbstractType
                 ]
             ])
             ->add('campus',EntityType::class, [
+                'class' => 'App\Entity\Campus',
                 'label' => false,
-                'required' => false,
-                'class' => Campus::class,
                 'expanded' => true,
-                'multiple' => true,
+                'multiple' => true
             ])
             ->add('datedebut', DateType::class,[
                 'label' =>false,
-                'empty_data' => '',
+                'widget' => 'single_text',
                 'required' => false,
-                'by_reference' => true,
-            ])
-        ;
-    }
+                'empty_data' => '',
 
+            ])
+          ->add('datefin', DateType::class,[
+              'label' =>false,
+              'widget' => 'single_text',
+              'required' => false,
+              'empty_data' => '',
+          ]);
+    }
 
     public function configureOptions(OptionsResolver $resolver)
     {
@@ -50,8 +53,7 @@ class SearchForm extends AbstractType
             'data_class' => SearchData::class,
             'method' => 'GET',
             'csrf_protection' => false,
-        ])
-        ;
+        ]);
     }
 
     public function getBlockPrefix()

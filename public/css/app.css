@@ -1,47 +1,43 @@
-/* General*/
-
+/*********************** General******************************/
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-
 body{
     font-family: "Arial", sans-serif;
     font-size: 15px;
     background-color: #5f5e5e;
 }
-
 .wrapper {
     width: 1000px;
     margin: 0 auto;
 }
-
 .orange{
     color: #ff7a00;
 }
 
-/*header*/
+.bodyAdmin{
+    background: rgb(2,0,36);
+    background: linear-gradient(6deg, rgba(2,0,36,1) 0%, rgba(167,81,5,1) 100%, rgba(0,212,255,1) 100%);
+}
 
+/****************************header******************************/
 header{
     height: 90px;
 }
-
 header a{
     text-decoration: none;
     color: white;
 }
-
 header h1{
     float: left;
     margin-top: 20px;
 }
-
 header nav{
     float: right;
     margin-top: 33px;
 }
-
 header nav ul li{
     display: inline-block;
     text-transform: uppercase;
@@ -59,7 +55,6 @@ header nav ul li{
     justify-content: center;
     align-items: center;
 }
-
 .formConnexion {
     position: relative;
     max-width: 380px;
@@ -69,11 +64,9 @@ header nav ul li{
     color: #fff;
     box-shadow: 0 15px 25px rgba(0,0,0,0.5);
 }
-
 .formConnexion a{
     color: white;
 }
-
 .formConnexion::before {
     content:'';
     opacity: revert;
@@ -87,7 +80,6 @@ header nav ul li{
     transform-origin: top;
     border-radius: 10px;
 }
-
 .formConnexion img {
     position: absolute;
     top: -50px;
@@ -96,14 +88,12 @@ header nav ul li{
     background: rgba(255,255,255, 0.8);
     border-radius: 50%;
 }
-
 .formConnexion h2 {
     text-align: center;
     letter-spacing: 1px;
     margin-bottom: 2rem;
     color: #ff7a00;
 }
-
 .formConnexion h1 {
     font-size: large;
     background-color: #B0413E;
@@ -112,11 +102,9 @@ header nav ul li{
     margin-bottom: 2rem;
     color: white;
 }
-
 .formConnexion .input-group {
     position: relative;
 }
-
 .formConnexion .input-group input {
     background-color: transparent;
     color: inherit;
@@ -129,16 +117,13 @@ header nav ul li{
     border-bottom: 1px solid #fff;
     outline: none;
 }
-
 input:-webkit-autofill {
     transition: all 0s 50000s;
 }
-
 .formConnexion .input-group label {
     color: #ff7a00;
     font-size: 1rem;
 }
-
 .submit-btn {
     display: block;
     margin-right: auto;
@@ -151,15 +136,12 @@ input:-webkit-autofill {
     border-radius: 5px;
     cursor: pointer;
 }
-
 .formConnexion .group-checkbox{
     margin-bottom: 10px;
 }
-
 .formConnexion input[type=checkbox] {
     display: none;
 }
-
 input[type=checkbox] + span::before {
     content: '';
     width: 10px;
@@ -175,7 +157,7 @@ input[type=checkbox] + span::before {
     border: 1px solid white;
 }
 
-/********** affichage des sortie page /sorties *************/
+/***************** affichage des sortie page /sorties *************/
 
 .grid {
     display: grid;
@@ -189,24 +171,19 @@ input[type=checkbox] + span::before {
 #search {
     padding-left: 2px;
 }
-
 .filter{
     display: block;
     position: sticky;
     top: 20px;
 }
-
 .campus {
     display: flex;
     justify-content: center;
 }
 
-
-
-/********** formulaire gestion de profil *************/
+/***************** formulaire gestion de profil *****************/
 
 .formulaireGestionProfil{
-
     position: relative;
     margin-top: 5%;
     margin-left: 10%;
@@ -216,28 +193,21 @@ input[type=checkbox] + span::before {
     letter-spacing: 1px;
     color: #ff7a00;
     z-index: 10;
-
-
 }
-
 .container_formulaireGestionProfil{
     border: solid 3px white;
     padding:0%;
     border-radius: 25px;
     background-color: #2f2f40;
 }
-
 .photo_de_profil {
-
     display: block;
     width: 200px;
     height: 200px;
     border-radius: 50%;
     margin-top: 5%;
     margin-left: 40%;
-
 }
-
 .flash {
     text-align: center;
     margin: 20px;
@@ -247,20 +217,15 @@ input[type=checkbox] + span::before {
     font-weight: bold;
     border-radius: 10px;
 }
-
 .flash-success {
     background-color: greenyellow;
     color: #004805;
 }
-
 .flash-error {
     background-color: #ffffff;
     color: #bc0000;
 }
-
-
 .btn-gestion-profil {
-
     border: none;
     background: #ff7a00;
     margin-bottom: 30px;
@@ -269,19 +234,15 @@ input[type=checkbox] + span::before {
     padding: 10px 20px;
     border-radius: 5px;
 }
-
 .div-btn-profil-form{
     float: right;
     z-index: 20;
     top: 50%;
 }
 
-/********** Créer une sortie *************/
+/***************** Créer une sortie *********************/
 
 .substitu-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     padding: 5px;
     background: linear-gradient(135deg, #bfa004, #ff7a00);
 }
@@ -291,7 +252,6 @@ input[type=checkbox] + span::before {
     border-radius: 5px;
     box-shadow: 0 5px 10px rgba(0,0,0,0.15);
 }
-
 .formSortieCreation {
     position: relative;
     padding: 30px 40px 40px;
@@ -300,16 +260,13 @@ input[type=checkbox] + span::before {
     color: #fff;
     box-shadow: 0 15px 25px rgba(0,0,0,0.5);
 }
-
 .formSortieCreation h1 {
     font-weight: 500;
     position: relative;
-
     text-align: center;
     letter-spacing: 1px;
     margin-bottom: 2rem;
 }
-
 .formSortieCreation h1::before {
     content: "";
     position: absolute;
@@ -328,20 +285,16 @@ input[type=checkbox] + span::before {
     flex-wrap: wrap;
     justify-content: space-between;
 }
-
 .formSortieCreation .sortie-detail .col-form-label {
     font-size: large;
 }
-
 .formSortieCreation .sortie-detail .form-group{
     margin-bottom: 15px;
     width: calc(100% / 2 - 20px);
 }
-
 .formSortieCreation .sortie-detail .form-group label{
     font-size: large;
 }
-
 .formSortieCreation .sortie-detail .form-group input{
     height: 45px;
     width: 100%;
@@ -350,7 +303,6 @@ input[type=checkbox] + span::before {
     border-radius: 5px;
     padding-left: 15px;
 }
-
 .formSortieCreation .sortie-detail .form-group select{
     margin-right: 5px;
     height: 45px;
@@ -358,11 +310,9 @@ input[type=checkbox] + span::before {
     padding-left: 15px;
     transition: all 2s ease;
 }
-
 .formSortieCreation .sortie-detail .form-group input:focus{
     border-color: #ff7a00;
 }
-
 .formSortieCreation .button {
     height: 100%;
     width: 100%;
@@ -376,14 +326,12 @@ input[type=checkbox] + span::before {
     transition: all 0.3s ease;
     background: linear-gradient(135deg, #bfa004, #ff7a00);
 }
-
 .formSortieCreation .button:hover {
     transform: scale(1.10);
     background: linear-gradient(-135deg, #bfa004, #ff7a00);
 }
 
-/********** Créer une sortie / responsive*************/
-
+/*********** Créer une sortie / responsive*********/
 @media(max-width: 715px){
     .sortieForm-wrapper{
         max-width: 100%;
@@ -392,7 +340,253 @@ input[type=checkbox] + span::before {
         margin-bottom: 15px;
         width: 100%;
     }
-
 }
 
+/************************* admin campus page*************************/
 
+.gestionCampus {
+    justify-content: center;
+}
+.gestionCampus h1 {
+    font-weight: 500;
+    position: relative;
+    text-align: center;
+    letter-spacing: 1px;
+    margin-bottom: 2rem;
+}
+.gestionCampus h1::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    margin-bottom: -3px;
+    margin-left: calc(100% / 2 - 150px);
+    height: 3px;
+    width: 300px;
+    border-radius: 5px;
+    background: linear-gradient(135deg, #ff7a00, #bfa004);
+}
+.form_search_campus {
+    display: flex;
+    justify-content: center;
+}
+.form_search_campus form{
+    display: inline-grid;
+}
+.form_search_campus label{
+    display: none;
+}
+.form_search_campus button {
+    border: none;
+    background: #ff7a00;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+.diviseur{
+    margin: 10px 0px;
+    height: 3px;
+    width: 100%;
+    border-radius: 5px;
+    background: linear-gradient(135deg, #ff7a00, #bfa004);
+}
+.tableContainer {
+    display: flex;
+    justify-content: center;
+    padding: 25px 30px;
+}
+.scrollBar {
+    width: 850px;
+    position: relative;
+    overflow-y: auto;
+    height: 400px;
+    max-height: 400px;
+    border-radius: 5px;
+    box-shadow: 4px 5px 20px rgb(0 0 0);
+}
+.ResultCampus {
+    width: 800px;
+}
+tr {
+    transition: all .2s ease-in;
+    cursor: pointer;
+}
+th, td{
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+#tableHeader tr th{
+    background-color: #d26600;
+    color: #fff;
+    position: sticky;
+    top: 0;
+}
+
+#tableHeader tr:hover {
+    background-color: #d26600;
+    cursor: default;
+    transform: none;
+}
+tr:hover {
+    background-color: #d69b62;
+    color: black;
+    transform: scale(1.02);
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.8);
+}
+/********************** admin modifier campus page***********************/
+
+.form_edit_campus form .form-group{
+    display: grid;
+}
+.scrollBar label{
+    display: none;
+}
+
+/***************** footer *************/
+a{
+    text-decoration: none;
+    outline: none;
+}
+
+.footer-main-div{
+    width: 100%;
+    height: auto;
+    margin: auto;
+    background: #272727;
+    padding: 20px 0px;
+}
+
+/*footer-social-icons*/
+.footer-social-icons{
+    width: 100%;
+    height: auto;
+    margin: auto;
+}
+
+.footer-social-icons ul{
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+}
+
+.footer-social-icons ul li{
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    margin: 0px 10px;
+    border-radius: 100%;
+    background: #ff7a00;
+}
+
+.footer-social-icons ul li:hover{
+    background: #f89c43;
+}
+
+.footer-social-icons ul li:hover a{
+    background: white;
+}
+
+.footer-social-icons ul li a{
+    color: #272727;
+    font-size: 25px;
+}
+
+.footer-social-icons ul li a i{
+    line-height: 50px;
+}
+
+/*footer-menu-one*/
+
+.footer-menu-one{
+    width: 100%;
+    height: auto;
+    margin: auto;
+    margin-top: 30px;
+}
+
+.footer-menu-one ul{
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+}
+
+.footer-menu-one ul li{
+    display: inline-block;
+    margin: 0px 15px;
+}
+
+.footer-menu-one ul li a{
+    font-family: arial;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.footer-menu-one ul li a:hover{
+    color: #ff7a00;
+}
+
+/*footer-menu-two*/
+
+.footer-menu-two{
+    width: 100%;
+    height: auto;
+    margin: auto;
+    margin-top: 10px;
+}
+
+.footer-menu-two ul{
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+}
+
+.footer-menu-two ul li{
+    display: inline-block;
+    margin: 0px 15px;
+}
+
+.footer-menu-two ul li a{
+    font-family: arial;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.footer-menu-two ul li a:hover{
+    color: #ff7a00;
+}
+
+/*footer-bottom*/
+
+.footerCredit{
+    width: 100%;
+    height: 30px;
+    margin: auto;
+    background: #ff7a00;
+    padding: 5px;
+}
+
+.footerCredit p{
+    font-family: arial;
+    font-size: 14px;
+    text-align: center;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: 1px;
+}
+
+.footerCredit p a{
+    color: #fff;
+}
+
+.footerCredit p a:hover{
+    color: #272727;
+}

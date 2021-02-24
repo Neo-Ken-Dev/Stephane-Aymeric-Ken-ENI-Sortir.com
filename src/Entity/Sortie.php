@@ -239,6 +239,17 @@ class Sortie
         return $this;
     }
 
+    public function getNbInscriptionMax(): ?int
+    {
+        return $this->nbInscriptionMax;
+    }
+
+    public function setNbInscriptionMax(?int $nbInscriptionMax): self
+    {
+        $this->nbInscriptionMax = $nbInscriptionMax;
+
+        return $this;
+    }
 
     public function getDescriptionInfos(): ?string
     {
@@ -251,7 +262,6 @@ class Sortie
 
         return $this;
     }
-
 
     public function getUrlPhoto(): ?string
     {
@@ -276,18 +286,5 @@ class Sortie
 
         return $this;
     }
-
-    public function getNbInscriptionMax(): ?int
-    {
-        return $this->nbInscriptionMax;
-    }
-
-    public function setNbInscriptionMax(int $nbInscriptionMax): self
-    {
-        $this->nbInscriptionMax = $nbInscriptionMax;
-
-        return $this;
-    }
-
 
 }

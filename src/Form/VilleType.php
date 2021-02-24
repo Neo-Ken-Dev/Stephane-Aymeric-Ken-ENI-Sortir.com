@@ -19,8 +19,7 @@ class VilleType extends AbstractType
             ])
             ->add('codePostal', IntegerType::class, [
                 'label' => 'Code postal :'
-            ])
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

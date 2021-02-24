@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion Campus | Sortie.com{% endblock %}
+
+{% block body %}
+    <div class="bodyAdmin">
+    <div class="gestionCampus">
+        <h1>Gérer les campus</h1>
+        <div class="form_search_campus">
+            {{ form_start(form) }}
+            {{ form_row(form.searchCampus) }}
+            <button type="submit" class="btn btn-primary">Rechercher</button>
+            {{ form_end(form) }}
+        </div>
+    </div>
+
+    <div class="diviseur"></div>
+
+    <div class="tableContainer">
+        <div class="scrollBar">
+            <table class="ResultCampus">
+                <thead id="tableHeader">
+                <tr>
+                    <th>Campus</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for campus in campusSearch %}
+                    <tr>
+                        <td>{{campus.nom}}</td>
+                        <td>
+                            <a href="{{ path('admin.campus.edit', {id: campus.id }) }}" class="btn btn-primary">Modifier</a>
+                            <a href="{{ path('admin.campus.edit', {id: campus.id }) }}" class="btn btn-primary">Supprimer</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                <tr>
+                    <td>
+                        {{ form_start(formCampus) }}
+                        {{ form_row(formCampus.nom) }}
+                    </td>
+                    <td>
+                        <button type="submit" class="btn btn-primary">Ajouter</button>
+                        {{ form_end(formCampus) }}
+                    </td>
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </div>
+{% endblock %}
+

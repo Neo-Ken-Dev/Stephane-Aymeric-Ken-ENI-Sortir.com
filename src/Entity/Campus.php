@@ -29,8 +29,6 @@ class Campus
      */
     private $sorties;
 
-
-
     /**
      * @ORM\OneToMany (targetEntity="App\Entity\User", mappedBy="campus")
      * @ORM\JoinColumn(nullable=true)
@@ -53,8 +51,6 @@ class Campus
         // to show the id of the Category in the select
         // return $this->id;
     }
-
-
 
     public function getId(): ?int
     {

@@ -5,26 +5,49 @@
     <link href="https://fonts.googleapis.com/css?family=Crete+Round&display=swap" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/superhero/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset("css/app.css") }}">
-    <title>{% block title %}Sortir.com {% endblock %}</title>
+    <script src="https://kit.fontawesome.com/5894f321b2.js"></script>
+
 </head>
 <body>
-
-
 <header>
-    <div class="wrapper">
-        <h1>Sortir<span class="orange">.</span>com</h1>
         {%  if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-        <nav>
-            <ul>
-                <li><a href="{{ path('logout') }}"> Se déconnecter </a></li>
-                <li><a href="{{ path('gestion_profil', {'id': app.user.id }) }}"> Mon profil </a></li>
-                <li><a href="{{ path('sorties_list') }}"> Accueil </a></li>
-                <li><a href=""> Campus </a></li>
-                <li><a href=""> Villes </a></li>
+        <nav class="navbar navbar-expand-lg navbar-expand-xl navbar-expand-md navbar-expand-sm navbar-light bg-light">
+            <a class="navbar-brand" href="{{ path('sorties_list') }}"> Sortir.com</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarColor03">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a href="{{ path('logout') }}"> Se déconnecter
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ path('gestion_profil', {'id': app.user.id }) }}"> Mon profil
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ path('sorties_list') }}"> Accueil
+                    </a>
+                </li >
+
+                {% if is_granted('ROLE_ADMIN') %}
+                <li class="nav-item">
+                    <a href="{{ path('admin.campus.gestion') }}"> Campus
+                    </a>
+                </li >
+                <li class="nav-item">
+                    <a href="{{ path('admin.villes.gestion') }}"> Villes
+                    </a>
+                </li>
+                {% endif %}
+
             </ul>
+            </div>
         </nav>
         {% endif %}
-    </div>
+
 </header>
 {% for label, messages in app.flashes %}
     {% for message in messages %}
@@ -36,10 +59,36 @@
 <main>
     {% block body %}{% endblock %}
 </main>
+<footer>
+    <div class="footer-main-div">
+        <div class="footer-social-icons">
+            <ul>
+                <li><a href="#" target="blank"><i class="fab fa-facebook-f"></i></a> </li>
+                <li><a href="#" target="blank"><i class="fab fa-twitter"></i></a> </li>
+                <li><a href="#" target="blank"><i class="fab fa-google-plus-g"></i></a> </li>
+            </ul>
+        </div>
 
-<footer></footer>
+        <div class="footer-menu-one">
+            <ul>
+                <li><a href="#">Accueil</a> </li>
+                <li><a href="#">A propos</a> </li>
+            </ul>
+        </div>
 
+        <div class="footer-menu-two">
+            <ul>
+                <li><a href="#">Blog</a> </li>
+                <li><a href="#">News</a> </li>
+                <li><a href="#">Gallery</a> </li>
+            </ul>
+        </div>
 
+    </div>
+    <div class="footerCredit">
+        <p>Design by: <a href="#">ENI Sortir.com</a></p>
+    </div>
+</footer>
 
 </body>
 </html>

@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier Ville | Sortie.com{% endblock %}
+
+{% block body %}
+<div class="bodyAdmin">
+    <div class="gestionCampus">
+        <h1>Editer les villes</h1>
+        <div class="form_search_campus form_edit_campus">
+            {{ form_start(formEditVille) }}
+            {{ form_row(formEditVille.nom) }}
+            {{ form_end(formEditVille) }}
+        </div>
+    </div>
+</div>
+{% endblock %}
+

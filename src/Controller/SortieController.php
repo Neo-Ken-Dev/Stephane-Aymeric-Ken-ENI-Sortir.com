@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-
 use App\Data\SearchData;
 use App\Entity\Inscription;
 use App\Entity\Sortie;
@@ -12,7 +11,6 @@ use App\Repository\EtatRepository;
 use App\Repository\InscriptionRepository;
 use App\Repository\SortieRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use http\Message;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -26,12 +24,13 @@ class SortieController extends AbstractController
      */
     public function list(SortieRepository $sorties, Request $request)
     {
+        $this->denyAccessUnlessGranted("IS_AUTHENTICATED_REMEMBERED");
+
         $data = new SearchData();
         $form=$this->createForm(SearchForm::class,$data);
         $form->handleRequest($request);
         if($form ->isSubmitted() && $form ->isValid())
         {
-
             $sortiesRepo= $sorties->findSearch($data);
         }
         else $sortiesRepo= $sorties->findAll();
@@ -101,7 +100,8 @@ class SortieController extends AbstractController
      * methods={"GET"})
      */
 
-    public function detail($id, Request $request, InscriptionRepository $inscriptionRepo){
+    public function detail($id, Request $request, InscriptionRepository $inscriptionRepo)
+    {
 
         $sortiesRepo = $this->getDoctrine()->getRepository(Sortie::class);
         $sortie = $sortiesRepo->find($id);
@@ -110,14 +110,14 @@ class SortieController extends AbstractController
 
         $user = $this->getUser();
 
-        if (!$inscriptionRepo->rechercheInscription($user->getId(), $id)){
+        if (!$inscriptionRepo->rechercheInscription($user->getId(), $id)) {
 
             $btnDesinscrire = false;
-        }else{
+        } else {
             $btnDesinscrire = true;
         }
 
-        return $this->render('sortie/detailsSortie.html.twig',['sortie' => $sortie,
+        return $this->render('sortie/detailsSortie.html.twig', ['sortie' => $sortie,
             'btnDesinscrire' => $btnDesinscrire
         ]);
     }
