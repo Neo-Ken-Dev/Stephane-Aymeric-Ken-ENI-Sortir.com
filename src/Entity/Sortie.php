@@ -27,7 +27,7 @@ class Sortie
     private $nom;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="date")
      */
     private $dateHeureDebut;
 
@@ -37,7 +37,7 @@ class Sortie
     private $duree;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="date")
      */
     private $dateLimiteInscription;
 
@@ -93,13 +93,6 @@ class Sortie
      * @ORM\JoinColumn(nullable=true)
      */
     private $users;
-
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Inscription", mappedBy="sortie", orphanRemoval=true)
-     */
-    private $inscriptions;
-
 
     public function __construct()
     {
@@ -239,6 +232,7 @@ class Sortie
         return $this;
     }
 
+
     public function getNbInscriptionMax(): ?int
     {
         return $this->nbInscriptionMax;
@@ -263,6 +257,7 @@ class Sortie
         return $this;
     }
 
+
     public function getUrlPhoto(): ?string
     {
         return $this->urlPhoto;
@@ -286,5 +281,7 @@ class Sortie
 
         return $this;
     }
+
+
 
 }

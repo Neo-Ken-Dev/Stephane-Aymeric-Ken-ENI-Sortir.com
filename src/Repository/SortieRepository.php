@@ -69,8 +69,9 @@ class SortieRepository extends ServiceEntityRepository
             ->createQueryBuilder('s')
             ->select('d','s')
             ->join('s.etatsortie','d')
-            ->andWhere('s.etatsortie = :open')
-            ->setParameter('open',"2");
+            ->andWhere('d.libelle = :Ouvert')
+            ->setParameter('Ouvert','Ouvert');
+            
 
 
 
