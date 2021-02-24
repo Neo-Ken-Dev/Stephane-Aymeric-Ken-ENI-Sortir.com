@@ -6,6 +6,7 @@ use App\Data\SearchData;
 use App\Entity\Inscription;
 use App\Entity\Sortie;
 use App\Form\CreationSortieType;
+
 use App\Form\SearchForm;
 use App\Repository\EtatRepository;
 use App\Repository\InscriptionRepository;
@@ -29,11 +30,14 @@ class SortieController extends AbstractController
         $data = new SearchData();
         $form=$this->createForm(SearchForm::class,$data);
         $form->handleRequest($request);
-        if($form ->isSubmitted() && $form ->isValid())
-        {
-            $sortiesRepo= $sorties->findSearch($data);
-        }
-        else $sortiesRepo= $sorties->findAll();
+
+            if($form ->isSubmitted() && $form ->isValid())
+             {
+
+             $sortiesRepo= $sorties->findSearch($data);
+            }
+         else $sortiesRepo= $sorties->findGoodSorties();
+
 
         return $this->render('sortie/list.html.twig',[
             'sorties' => $sortiesRepo,
@@ -95,6 +99,7 @@ class SortieController extends AbstractController
 
 
     /**
+
      * @Route("/detail/{id}", name="detail_sortie")
      * requirements= {"id":"/d+"},
      * methods={"GET"})
@@ -121,6 +126,7 @@ class SortieController extends AbstractController
             'btnDesinscrire' => $btnDesinscrire
         ]);
     }
+
 
     /**
      * @Route("/inscire/{id}", name="inscrire", requirements={"id":"\d+"})
@@ -181,6 +187,7 @@ class SortieController extends AbstractController
 
         return $this->redirectToRoute('sorties_list');
     }
+
 
 
 }

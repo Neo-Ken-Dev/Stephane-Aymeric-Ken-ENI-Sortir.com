@@ -63,4 +63,20 @@ class SortieRepository extends ServiceEntityRepository
         return $query->getQuery()->getResult();
     }
 
+    public function findGoodSorties()
+    {
+        $query = $this
+            ->createQueryBuilder('s')
+            ->select('d','s')
+            ->join('s.etatsortie','d')
+            ->andWhere('s.etatsortie = :open')
+            ->setParameter('open',"2");
+
+
+
+
+        return $query->getQuery()->getResult();
+
+    }
+
 }
