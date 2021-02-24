@@ -136,9 +136,9 @@ class SortieController extends AbstractController
         // SI INSCRIPTION OUVERTE
 
         $libelle = "Ouvert";
-        $etatSortie = $sortie->findOneByETAT($libelle);
+        $etatSortie = $sortieRepo->findOneByETAT($libelle);
 
-        if($etatSortie == 2){
+        if($etatSortie == "Ouvert"){
 
         // SI IL RESTE DE LA PLACE
         if ($inscriptionRepo->nbInscriptions($id) < $sortie->getNbInscriptionMax()) {

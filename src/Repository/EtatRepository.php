@@ -19,12 +19,4 @@ class EtatRepository extends ServiceEntityRepository
         parent::__construct($registry, Etat::class);
     }
 
-    public function findOneByETAT($libelle): ?Etat
-    {
-        return $this->createQueryBuilder('e')
-            ->andWhere('e.libelle LIKE :libelle')
-            ->setParameter('libelle', $libelle)
-            ->getQuery()
-            ->getOneOrNullResult();
-    }
 }
