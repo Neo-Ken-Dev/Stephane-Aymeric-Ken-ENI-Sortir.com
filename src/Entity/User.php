@@ -106,6 +106,11 @@ class User implements UserInterface
     }
 
     /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Inscription", mappedBy="user", orphanRemoval=true)
+     */
+    private $inscriptions;
+
+    /**
      * @return Campus
      */
     public function getCampus():? Campus

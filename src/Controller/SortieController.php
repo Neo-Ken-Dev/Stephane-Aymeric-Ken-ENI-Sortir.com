@@ -133,8 +133,12 @@ class SortieController extends AbstractController
 
         //----------CONTRÔLES-----------
 
-        /* SI INSCRIPTION OUVERTE
-        if($sortie->getEtatSortie_id() == 2){ */
+        // SI INSCRIPTION OUVERTE
+
+        $libelle = "Ouvert";
+        $etatSortie = $sortie->findOneByETAT($libelle);
+
+        if($etatSortie == 2){
 
         // SI IL RESTE DE LA PLACE
         if ($inscriptionRepo->nbInscriptions($id) < $sortie->getNbInscriptionMax()) {
@@ -142,32 +146,39 @@ class SortieController extends AbstractController
         // SI USER PAS DEJA INSCRIT
         if (!$inscriptionRepo->rechercheInscription($user->getId(), $id)) {
 
-        // SI INSCRIPTIONS MAX ATTEINTES, ETAT SORTIE --> FERME
-        if ($inscriptionRepo->nbInscriptions($id) == (($sortie->getNbInscriptionMax()) - 1)) {
+            // SI INSCRIPTIONS MAX ATTEINTES, ETAT SORTIE --> FERME
+            if ($inscriptionRepo->nbInscriptions($id) == (($sortie->getNbInscriptionMax()) - 1)) {
 
-                    $sortie->setEtatSortie(4);
-                    $em->persist($sortie);
-                    $em->flush();
-                }
-
-                // CREATION DE L'INSCRIPTION + ENREGISTREMENT EN BDD
-
-                $inscription = new Inscription();
-                $inscription->setUser($user);
-                $inscription->setSortie($sortie);
-                $date = new \DateTime();
-                $inscription->setDateInscription($date);
-                $em->persist($inscription);
+                $etat = $etatRepo->findOneBy(['libelle' => 'Fermé']);
+                $sortie->setEtatSortie($etat);
+                $em->persist($sortie);
                 $em->flush();
+            }
 
-                // MESSAGE DE CONFIRMATION
-                $this->addFlash('success', 'Votre inscription est validé !');
+            // CREATION DE L'INSCRIPTION + ENREGISTREMENT EN BDD
 
+            $inscription = new Inscription();
+            $inscription->setUser($user);
+            $inscription->setSortie($sortie);
+            $date = new \DateTime();
+            $inscription->setDateInscription($date);
+            $em->persist($inscription);
+            $em->flush();
+
+            // MESSAGE DE CONFIRMATION
+
+            $this->addFlash('success', 'Votre inscription est validé !');
 
         } else {
-                $this->addFlash('error', 'Echec: vous êtes déjà inscrit à cette sortie ou bien les inscriptions sont terminées' );
-            }
+                 $this->addFlash('error', 'Vous êtes déjà inscrit à cette sortie !');
         }
+        } else {
+                 $this->addFlash('error', 'Toutes les places disponibles pour cette sortie sont prises pour le moment !' );
+            }
+        } else {
+                 $this->addFlash('error', 'Les inscriptions sont terminées !');
+        }
+
         return $this->redirectToRoute('sorties_list');
     }
 
