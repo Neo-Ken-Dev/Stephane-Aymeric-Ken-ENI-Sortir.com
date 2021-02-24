@@ -7,7 +7,6 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints\Date;
 
 /**
  * @ORM\Entity(repositoryClass=SortieRepository::class)
@@ -204,7 +203,17 @@ class Sortie
         return $this;
     }
 
+    public function getDateHeureDebut(): ?\DateTimeInterface
+    {
+        return $this->dateHeureDebut;
+    }
 
+    public function setDateHeureDebut(?\DateTimeInterface $dateHeureDebut): self
+    {
+        $this->dateHeureDebut = $dateHeureDebut;
+
+        return $this;
+    }
 
     public function getDuree(): ?int
     {
@@ -218,55 +227,17 @@ class Sortie
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getDateHeureDebut()
-    {
-        return $this->dateHeureDebut;
-    }
-
-    /**
-     * @param mixed $dateHeureDebut
-     */
-    public function setDateHeureDebut($dateHeureDebut): Date
-    {
-        $this->dateHeureDebut = $dateHeureDebut;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getDateLimiteInscription()
+    public function getDateLimiteInscription(): ?\DateTimeInterface
     {
         return $this->dateLimiteInscription;
     }
 
-    /**
-     * @param mixed $dateLimiteInscription
-     */
-    public function setDateLimiteInscription($dateLimiteInscription): Date
+    public function setDateLimiteInscription(?\DateTimeInterface $dateLimiteInscription): self
     {
         $this->dateLimiteInscription = $dateLimiteInscription;
+
+        return $this;
     }
-
-    /**
-     * @return mixed
-     */
-    public function getInscriptions()
-    {
-        return $this->inscriptions;
-    }
-
-    /**
-     * @param mixed $inscriptions
-     */
-    public function setInscriptions($inscriptions): void
-    {
-        $this->inscriptions = $inscriptions;
-    }
-
-
 
     public function getNbInscriptionMax(): ?int
     {
@@ -315,7 +286,5 @@ class Sortie
 
         return $this;
     }
-
-
 
 }
