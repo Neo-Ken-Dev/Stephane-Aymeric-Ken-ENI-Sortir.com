@@ -12,8 +12,11 @@
         <div>  {{ sortie.descriptionInfos }}</div>
         <div class ="card-footer text-muted">
 
-            {{ sortie.campus }}
-            {{ sortie.etatsortie }}
+            {{ sortie.campus }}<br>
+            {{ sortie.etatsortie }}<br>
+            {{ sortie.organisateur }}
+            <a href="{{ path('detail_sortie',{'id': sortie.id}) }}">Voir détails</a>
         </div>
+
     </div>
 </div>

@@ -48,7 +48,7 @@ class SortieRepository extends ServiceEntityRepository
         if(!empty($search-> datedebut)){
             $query =$query
 
-                ->andWhere('s.dateHeureDebut LIKE :date_heure_debut' )
+                ->andWhere('s.dateHeureDebut = :date_heure_debut' )
                 ->setParameter('date_heure_debut',$search->datedebut);
         }
 
@@ -56,7 +56,7 @@ class SortieRepository extends ServiceEntityRepository
         {
             $query= $query
 
-                ->andWhere('s.dateLimiteInscription LIKE :date_limite_inscription')
+                ->andWhere('s.dateLimiteInscription = :date_limite_inscription')
                 ->setParameter('date_limite_inscription',$search->datefin);
         }
         
