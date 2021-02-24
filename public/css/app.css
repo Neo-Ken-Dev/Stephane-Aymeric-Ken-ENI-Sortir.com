@@ -245,16 +245,17 @@ input[type=checkbox] + span::before {
     display: block;
     font-size:24px;
     font-weight: bold;
-    color: #004805;
     border-radius: 10px;
 }
 
 .flash-success {
     background-color: greenyellow;
+    color: #004805;
 }
 
 .flash-error {
-    background-color: firebrick;
+    background-color: #ffffff;
+    color: #bc0000;
 }
 
 

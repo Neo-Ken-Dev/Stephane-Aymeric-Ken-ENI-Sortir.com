@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Creation sortie | Sortie.com{% endblock %}
+{% block title %}Détails de la sortie | Sortie.com{% endblock %}
 
 {% block body %}
      <h3>{{ sortie.nom }}</h3>
@@ -10,11 +10,14 @@
      <h3>{{ sortie.nbInscriptionMax }}</h3>
      <h3>{{ sortie.descriptionInfos }}</h3>
      <h3>{{ sortie.organisateur }}</h3>
-     <h3>{{ sortie.etatsortie }}</h3>
      <h3>{{ sortie.lieu }}</h3>
      <h3>{{ sortie.campus }}</h3>
 
-     <button>S'inscrire</button>
+     {% if (btnDesinscrire == true) %}
+          <a href="{{ path('inscrire',{'id': sortie.id}) }}"><button>Se désinscrire</button></a>
+     {% else %}
+          <a href="{{ path('inscrire',{'id': sortie.id}) }}"><button>S'inscrire</button></a>
+     {% endif %}
 {% endblock %}
 
 

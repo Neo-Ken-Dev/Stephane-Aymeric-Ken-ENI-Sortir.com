@@ -4,10 +4,12 @@ namespace App\Controller;
 
 
 use App\Data\SearchData;
+use App\Entity\Inscription;
 use App\Entity\Sortie;
 use App\Form\CreationSortieType;
 use App\Form\SearchForm;
 use App\Repository\EtatRepository;
+use App\Repository\InscriptionRepository;
 use App\Repository\SortieRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use http\Message;
@@ -92,17 +94,6 @@ class SortieController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/sortie/{id}/afficher", name="sortie_detail")
-     */
-    public function afficher(SortieRepository $sorties, Request $request)
-    {
-
-        
-        return $this->render('sortie/afficherSortie.html.twig',[
-
-        ]);
-    }
 
     /**
      * @Route("/detail/{id}", name="detail_sortie")
@@ -110,36 +101,75 @@ class SortieController extends AbstractController
      * methods={"GET"})
      */
 
-    public function detail($id, Request $request){
+    public function detail($id, Request $request, InscriptionRepository $inscriptionRepo){
 
         $sortiesRepo = $this->getDoctrine()->getRepository(Sortie::class);
         $sortie = $sortiesRepo->find($id);
 
-        return $this->render('sortie/detailsSortie.html.twig',['sortie' => $sortie
+        // SI USER DEJA INSCRIT A CET EVENEMENT --> AJOUT BOUTON DESINSCRIPTION
 
+        $user = $this->getUser();
+
+        if (!$inscriptionRepo->rechercheInscription($user->getId(), $id)){
+
+            $btnDesinscrire = false;
+        }else{
+            $btnDesinscrire = true;
+        }
+
+        return $this->render('sortie/detailsSortie.html.twig',['sortie' => $sortie,
+            'btnDesinscrire' => $btnDesinscrire
         ]);
     }
 
     /**
-     * @Route("/inscription/{id}", name="inscription_sortie")
-     * requirements= {"id":"/d+"},
-     * methods={"GET"})
+     * @Route("/inscire/{id}", name="inscrire", requirements={"id":"\d+"})
      */
+    public function inscrireSortie($id, EntityManagerInterface $em, InscriptionRepository $inscriptionRepo, SortieRepository $sortieRepo, EtatRepository $etatRepo)
+    {
+        // ON RECUPERE LE USER ET LA SORTIE EN COURS.
+        $user = $this->getUser();
+        $sortie = $sortieRepo->find($id);
 
-    public function inscription($id, Request $request){
+        //----------CONTRÔLES-----------
 
-        // Identification de User et Sortie en cours:
-        $idUser = $this->getUser();
-        $sortiesRepo = $this->getDoctrine()->getRepository(Sortie::class);
-        $sortie = $sortiesRepo->find($id);
+        /* SI INSCRIPTION OUVERTE
+        if($sortie->getEtatSortie_id() == 2){ */
+
+        // SI IL RESTE DE LA PLACE
+        if ($inscriptionRepo->nbInscriptions($id) < $sortie->getNbInscriptionMax()) {
+
+        // SI USER PAS DEJA INSCRIT
+        if (!$inscriptionRepo->rechercheInscription($user->getId(), $id)) {
+
+        // SI INSCRIPTIONS MAX ATTEINTES, ETAT SORTIE --> FERME
+        if ($inscriptionRepo->nbInscriptions($id) == (($sortie->getNbInscriptionMax()) - 1)) {
+
+                    $sortie->setEtatSortie(4);
+                    $em->persist($sortie);
+                    $em->flush();
+                }
+
+                // CREATION DE L'INSCRIPTION + ENREGISTREMENT EN BDD
+
+                $inscription = new Inscription();
+                $inscription->setUser($user);
+                $inscription->setSortie($sortie);
+                $date = new \DateTime();
+                $inscription->setDateInscription($date);
+                $em->persist($inscription);
+                $em->flush();
+
+                // MESSAGE DE CONFIRMATION
+                $this->addFlash('success', 'Votre inscription est validé !');
 
 
-
-
-
-        return $this->render('sortie/detailsSortie.html.twig',['sortie' => $sortie
-
-        ]);
+        } else {
+                $this->addFlash('error', 'Echec: vous êtes déjà inscrit à cette sortie ou bien les inscriptions sont terminées' );
+            }
+        }
+        return $this->redirectToRoute('sorties_list');
     }
+
 
 }
