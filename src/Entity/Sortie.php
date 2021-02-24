@@ -94,13 +94,6 @@ class Sortie
      */
     private $users;
 
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Inscription", mappedBy="sortie", orphanRemoval=true)
-     */
-    private $inscriptions;
-
-
     public function __construct()
     {
         $this->users = new ArrayCollection();
@@ -239,6 +232,7 @@ class Sortie
         return $this;
     }
 
+
     public function getNbInscriptionMax(): ?int
     {
         return $this->nbInscriptionMax;
@@ -263,6 +257,7 @@ class Sortie
         return $this;
     }
 
+
     public function getUrlPhoto(): ?string
     {
         return $this->urlPhoto;
@@ -286,5 +281,7 @@ class Sortie
 
         return $this;
     }
+
+
 
 }
