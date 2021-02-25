@@ -455,6 +455,7 @@ a{
     width: 100%;
     height: auto;
     margin: auto;
+    margin-top: 10px;
     background: #272727;
     padding: 20px 0px;
 }
@@ -589,4 +590,19 @@ a{
 
 .footerCredit p a:hover{
     color: #272727;
+}
+
+/*************** Détails sortie *************/
+
+.titreSortie{
+    margin:10px;
+    font-size: 24px;
+}
+
+.descriptionSortie{
+    margin:10px;
+}
+
+.labelSortie{
+    color: cadetblue;
 }

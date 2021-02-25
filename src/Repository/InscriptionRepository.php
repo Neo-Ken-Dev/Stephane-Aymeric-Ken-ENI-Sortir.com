@@ -66,4 +66,13 @@ class InscriptionRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    // Rertourne une liste de tous les utilisateurs liés à $id (= l'id de la sortie)
+    public function trouverUtilisateursParInscription($id)
+    {
+        $queryBuilder = $this->createQueryBuilder('m');
+        $queryBuilder->where('m.sortie = :id')->setParameter('id', $id);
+        $query = $queryBuilder->getQuery();
+        return $query->getResult();
+    }
 }
