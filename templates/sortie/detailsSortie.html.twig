@@ -18,6 +18,50 @@
      {% else %}
           <a href="{{ path('inscrire',{'id': sortie.id}) }}"><button>S'inscrire</button></a>
      {% endif %}
+
+<div class="card container">
+     <div class="row">
+          <div class="col-md-1">
+              <img src=" {{ sortie.urlPhoto }}" alt="image de la sortie">
+          </div>
+          <div class="col-md-2">
+
+          </div>
+          <div class="col-md-6">
+     <h1>Titre : {{ sortie.nom }}</h1>
+      Date de début des inscriptions :{{ sortie.dateHeureDebut|date('j M Y') }}<br>
+
+      Date de fin des inscriptions : {{ sortie.dateLimiteInscription|date('j M Y ') }}<br>
+
+      Temps estimé de la sortie :{{ sortie.duree }}<br>
+
+      Nombre de places  : {{ sortie.nbInscriptionMax }}<br>
+
+      Description :{{ sortie.descriptionInfos }}<br>
+
+      Organisateur de la sortie : <a href ="{{ path('afficher_profil', {'id': sortie.user}) }}"> {{ sortie.user.getNom() }}</a><br>
+
+      Lieu de la sortie :   {%  if(sortie.lieu == NULL) %}
+                               <a class="table-warning"  >Pas de Lieu de sortie</a>
+                            {% else %}
+                                 {{ sortie.lieu }}
+                            {% endif %}<br>
+
+      Status de la sortie : {%  if(sortie.etatsortie == "Annulé") %}
+                                    <a class="table-warning">{{ sortie.etatsortie }}</a>
+                            {% else %}
+                                    <a class="table-success"> {{ sortie.etatsortie }}</a>
+                            {% endif %}
+              <br>
+              {{ sortie.campus }} <br><br>
+
+              {% if (btnDesinscrire == true) %}
+                  <a href="{{ path('inscrire',{'id': sortie.id}) }}"><button>Se désinscrire</button></a>
+              {% else %}
+                  <a href="{{ path('inscrire',{'id': sortie.id}) }}"><button>S'inscrire</button></a>
+              {% endif %}
+          </div>
+
+
+     </div>
 {% endblock %}
-
-

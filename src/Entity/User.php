@@ -236,6 +236,56 @@ class User implements UserInterface
         }
     }
 
+    /**
+     * @return ArrayCollection
+     */
+    public function getSorties(): ArrayCollection
+    {
+        return $this->sorties;
+    }
+
+    /**
+     * @param ArrayCollection $sorties
+     */
+    public function setSorties(ArrayCollection $sorties): void
+    {
+        $this->sorties = $sorties;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getParticipants(): ArrayCollection
+    {
+        return $this->participants;
+    }
+
+    /**
+     * @param ArrayCollection $participants
+     */
+    public function setParticipants(ArrayCollection $participants): void
+    {
+        $this->participants = $participants;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getInscriptions()
+    {
+        return $this->inscriptions;
+    }
+
+    /**
+     * @param mixed $inscriptions
+     */
+    public function setInscriptions($inscriptions): void
+    {
+        $this->inscriptions = $inscriptions;
+    }
+
+
+
     public function getSalt(){}
 
     public function eraseCredentials(){}
@@ -250,6 +300,11 @@ class User implements UserInterface
         $this->photo = $photo;
 
         return $this;
+    }
+
+    public function __toString() :string
+    {
+        return $this -> id;
     }
 
 }

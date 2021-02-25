@@ -19,4 +19,15 @@ class UserRepository extends ServiceEntityRepository
         parent::__construct($registry, User::class);
     }
 
+    /*                  requete personalisée à compléter afin d'éviter de retourner le mot de passe depuis la BDD,
+     *
+     * public function findUser($id)
+    {
+        $query = $this
+            ->createQueryBuilder('u');
+
+
+        return $query ->getQuery()->getResult();
+
+    }*/
 }

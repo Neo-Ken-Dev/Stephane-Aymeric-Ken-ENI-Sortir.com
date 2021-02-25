@@ -94,6 +94,11 @@ class Sortie
      */
     private $users;
 
+    /**
+     * @ORM\OneToMany (targetEntity="App\Entity\Inscription", mappedBy="sortie", orphanRemoval=true)
+     */
+    private $inscriptions;
+
     public function __construct()
     {
         $this->users = new ArrayCollection();
@@ -280,6 +285,22 @@ class Sortie
         $this->organisateur = $organisateur;
 
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getInscriptions()
+    {
+        return $this->inscriptions;
+    }
+
+    /**
+     * @param mixed $inscriptions
+     */
+    public function setInscriptions($inscriptions): void
+    {
+        $this->inscriptions = $inscriptions;
     }
 
 
