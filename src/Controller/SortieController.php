@@ -66,6 +66,12 @@ class SortieController extends AbstractController
         $sortieForm = $this->createForm(CreationSortieType::class, $sortie);
         $sortieForm->handleRequest($request);
 
+
+        if ($sortieForm->get('annuler')->isClicked()){
+            return new RedirectResponse($this->generateUrl('sorties_list'));
+        }
+
+
         if ($sortieForm->isSubmitted() && $sortieForm->isValid()){
 
             if($sortieForm->get('add')->isClicked()){
@@ -76,9 +82,7 @@ class SortieController extends AbstractController
                 $etat = $etatRepo->findOneBy(['libelle' => 'Ouvert']);
                 $sortie->setEtatSortie($etat);
             }
-            if ($sortieForm->get('annuler')->isClicked()){
-                return new RedirectResponse($this->generateUrl('sorties_list'));
-            }
+
             if ($sortieForm->get('delete')->isClicked()){
                 $em->remove($sortie);
                 $em->flush();
@@ -88,6 +92,7 @@ class SortieController extends AbstractController
             $em->flush();
             return new RedirectResponse($this->generateUrl('sorties_list'));
         }
+
 
         return $this->render('sortie/createSortieForm.html.twig', [
             'controller_name' => 'SortieController',
