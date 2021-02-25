@@ -19,7 +19,7 @@ class InscriptionRepository extends ServiceEntityRepository
         parent::__construct($registry, Inscription::class);
     }
 
-    // retourne le nombre d'inscrit à une sortie ($id = l'id de la sortie)
+    // CONNAITRE LE NB D INSCRIT A LA SORTIE
     public function nbInscriptions($id)
     {
         $queryBuilder = $this->createQueryBuilder('m');
@@ -28,9 +28,7 @@ class InscriptionRepository extends ServiceEntityRepository
         return $nombreInscrit;
     }
 
-    // Fonction qui retourne un boolean si l'utilisateur est inscrit à la sortie
-    // en argument : id de l'utilisateur et id de la sortie
-    // ScalarResult permet de retourner un seul résultat
+    //CONNAITRE SI USER INSCRIT OU NON (BOOLEEN), ON VERIFIE SI D'ID DU USER EST ASSOCIES A LA SORTIE EN COURS
     public function rechercheInscription($idUser, $idSortie)
     {
         $queryBuilder = $this->createQueryBuilder('m');
@@ -55,19 +53,8 @@ class InscriptionRepository extends ServiceEntityRepository
     }
     */
 
-    /*
-    public function findOneBySomeField($value): ?Inscription
-    {
-        return $this->createQueryBuilder('i')
-            ->andWhere('i.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 
-    // Rertourne une liste de tous les utilisateurs liés à $id (= l'id de la sortie)
+    // RETOURNE LES INSCRITS A LA SORTIE.
     public function listDesInscrits($id)
     {
         $queryBuilder = $this->createQueryBuilder('i');

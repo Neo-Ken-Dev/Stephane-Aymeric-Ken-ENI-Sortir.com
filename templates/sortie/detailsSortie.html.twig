@@ -3,78 +3,77 @@
 {% block title %}Détails de la sortie | Sortie.com{% endblock %}
 
 {% block body %}
-{#  <div class="container">#}
-{#     <div class="row">#}
-{#          <div class="titreSortie col-xs-12">{{ sortie.nom }}</div>#}
-{#     </div>#}
-{#          <div class="row">#}
-{#               <div class="dateSortie col-md-4 labelSortie">Date du départ : {{ sortie.dateHeureDebut|date('j M Y h:i') }}</div>#}
-{#          </div>#}
-{#     <div class="row">#}
-{#          <div class="dureeSortie col-md-4">Durée : {{ sortie.duree }}  minutes</div>#}
-{#          <div class="nbPlacesSortie col-md-4">Nombre de places disponibles : {{ sortie.nbInscriptionMax }}</div>#}
-{#     </div>#}
-{#     <div class="row">#}
-{#          <div class="lieuSortie col-md-4">Lieu : {{ sortie.lieu.nom }}</div>#}
-{#          <div class="organisateurSortie col-md-4">Organisateur : {{ sortie.organisateur }}</div>#}
-{#     </div>#}
-{#     <div class="row">#}
-{#     <div class="campusSortie col-md-4">Campus : {{ sortie.campus }}</div>#}
-{#     <div class="etatSortie col-md-4">L'état de la sortie est : {{ sortie.etatsortie.libelle }}</div>#}
-{#     </div>#}
-{#          <div class="row">#}
-{#               <div class="descriptionSortie col-xs-12">{{ sortie.descriptionInfos }}</div>#}
-{#          </div>#}
-{#               <label class="">Liste des participants</label>#}
-{#    #}
-{#     {% if (btnDesinscrire == true) %}#}
-{#          <a href="{{ path('inscrire',{'id': sortie.id}) }}"><button>Se désinscrire</button></a>#}
-{#     {% else %}#}
-{#          <a href="{{ path('inscrire',{'id': sortie.id}) }}"><button>S'inscrire</button></a>#}
-{#     {% endif %}#}
-
-<div class="card container">
+    <div class="row">
+        <div class="col-md-6">
+            <img id="imageSortie" src=" {{ sortie.urlPhoto }}" alt="image de la sortie">
+        </div>
+    </div>
+  <div class="container">
      <div class="row">
-          <div class="col-md-1">
-              <img src=" {{ sortie.urlPhoto }}" alt="image de la sortie">
+          <div class="titreSortie col-xs-12">{{ sortie.nom }}</div>
+     </div>
+          <div class="row">
+               <div class="dateSortie col-md-4 labelSortie">Date du départ : {{ sortie.dateHeureDebut|date('j M Y h:i') }}</div>
           </div>
-          <div class="col-md-2">
-
+     <div class="row">
+          <div class="dureeSortie col-md-4">Durée : {{ sortie.duree }}  minutes</div>
+          <div class="nbPlacesSortie col-md-4">Nombre de places disponibles : {{ sortie.nbInscriptionMax }}</div>
+     </div>
+     <div class="row">
+          <div class="lieuSortie col-md-4">Lieu : {{ sortie.lieu.nom }}</div>
+          <div class="organisateurSortie col-md-4">Organisateur : {{ sortie.organisateur }}</div>
+     </div>
+     <div class="row">
+     <div class="campusSortie col-md-4">Campus : {{ sortie.campus }}</div>
+     <div class="etatSortie col-md-4">L'état de la sortie est : {{ sortie.etatsortie.libelle }}</div>
+     </div>
+          <div class="row">
+               <div class="descriptionSortie col-xs-12">{{ sortie.descriptionInfos }}</div>
           </div>
-          <div class="col-md-6">
-     <h1>Titre : {{ sortie.nom }}</h1>
-      Date de début des inscriptions :{{ sortie.dateHeureDebut|date('j M Y') }}<br>
+               <label class="">Liste des participants</label>
 
-      Date de fin des inscriptions : {{ sortie.dateLimiteInscription|date('j M Y ') }}<br>
+{#<div class="card container">#}
+{#     <div class="row">#}
+{#          <div class="col-md-1">#}
+{#              <img src=" {{ sortie.urlPhoto }}" alt="image de la sortie">#}
+{#          </div>#}
+{#          <div class="col-md-2">#}
 
-      Temps estimé de la sortie :{{ sortie.duree }}<br>
+{#          </div>#}
+{#          <div class="col-md-6">#}
+{#     <h1>Titre : {{ sortie.nom }}</h1>#}
+{#      Date de début des inscriptions :{{ sortie.dateHeureDebut|date('j M Y') }}<br>#}
 
-      Nombre de places  : {{ sortie.nbInscriptionMax }}<br>
+{#      Date de fin des inscriptions : {{ sortie.dateLimiteInscription|date('j M Y ') }}<br>#}
 
-      Description :{{ sortie.descriptionInfos }}<br>
+{#      Temps estimé de la sortie :{{ sortie.duree }}<br>#}
 
-      Organisateur de la sortie : <a href ="{{ path('afficher_profil', {'id': sortie.user}) }}"> {{ sortie.user.getNom() }}</a><br>
+{#      Nombre de places  : {{ sortie.nbInscriptionMax }}<br>#}
 
-      Lieu de la sortie :   {%  if(sortie.lieu == NULL) %}
-                               <a class="table-warning"  >Pas de Lieu de sortie</a>
-                            {% else %}
-                                 {{ sortie.lieu }}
-                            {% endif %}<br>
+{#      Description :{{ sortie.descriptionInfos }}<br>#}
 
-      Status de la sortie : {%  if(sortie.etatsortie == "Annulé") %}
-                                    <a class="table-warning">{{ sortie.etatsortie }}</a>
-                            {% else %}
-                                    <a class="table-success"> {{ sortie.etatsortie }}</a>
-                            {% endif %}
-              <br>
-              {{ sortie.campus }} <br><br>
+{#      Organisateur de la sortie : <a href ="{{ path('afficher_profil', {'id': sortie.user}) }}"> {{ sortie.user.getNom() }}</a><br>#}
 
-              {% if (btnDesinscrire == true) %}
-                  <a href="{{ path('inscrire',{'id': sortie.id}) }}"><button>Se désinscrire</button></a>
-              {% else %}
-                  <a href="{{ path('inscrire',{'id': sortie.id}) }}"><button>S'inscrire</button></a>
-              {% endif %}
-          </div>
+{#      Lieu de la sortie :   {%  if(sortie.lieu == NULL) %}#}
+{#                               <a class="table-warning"  >Pas de Lieu de sortie</a>#}
+{#                            {% else %}#}
+{#                                 {{ sortie.lieu }}#}
+{#                            {% endif %}<br>#}
+
+{#      Status de la sortie : {%  if(sortie.etatsortie == "Annulé") %}#}
+{#                                    <a class="table-warning">{{ sortie.etatsortie }}</a>#}
+{#                            {% else %}#}
+{#                                    <a class="table-success"> {{ sortie.etatsortie }}</a>#}
+{#                            {% endif %}#}
+{#              <br>#}
+{#              {{ sortie.campus }} <br><br>#}
+
+{#              {% if (btnDesinscrire == true) %}#}
+{#                  <a href="{{ path('inscrire',{'id': sortie.id}) }}"><button>Se désinscrire</button></a>#}
+{#              {% else %}#}
+{#                  <a href="{{ path('inscrire',{'id': sortie.id}) }}"><button>S'inscrire</button></a>#}
+{#              {% endif %}#}
+{#          </div>#}
                <table class="table table-primary table-sm">
 
                     <thead>
@@ -104,5 +103,4 @@
           {% else %}
                <a href="{{ path('inscrire',{'id': sortie.id}) }}"><button>S'inscrire</button></a>
           {% endif %}
-     </div>
 {% endblock %}

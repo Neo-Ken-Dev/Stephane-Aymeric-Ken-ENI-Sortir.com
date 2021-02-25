@@ -586,3 +586,13 @@ a{
 .labelSortie{
     color: cadetblue;
 }
+
+#imageSortie{
+
+    border:3px solid orange;
+    border-radius: 35%;
+    margin: 3% 28%;
+    display: block;
+    width: 300px;
+    height: 300px;
+}
