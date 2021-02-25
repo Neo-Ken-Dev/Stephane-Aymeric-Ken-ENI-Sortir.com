@@ -287,6 +287,22 @@ class Sortie
         return $this;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getInscriptions()
+    {
+        return $this->inscriptions;
+    }
+
+    /**
+     * @param mixed $inscriptions
+     */
+    public function setInscriptions($inscriptions): void
+    {
+        $this->inscriptions = $inscriptions;
+    }
+
 
 
 }
