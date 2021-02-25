@@ -119,7 +119,7 @@ class SortieController extends AbstractController
         // POUR AFFICHAGE DES PARTICIPANTS.
 
         $inscriptionRepo = $this->getDoctrine()->getRepository(Inscription::class);
-        $inscriptions = $inscriptionRepo->trouverUtilisateursParInscription($sortie);
+        $inscriptions = $inscriptionRepo->listDesInscrits($sortie);
 
         // SI USER DEJA INSCRIT A CET EVENEMENT --> AJOUT BOUTON DESINSCRIPTION
 
