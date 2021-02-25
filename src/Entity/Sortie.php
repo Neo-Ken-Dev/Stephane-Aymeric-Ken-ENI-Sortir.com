@@ -95,7 +95,7 @@ class Sortie
     private $users;
 
     /**
-     * @ORM\OneToMany (targetEntity="App\Entity\Inscription", mappedBy="sortie", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\Inscription", mappedBy="sortie", orphanRemoval=true)
      */
     private $inscriptions;
 

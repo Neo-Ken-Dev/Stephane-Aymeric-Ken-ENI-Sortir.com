@@ -64,14 +64,14 @@ class SortieRepository extends ServiceEntityRepository
         return $query->getQuery()->getResult();
     }
 
-    public function findOneByETAT($libelle): Sortie
+   /* public function findOneByETAT($libelle): Sortie
     {
         return $this->createQueryBuilder('e')
             ->andWhere('e.libelle LIKE :libelle')
             ->setParameter('libelle', $libelle)
             ->getQuery()
             ->getOneOrNullResult();
-    }
+    }*/
 
     public function findGoodSorties()
     {

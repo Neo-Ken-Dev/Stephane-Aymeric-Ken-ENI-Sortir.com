@@ -22,28 +22,8 @@ body{
     background: linear-gradient(6deg, rgba(2,0,36,1) 0%, rgba(167,81,5,1) 100%, rgba(0,212,255,1) 100%);
 }
 
-/****************************header******************************/
 header{
-    height: 90px;
-}
-header a{
-    text-decoration: none;
-    color: white;
-}
-header h1{
-    float: left;
-    margin-top: 20px;
-}
-header nav{
-
-
-}
-header nav ul li{
-    display: inline-block;
-    text-transform: uppercase;
-    font-weight: bold;
-    margin-right: 20px;
-    float: right;
+    margin-bottom: 10px;
 }
 
 /*************formulaire de connexion*********************/
@@ -455,6 +435,7 @@ a{
     width: 100%;
     height: auto;
     margin: auto;
+    margin-top: 10px;
     background: #272727;
     padding: 20px 0px;
 }
@@ -589,4 +570,19 @@ a{
 
 .footerCredit p a:hover{
     color: #272727;
+}
+
+/*************** Détails sortie *************/
+
+.titreSortie{
+    margin:10px;
+    font-size: 24px;
+}
+
+.descriptionSortie{
+    margin:10px;
+}
+
+.labelSortie{
+    color: cadetblue;
 }

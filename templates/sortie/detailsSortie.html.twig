@@ -3,21 +3,35 @@
 {% block title %}Détails de la sortie | Sortie.com{% endblock %}
 
 {% block body %}
-     <h3>{{ sortie.nom }}</h3>
-     <h3>{{ sortie.dateHeureDebut|date('d/m/Y') }}</h3>
-     <h3>{{ sortie.duree }}</h3>
-     <h3>{{ sortie.dateLimiteInscription|date('j M Y h:i') }}</h3>
-     <h3>{{ sortie.nbInscriptionMax }}</h3>
-     <h3>{{ sortie.descriptionInfos }}</h3>
-     <h3>{{ sortie.organisateur }}</h3>
-     <h3>{{ sortie.lieu }}</h3>
-     <h3>{{ sortie.campus }}</h3>
-
-     {% if (btnDesinscrire == true) %}
-          <a href="{{ path('inscrire',{'id': sortie.id}) }}"><button>Se désinscrire</button></a>
-     {% else %}
-          <a href="{{ path('inscrire',{'id': sortie.id}) }}"><button>S'inscrire</button></a>
-     {% endif %}
+{#  <div class="container">#}
+{#     <div class="row">#}
+{#          <div class="titreSortie col-xs-12">{{ sortie.nom }}</div>#}
+{#     </div>#}
+{#          <div class="row">#}
+{#               <div class="dateSortie col-md-4 labelSortie">Date du départ : {{ sortie.dateHeureDebut|date('j M Y h:i') }}</div>#}
+{#          </div>#}
+{#     <div class="row">#}
+{#          <div class="dureeSortie col-md-4">Durée : {{ sortie.duree }}  minutes</div>#}
+{#          <div class="nbPlacesSortie col-md-4">Nombre de places disponibles : {{ sortie.nbInscriptionMax }}</div>#}
+{#     </div>#}
+{#     <div class="row">#}
+{#          <div class="lieuSortie col-md-4">Lieu : {{ sortie.lieu.nom }}</div>#}
+{#          <div class="organisateurSortie col-md-4">Organisateur : {{ sortie.organisateur }}</div>#}
+{#     </div>#}
+{#     <div class="row">#}
+{#     <div class="campusSortie col-md-4">Campus : {{ sortie.campus }}</div>#}
+{#     <div class="etatSortie col-md-4">L'état de la sortie est : {{ sortie.etatsortie.libelle }}</div>#}
+{#     </div>#}
+{#          <div class="row">#}
+{#               <div class="descriptionSortie col-xs-12">{{ sortie.descriptionInfos }}</div>#}
+{#          </div>#}
+{#               <label class="">Liste des participants</label>#}
+{#    #}
+{#     {% if (btnDesinscrire == true) %}#}
+{#          <a href="{{ path('inscrire',{'id': sortie.id}) }}"><button>Se désinscrire</button></a>#}
+{#     {% else %}#}
+{#          <a href="{{ path('inscrire',{'id': sortie.id}) }}"><button>S'inscrire</button></a>#}
+{#     {% endif %}#}
 
 <div class="card container">
      <div class="row">
@@ -61,7 +75,34 @@
                   <a href="{{ path('inscrire',{'id': sortie.id}) }}"><button>S'inscrire</button></a>
               {% endif %}
           </div>
+               <table class="table table-primary table-sm">
 
+                    <thead>
+                    <tr>
+                         <th >Username</th>
+                         <th >Prénom</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!-- Ajouter page afficher profil -->
+                    {% for inscription in inscriptions %}
+                         <tr>
+                              <td><a href="{{ path('gestion_profil', { 'id':inscription.user.id }) }}">{{ inscription.user.username }}</a></td>
+                              <td>{{ inscription.user.prenom }}
+                              </td>
 
+                         </tr>
+                    {% else %}
+                         <div class="blabla">
+                              <p> Aucun participant pour le moment  </p>
+                         </div>
+                    {% endfor %}
+                    </tbody>
+               </table>
+          {% if (btnDesinscrire == true) %}
+               <a href="{{ path('inscrire',{'id': sortie.id}) }}"><button>Se désinscrire</button></a>
+          {% else %}
+               <a href="{{ path('inscrire',{'id': sortie.id}) }}"><button>S'inscrire</button></a>
+          {% endif %}
      </div>
 {% endblock %}

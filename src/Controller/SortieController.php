@@ -116,6 +116,11 @@ class SortieController extends AbstractController
         $sortiesRepo = $this->getDoctrine()->getRepository(Sortie::class);
         $sortie = $sortiesRepo->find($id);
 
+        // POUR AFFICHAGE DES PARTICIPANTS.
+
+        $inscriptionRepo = $this->getDoctrine()->getRepository(Inscription::class);
+        $inscriptions = $inscriptionRepo->listDesInscrits($sortie);
+
         // SI USER DEJA INSCRIT A CET EVENEMENT --> AJOUT BOUTON DESINSCRIPTION
 
         $user = $this->getUser();
@@ -128,7 +133,7 @@ class SortieController extends AbstractController
         }
 
         return $this->render('sortie/detailsSortie.html.twig', ['sortie' => $sortie,
-            'btnDesinscrire' => $btnDesinscrire
+            'btnDesinscrire' => $btnDesinscrire, "inscriptions"=>$inscriptions
         ]);
     }
 
@@ -142,14 +147,15 @@ class SortieController extends AbstractController
         $user = $this->getUser();
         $sortie = $sortieRepo->find($id);
 
+
         //----------CONTRÔLES-----------
 
         // SI INSCRIPTION OUVERTE
 
-        $libelle = "Ouvert";
-        $etatSortie = $sortieRepo->findOneByETAT($libelle);
+      //  $libelle = "Ouvert";
+       // $etatSortie = $sortieRepo->findOneByETAT($libelle);
 
-        if($etatSortie == "Ouvert"){
+       // if($etatSortie == "Ouvert"){
 
         // SI IL RESTE DE LA PLACE
         if ($inscriptionRepo->nbInscriptions($id) < $sortie->getNbInscriptionMax()) {
@@ -186,9 +192,9 @@ class SortieController extends AbstractController
         } else {
                  $this->addFlash('error', 'Toutes les places disponibles pour cette sortie sont prises pour le moment !' );
             }
-        } else {
+      /*  } else {
                  $this->addFlash('error', 'Les inscriptions sont terminées !');
-        }
+        }*/
 
         return $this->redirectToRoute('sorties_list');
     }
