@@ -29,8 +29,9 @@ class SortieRepository extends ServiceEntityRepository
     {
         $query = $this
             ->createQueryBuilder('s')
-            ->select('c', 's')
-            ->join('s.campus', 'c');
+            ->select('c', 's','d')
+            ->join('s.campus', 'c')
+            ->join('s.etatsortie','d');
 
 
         if (!empty($search->motclef)) {

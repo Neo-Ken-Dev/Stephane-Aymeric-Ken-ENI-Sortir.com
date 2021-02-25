@@ -94,6 +94,11 @@ class Sortie
      */
     private $users;
 
+    /**
+     * @ORM\OneToMany (targetEntity="App\Entity\Inscription", mappedBy="sortie", orphanRemoval=true)
+     */
+    private $inscriptions;
+
     public function __construct()
     {
         $this->users = new ArrayCollection();

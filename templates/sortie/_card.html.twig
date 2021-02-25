@@ -10,11 +10,14 @@
             Inscription à partir du : {{ sortie.dateHeureDebut|date('d/m/Y') }} <br>
             Inscription jusqu'au : {{ sortie.dateLimiteInscription|date('d/m/Y') }}</p>
         <div>  {{ sortie.descriptionInfos }}</div>
+        <div class="card-body">
+            Sur le campus de :   {{ sortie.campus|upper }}<br>
+            Etat des inscriptions :   {{ sortie.etatsortie }}<br>
+
+        </div>
+        Organisateur de la sortie : <a href ="{{ path('afficher_profil', {'id': sortie.user}) }}"> {{ sortie.user.getNom() }} <br>
         <div class ="card-footer text-muted">
 
-            {{ sortie.campus }}<br>
-            {{ sortie.etatsortie }}<br>
-            {{ sortie.organisateur }}
             <a href="{{ path('detail_sortie',{'id': sortie.id}) }}">Voir détails</a>
         </div>
 

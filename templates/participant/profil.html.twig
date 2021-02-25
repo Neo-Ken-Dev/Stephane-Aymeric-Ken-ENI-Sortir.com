@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="card container">
+        <div class="row">
+            <div class="col-md-1">
+
+            {% if user.photo %}
+                <img src="{{ asset('uploads/photo_profil/'~user.photo)}}" class="photo_de_profil" alt="photo profil">
+            {% else %}
+                <img src="{{ asset('img/avatar.png')}}" class="photo_de_profil" alt="photo profil">
+            {% endif %}
+            </div>
+            <div class="col-md-2">
+
+            </div>
+            <div class="col-md-6">
+               Nom : {{ user.nom}} <br>
+               Prénom : {{ user.prenom }} <br>
+                <br>
+
+                Mail :{{ user.email }}<br>
+                <br>
+
+                Enregistré sur le campus de : {{ user.campus }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
