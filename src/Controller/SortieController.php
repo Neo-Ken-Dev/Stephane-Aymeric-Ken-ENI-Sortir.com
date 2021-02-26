@@ -150,20 +150,13 @@ class SortieController extends AbstractController
 
         //----------CONTRÔLES-----------
 
-        // SI INSCRIPTION OUVERTE
-
-      //  $libelle = "Ouvert";
-       // $etatSortie = $sortieRepo->findOneByETAT($libelle);
-
-       // if($etatSortie == "Ouvert"){
-
         // SI IL RESTE DE LA PLACE
         if ($inscriptionRepo->nbInscriptions($id) < $sortie->getNbInscriptionMax()) {
 
         // SI USER PAS DEJA INSCRIT
         if (!$inscriptionRepo->rechercheInscription($user->getId(), $id)) {
 
-            // SI INSCRIPTIONS MAX ATTEINTES, ETAT SORTIE --> FERME
+            // SI USER DERNIER INSCRIT A LA SORTIE --> ETAT "FERME"
             if ($inscriptionRepo->nbInscriptions($id) == (($sortie->getNbInscriptionMax()) - 1)) {
 
                 $etat = $etatRepo->findOneBy(['libelle' => 'Fermé']);

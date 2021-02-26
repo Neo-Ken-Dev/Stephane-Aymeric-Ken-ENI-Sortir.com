@@ -19,7 +19,7 @@ class InscriptionRepository extends ServiceEntityRepository
         parent::__construct($registry, Inscription::class);
     }
 
-    // CONNAITRE LE NB D INSCRIT A LA SORTIE
+    // CONNAITRE LE NB D INSCRITS A LA SORTIE
     public function nbInscriptions($id)
     {
         $queryBuilder = $this->createQueryBuilder('m');
