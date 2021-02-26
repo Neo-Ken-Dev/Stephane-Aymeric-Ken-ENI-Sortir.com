@@ -86,7 +86,7 @@
                     <!-- Ajouter page afficher profil -->
                     {% for inscription in inscriptions %}
                          <tr>
-                              <td><a href="{{ path('gestion_profil', { 'id':inscription.user.id }) }}">{{ inscription.user.username }}</a></td>
+                              <td><a href="{{ path('afficher_profil', { 'id':inscription.user.id }) }}">{{ inscription.user.username }}</a></td>
                               <td>{{ inscription.user.prenom }}
                                   {% if (btnDesinscrire == true) %}
                                       <a href="{{ path('desinscrire',{'id': inscription.id}) }}"><button>Se désinscrire</button></a>

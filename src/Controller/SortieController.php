@@ -29,18 +29,16 @@ class SortieController extends AbstractController
         $this->denyAccessUnlessGranted("IS_AUTHENTICATED_REMEMBERED");
 
         $data = new SearchData();
-        $form=$this->createForm(SearchForm::class,$data);
+        $form = $this->createForm(SearchForm::class, $data);
         $form->handleRequest($request);
 
-            if($form ->isSubmitted() && $form ->isValid())
-             {
+        if ($form->isSubmitted() && $form->isValid()) {
 
-             $sortiesRepo= $sorties->findSearch($data);
-            }
-         else $sortiesRepo= $sorties->findGoodSorties();
+            $sortiesRepo = $sorties->findSearch($data);
+        } else $sortiesRepo = $sorties->findGoodSorties();
 
 
-        return $this->render('sortie/list.html.twig',[
+        return $this->render('sortie/list.html.twig', [
             'sorties' => $sortiesRepo,
             'form' => $form->createView()
         ]);
@@ -57,13 +55,13 @@ class SortieController extends AbstractController
      */
     public function createOrUpdateSortie(Sortie $sortie = null, Request $request, EntityManagerInterface $em, EtatRepository $etatRepo): Response
     {
-       $this->denyAccessUnlessGranted("IS_AUTHENTICATED_REMEMBERED");
+        $this->denyAccessUnlessGranted("IS_AUTHENTICATED_REMEMBERED");
 
-        if (!$sortie){
+        if (!$sortie) {
             $sortie = new Sortie();
             $sortie->setOrganisateur($this->getUser()->getUsername());
 
-            $user= $this->getUser();
+            $user = $this->getUser();
             $sortie->setUser($user);
         }
 
@@ -71,23 +69,23 @@ class SortieController extends AbstractController
         $sortieForm->handleRequest($request);
 
 
-        if ($sortieForm->get('annuler')->isClicked()){
+        if ($sortieForm->get('annuler')->isClicked()) {
             return new RedirectResponse($this->generateUrl('sorties_list'));
         }
 
 
-        if ($sortieForm->isSubmitted() && $sortieForm->isValid()){
+        if ($sortieForm->isSubmitted() && $sortieForm->isValid()) {
 
-            if($sortieForm->get('add')->isClicked()){
+            if ($sortieForm->get('add')->isClicked()) {
                 $etat = $etatRepo->findOneBy(['libelle' => 'En cours']);
                 $sortie->setEtatSortie($etat);
             }
-            if ($sortieForm->get('publish')->isClicked()){
+            if ($sortieForm->get('publish')->isClicked()) {
                 $etat = $etatRepo->findOneBy(['libelle' => 'Ouvert']);
                 $sortie->setEtatSortie($etat);
             }
 
-            if ($sortieForm->get('delete')->isClicked()){
+            if ($sortieForm->get('delete')->isClicked()) {
                 $em->remove($sortie);
                 $em->flush();
                 return new RedirectResponse($this->generateUrl('sorties_list'));
@@ -108,7 +106,6 @@ class SortieController extends AbstractController
 
 
     /**
-
      * @Route("/detail/{id}", name="detail_sortie")
      * requirements= {"id":"/d+"},
      * methods={"GET"})
@@ -137,8 +134,8 @@ class SortieController extends AbstractController
         }
 
         return $this->render('sortie/detailsSortie.html.twig', ['sortie' => $sortie,
-            'btnDesinscrire' => $btnDesinscrire, "inscriptions"=>$inscriptions,
-            'isOrganisateur' => $sortie->getOrganisateur()==$user->getUsername()
+            'btnDesinscrire' => $btnDesinscrire, "inscriptions" => $inscriptions,
+            'isOrganisateur' => $sortie->getOrganisateur() == $user->getUsername()
         ]);
     }
 
@@ -155,6 +152,7 @@ class SortieController extends AbstractController
 
         //----------CONTRÔLES-----------
 
+
         // SI INSCRIPTION OUVERTE
 
         //  $libelle = "Ouvert";
@@ -165,73 +163,68 @@ class SortieController extends AbstractController
         // SI IL RESTE DE LA PLACE
         if ($inscriptionRepo->nbInscriptions($id) < $sortie->getNbInscriptionMax()) {
 
-
             // SI USER PAS DEJA INSCRIT
             if (!$inscriptionRepo->rechercheInscription($user->getId(), $id)) {
 
 
-                // CREATION DE L'INSCRIPTION + ENREGISTREMENT EN BDD
+                    // CREATION DE L'INSCRIPTION + ENREGISTREMENT EN BDD
 
-                $inscription = new Inscription();
-                $inscription->setUser($user);
-                $inscription->setSortie($sortie);
-                $date = new \DateTime();
-                $inscription->setDateInscription($date);
-                $em->persist($inscription);
+                    $inscription = new Inscription();
+                    $inscription->setUser($user);
+                    $inscription->setSortie($sortie);
+                    $date = new \DateTime();
+                    $inscription->setDateInscription($date);
+                    $em->persist($inscription);
+                    $em->flush();
+
+                    // MESSAGE DE CONFIRMATION
+
+                    $this->addFlash('success', 'Votre inscription est validée !');
+
+                } else {
+                    $this->addFlash('error', 'Vous êtes déjà inscrit à cette sortie !');
+                }
+                // SI INSCRIPTIONS MAX ATTEINTES, ETAT SORTIE --> FERME
+            } elseif ($inscriptionRepo->nbInscriptions($id) == (($sortie->getNbInscriptionMax()) - 1)) {
+
+                $etat = $etatRepo->findOneBy(['libelle' => 'Fermé']);
+                $sortie->setEtatSortie($etat);
+                $em->persist($sortie);
                 $em->flush();
 
-                // MESSAGE DE CONFIRMATION
+                $this->addFlash('error', 'Toutes les places disponibles pour cette sortie sont prises pour le moment !');
 
-                $this->addFlash('success', 'Votre inscription est validée !');
-
-            } else {
-                $this->addFlash('error', 'Vous êtes déjà inscrit à cette sortie !');
             }
-            // SI INSCRIPTIONS MAX ATTEINTES, ETAT SORTIE --> FERME
-        } elseif ($inscriptionRepo->nbInscriptions($id) == (($sortie->getNbInscriptionMax()) - 1)){
+            // TO DO
+            /*  } else {
+                       $this->addFlash('error', 'Les inscriptions sont terminées !');
+              }*/
 
-            $etat = $etatRepo->findOneBy(['libelle' => 'Fermé']);
-            $sortie->setEtatSortie($etat);
-            $em->persist($sortie);
-            $em->flush();
-
-            $this->addFlash('error', 'Toutes les places disponibles pour cette sortie sont prises pour le moment !' );
-
+            return $this->redirectToRoute('sorties_list');
         }
 
+        /**
+         * @Route("desinscrire/{id}", name="desinscrire",requirements={"id":"\d+"})
+         */
+        public function desinscrireSortie(Inscription $inscription = null, Request $request, EntityManagerInterface $em, InscriptionRepository $inscriptionRepo)
+        {
 
 
-         // TO DO
-      /*  } else {
-                 $this->addFlash('error', 'Les inscriptions sont terminées !');
-        }*/
-
-        return $this->redirectToRoute('sorties_list');
-    }
-
-    /**
-     * @Route("desinscrire/{id}", name="desinscrire",requirements={"id":"\d+"})
-     */
-    public function desinscrireSortie (Inscription $inscription = null, Request $request, EntityManagerInterface $em, InscriptionRepository $inscriptionRepo)
-    {
+            //trouver la ligne dans la table
+            // $inscriptionRepo = $this ->getDoctrine()->getRepository(Inscription::class);
 
 
+            //$inscription = $inscriptionRepo->findBy($id);
+            dump($inscription);
+            $em->remove($inscription);
+            $em->flush();
 
+            // $inscription->delete($id);
 
-        //trouver la ligne dans la table
-       // $inscriptionRepo = $this ->getDoctrine()->getRepository(Inscription::class);
+            $this->addFlash('success', 'Vous vous êtes désinscrit  ');
 
+            return $this->redirectToRoute('sorties_list');
+        }
 
-        //$inscription = $inscriptionRepo->findBy($id);
-        dump($inscription);
-        $em->remove($inscription);
-        $em->flush();
-
-       // $inscription->delete($id);
-
-        $this->addFlash('success','Vous vous êtes désinscrit  ');
-
-        return $this->redirectToRoute('sorties_list');
-    }
 
 }
