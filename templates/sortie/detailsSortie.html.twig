@@ -4,7 +4,7 @@
 
 {% block body %}
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-1">
             <img id="imageSortie" src=" {{ sortie.urlPhoto }}" alt="image de la sortie">
         </div>
     </div>
@@ -88,6 +88,11 @@
                          <tr>
                               <td><a href="{{ path('gestion_profil', { 'id':inscription.user.id }) }}">{{ inscription.user.username }}</a></td>
                               <td>{{ inscription.user.prenom }}
+                                  {% if (btnDesinscrire == true) %}
+                                      <a href="{{ path('desinscrire',{'id': inscription.id}) }}"><button>Se désinscrire</button></a>
+
+                                  {% endif %}
+
                               </td>
 
                          </tr>
@@ -98,9 +103,12 @@
                     {% endfor %}
                     </tbody>
                </table>
-          {% if (btnDesinscrire == true) %}
-               <a href="{{ path('inscrire',{'id': sortie.id}) }}"><button>Se désinscrire</button></a>
-          {% else %}
-               <a href="{{ path('inscrire',{'id': sortie.id}) }}"><button>S'inscrire</button></a>
-          {% endif %}
+    {% if(btnDesinscrire == false) %}
+    <a class ="btn btn-outline-primary" href="{{ path('inscrire',{'id': sortie.id}) }}">S'inscrire</a>
+    {% endif %}
+    {% if (isOrganisateur) %}
+    <a class ="btn btn-outline-info" href="{{ path('sortie_modifier',{'id': sortie.id}) }}">Modifier sortie</a>
+    {% endif %}
+
+
 {% endblock %}

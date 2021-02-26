@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Data\SearchData;
 use App\Entity\Inscription;
 use App\Entity\Sortie;
+use App\Entity\User;
 use App\Form\CreationSortieType;
 
 use App\Form\SearchForm;
@@ -61,6 +62,9 @@ class SortieController extends AbstractController
         if (!$sortie){
             $sortie = new Sortie();
             $sortie->setOrganisateur($this->getUser()->getUsername());
+
+            $user= $this->getUser();
+            $sortie->setUser($user);
         }
 
         $sortieForm = $this->createForm(CreationSortieType::class, $sortie);
@@ -117,7 +121,7 @@ class SortieController extends AbstractController
         $sortie = $sortiesRepo->find($id);
 
         // POUR AFFICHAGE DES PARTICIPANTS.
-
+        //$isOrganisateur = $sortie->get
         $inscriptionRepo = $this->getDoctrine()->getRepository(Inscription::class);
         $inscriptions = $inscriptionRepo->listDesInscrits($sortie);
 
@@ -133,7 +137,8 @@ class SortieController extends AbstractController
         }
 
         return $this->render('sortie/detailsSortie.html.twig', ['sortie' => $sortie,
-            'btnDesinscrire' => $btnDesinscrire, "inscriptions"=>$inscriptions
+            'btnDesinscrire' => $btnDesinscrire, "inscriptions"=>$inscriptions,
+            'isOrganisateur' => $sortie->getOrganisateur()==$user->getUsername()
         ]);
     }
 
@@ -152,46 +157,51 @@ class SortieController extends AbstractController
 
         // SI INSCRIPTION OUVERTE
 
-      //  $libelle = "Ouvert";
-       // $etatSortie = $sortieRepo->findOneByETAT($libelle);
+        //  $libelle = "Ouvert";
+        // $etatSortie = $sortieRepo->findOneByETAT($libelle);
 
-       // if($etatSortie == "Ouvert"){
+        // if($etatSortie == "Ouvert"){
 
         // SI IL RESTE DE LA PLACE
         if ($inscriptionRepo->nbInscriptions($id) < $sortie->getNbInscriptionMax()) {
 
-        // SI USER PAS DEJA INSCRIT
-        if (!$inscriptionRepo->rechercheInscription($user->getId(), $id)) {
 
-            // SI INSCRIPTIONS MAX ATTEINTES, ETAT SORTIE --> FERME
-            if ($inscriptionRepo->nbInscriptions($id) == (($sortie->getNbInscriptionMax()) - 1)) {
+            // SI USER PAS DEJA INSCRIT
+            if (!$inscriptionRepo->rechercheInscription($user->getId(), $id)) {
 
-                $etat = $etatRepo->findOneBy(['libelle' => 'Fermé']);
-                $sortie->setEtatSortie($etat);
-                $em->persist($sortie);
+
+                // CREATION DE L'INSCRIPTION + ENREGISTREMENT EN BDD
+
+                $inscription = new Inscription();
+                $inscription->setUser($user);
+                $inscription->setSortie($sortie);
+                $date = new \DateTime();
+                $inscription->setDateInscription($date);
+                $em->persist($inscription);
                 $em->flush();
+
+                // MESSAGE DE CONFIRMATION
+
+                $this->addFlash('success', 'Votre inscription est validée !');
+
+            } else {
+                $this->addFlash('error', 'Vous êtes déjà inscrit à cette sortie !');
             }
+            // SI INSCRIPTIONS MAX ATTEINTES, ETAT SORTIE --> FERME
+        } elseif ($inscriptionRepo->nbInscriptions($id) == (($sortie->getNbInscriptionMax()) - 1)){
 
-            // CREATION DE L'INSCRIPTION + ENREGISTREMENT EN BDD
-
-            $inscription = new Inscription();
-            $inscription->setUser($user);
-            $inscription->setSortie($sortie);
-            $date = new \DateTime();
-            $inscription->setDateInscription($date);
-            $em->persist($inscription);
+            $etat = $etatRepo->findOneBy(['libelle' => 'Fermé']);
+            $sortie->setEtatSortie($etat);
+            $em->persist($sortie);
             $em->flush();
 
-            // MESSAGE DE CONFIRMATION
+            $this->addFlash('error', 'Toutes les places disponibles pour cette sortie sont prises pour le moment !' );
 
-            $this->addFlash('success', 'Votre inscription est validé !');
-
-        } else {
-                 $this->addFlash('error', 'Vous êtes déjà inscrit à cette sortie !');
         }
-        } else {
-                 $this->addFlash('error', 'Toutes les places disponibles pour cette sortie sont prises pour le moment !' );
-            }
+
+
+
+         // TO DO
       /*  } else {
                  $this->addFlash('error', 'Les inscriptions sont terminées !');
         }*/
@@ -199,5 +209,29 @@ class SortieController extends AbstractController
         return $this->redirectToRoute('sorties_list');
     }
 
+    /**
+     * @Route("desinscrire/{id}", name="desinscrire",requirements={"id":"\d+"})
+     */
+    public function desinscrireSortie (Inscription $inscription = null, Request $request, EntityManagerInterface $em, InscriptionRepository $inscriptionRepo)
+    {
+
+
+
+
+        //trouver la ligne dans la table
+       // $inscriptionRepo = $this ->getDoctrine()->getRepository(Inscription::class);
+
+
+        //$inscription = $inscriptionRepo->findBy($id);
+        dump($inscription);
+        $em->remove($inscription);
+        $em->flush();
+
+       // $inscription->delete($id);
+
+        $this->addFlash('success','Vous vous êtes désinscrit  ');
+
+        return $this->redirectToRoute('sorties_list');
+    }
 
 }

@@ -15,7 +15,7 @@
             Etat des inscriptions :   {{ sortie.etatsortie }}<br>
 
         </div>
-{#        Organisateur de la sortie : <a href ="{{ path('afficher_profil', {'id': sortie.user}) }}"> {{ sortie.user.getNom() }} <br>#}
+      Organisateur de la sortie : <a href ="{{ path('afficher_profil', {'id': sortie.user}) }}"> {{ sortie.user.getNom() }} <br>
         <div class ="card-footer text-muted">
 
             <a href="{{ path('detail_sortie',{'id': sortie.id}) }}">Voir détails</a>

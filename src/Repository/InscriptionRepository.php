@@ -6,6 +6,8 @@ use App\Entity\Inscription;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
+
+
 /**
  * @method Inscription|null find($id, $lockMode = null, $lockVersion = null)
  * @method Inscription|null findOneBy(array $criteria, array $orderBy = null)
@@ -19,6 +21,7 @@ class InscriptionRepository extends ServiceEntityRepository
         parent::__construct($registry, Inscription::class);
     }
 
+
     // CONNAITRE LE NB D INSCRIT A LA SORTIE
     public function nbInscriptions($id)
     {
@@ -28,13 +31,15 @@ class InscriptionRepository extends ServiceEntityRepository
         return $nombreInscrit;
     }
 
-    //CONNAITRE SI USER INSCRIT OU NON (BOOLEEN), ON VERIFIE SI D'ID DU USER EST ASSOCIES A LA SORTIE EN COURS
+    //CONNAITRE SI USER INSCRIT OU NON (BOOLEEN), ON VERIFIE SI L'ID DU USER EST ASSOCIEES A LA SORTIE EN COURS
     public function rechercheInscription($idUser, $idSortie)
     {
         $queryBuilder = $this->createQueryBuilder('m');
         return $queryBuilder->select($queryBuilder->expr()->count('m'))->where('m.user = :idUser')->andWhere('m.sortie = :idSortie')
                 ->setParameter('idUser', $idUser)->setParameter('idSortie', $idSortie)->getQuery()->getSingleScalarResult() > 0;
     }
+
+
 
     // /**
     //  * @return Inscription[] Returns an array of Inscription objects
